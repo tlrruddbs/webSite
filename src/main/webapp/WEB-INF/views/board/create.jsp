@@ -6,6 +6,11 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>게시판</title>
 </head>
+<script>
+	function back(){
+		history.back();
+	}
+</script>
 <body>
 	<h1>게시판 등록하기</h1>
 	
@@ -29,5 +34,6 @@
         </div>            
         
 	</form>
+	<button type = "button" onclick = "back();">뒤로가기</button>
 </body>
 </html>

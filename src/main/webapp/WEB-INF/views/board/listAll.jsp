@@ -9,6 +9,10 @@
 <title>Insert title here</title>
 	
 <script>
+	function back(){
+		history.back();
+	}
+
 	function searchCheck(frm){
 		if(frm.keyWord.value == ""){
 			alert("검색 단어를 입력하세요.");
@@ -21,6 +25,8 @@
 	var msg = "${msg}";
 	if(msg == "listEmpty"){
 		alert("해당하는 검색 조건이 없습니다.");
+		location.href="/board/listAll";
+
 	}
 </script>
 	
@@ -28,7 +34,8 @@
 <body>
 	<button type = "button" onclick="location.href='/board/create' ">글쓰기</button>
 	<button type = "button" onclick="location.href='/board/myBoardList' ">내가 쓴 글</button>
-	
+	<button type = "button" onclick="location.href='/svc/logout' ">로그아웃</button>
+	<button type = "button" onclick = "back();">뒤로가기</button>
 	<form name = "type" action="/board/listAll" method="post">
 		<select name = "type">
 			<option value = "title">제목</option>

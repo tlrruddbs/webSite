@@ -59,7 +59,7 @@ public class BoardController {
 		mav.setViewName("redirect:/board/listAll");
 		return mav;
 	}
-	//git hub 확인
+	
 	@RequestMapping(value="/myBoardList", method= {RequestMethod.POST, RequestMethod.GET})
 	public ModelAndView myList(BoardVo boardVo, ModelAndView mav, HttpServletRequest request)throws Exception{
 		HttpSession session = request.getSession();
