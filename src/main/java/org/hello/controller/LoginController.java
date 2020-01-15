@@ -7,7 +7,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.hello.service.LoginService;
-import org.hello.vo.Jamong;
 import org.hello.vo.MemberVo;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
@@ -50,15 +49,27 @@ public class LoginController {
 			
 		} else {
 			
+			
+			
 			String msg = (String)session.getAttribute("loginMsg");
 			System.out.println("log i n msg : "+ msg);
 			
 			MemberVo userVo = (MemberVo)session.getAttribute("user");
+			
 			if(userVo == null) {
 				System.out.println("userVo null");
 				mav.setViewName("/login");
 			} else {
-				mav.setViewName("redirect:/svc/member/main");
+				System.out.println("commonCode :"+userVo.getMemberCode());
+				if(userVo.getMemberCode().equals("CMMMCD001")) {
+					System.out.println("관리자");
+					mav.setViewName("redirect:/svc/admin/adminMain");
+				} else {
+					System.out.println("회원");
+					mav.setViewName("redirect:/svc/member/main");
+				}
+				
+				
 			}
 		}
 		return mav;

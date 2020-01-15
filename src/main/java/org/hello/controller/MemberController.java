@@ -8,7 +8,6 @@ import javax.servlet.http.HttpSession;
 
 import org.hello.service.MemberService;
 import org.hello.vo.BoardVo;
-import org.hello.vo.Jamong;
 import org.hello.vo.MemberVo;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -58,11 +57,5 @@ public class MemberController {
 		return memberVo;
 	}
 
-	// ajax example
-	@RequestMapping(value="/ajaxTest2", method= RequestMethod.POST, produces="application/json; charset=utf-8")
-	@ResponseBody 
-	public Jamong ajaxTest2(@RequestBody Jamong jamong){
-		System.out.println(jamong.getAge()+", "+jamong.getName());;
-		return jamong;
-	}
+	
 }

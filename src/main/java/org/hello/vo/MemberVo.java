@@ -9,6 +9,7 @@ public class MemberVo {
 	private String userEmail;
 	private String userName;
 	private Date regDate;
+	private String memberCode;
 	
 	private int idChk;
 	
@@ -76,10 +77,19 @@ public class MemberVo {
 		this.loginMsg = loginMsg;
 	}
 
+	public String getMemberCode() {
+		return memberCode;
+	}
+
+	public void setMemberCode(String memberCode) {
+		this.memberCode = memberCode;
+	}
+
 	@Override
 	public String toString() {
 		return "MemberVo [seq=" + seq + ", userId=" + userId + ", userPw=" + userPw + ", userEmail=" + userEmail
-				+ ", userName=" + userName + ", redDate=" + regDate + "]";
+				+ ", userName=" + userName + ", regDate=" + regDate + ", memberCode=" + memberCode + ", idChk=" + idChk
+				+ ", loginMsg=" + loginMsg + "]";
 	}
 	
 }

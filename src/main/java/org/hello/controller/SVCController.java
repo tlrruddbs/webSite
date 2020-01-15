@@ -31,6 +31,22 @@ public class SVCController {
 		return mav;
 	}
 	
+	@RequestMapping(value="admin/adminMain", method= {RequestMethod.GET,RequestMethod.GET})
+	public ModelAndView adminMain(MemberVo memberVo, Model model, HttpServletRequest request)throws Exception{
+		ModelAndView mav = new ModelAndView();
+		HttpSession session = request.getSession(false);
+		
+		if(null==session) {
+			System.out.println("세션끝남");
+			mav.setViewName("redirect:/login");
+		} else {
+			System.out.println("/adminMain page 입니다.");
+		}
+		
+		
+		return mav;
+	}
+	
 	@RequestMapping(value="/logout", method= {RequestMethod.POST, RequestMethod.GET}, produces="application/json; charset=utf-8")
 	@ResponseBody 
 	public ModelAndView logout(HttpServletRequest request){

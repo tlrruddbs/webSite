@@ -99,7 +99,6 @@ public class BoardController {
 		System.out.println("전체 목록 페이지");
 		List<BoardVo> boardList = new ArrayList<BoardVo>();
 		boardList = service.searchList(map);
-//		boardList = service.listAll();
 		for(int i=0;i<boardList.size();i++) {
 			System.out.println(boardList.get(i).toString());
 		}

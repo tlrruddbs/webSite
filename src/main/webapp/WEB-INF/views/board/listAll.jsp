@@ -10,7 +10,7 @@
 	
 <script>
 	function back(){
-		history.back();
+		location.href="/svc/member/main";
 	}
 
 	function searchCheck(frm){
@@ -35,7 +35,7 @@
 	<button type = "button" onclick="location.href='/board/create' ">글쓰기</button>
 	<button type = "button" onclick="location.href='/board/myBoardList' ">내가 쓴 글</button>
 	<button type = "button" onclick="location.href='/svc/logout' ">로그아웃</button>
-	<button type = "button" onclick = "back();">뒤로가기</button>
+	<button type = "button" onclick = "back();">메인화면</button>
 	<form name = "type" action="/board/listAll" method="post">
 		<select name = "type">
 			<option value = "title">제목</option>
