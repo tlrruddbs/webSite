@@ -1,8 +1,10 @@
 package org.hello.controller;
 
+import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.hello.service.CommonCodeService;
 import org.hello.vo.BoardVo;
 import org.hello.vo.MemberVo;
 import org.springframework.stereotype.Controller;
@@ -15,6 +17,8 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 @RequestMapping("/svc")
 public class SVCController {
+	@Inject CommonCodeService commonCodeService;
+	
 	@RequestMapping(value="member/main", method= {RequestMethod.GET,RequestMethod.GET})
 	public ModelAndView main(MemberVo memberVo, Model model, HttpServletRequest request)throws Exception{
 		ModelAndView mav = new ModelAndView();
@@ -25,22 +29,6 @@ public class SVCController {
 			mav.setViewName("redirect:/login");
 		} else {
 			System.out.println("/main page 입니다.");
-		}
-		
-		
-		return mav;
-	}
-	
-	@RequestMapping(value="admin/adminMain", method= {RequestMethod.GET,RequestMethod.GET})
-	public ModelAndView adminMain(MemberVo memberVo, Model model, HttpServletRequest request)throws Exception{
-		ModelAndView mav = new ModelAndView();
-		HttpSession session = request.getSession(false);
-		
-		if(null==session) {
-			System.out.println("세션끝남");
-			mav.setViewName("redirect:/login");
-		} else {
-			System.out.println("/adminMain page 입니다.");
 		}
 		
 		

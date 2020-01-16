@@ -1,7 +1,11 @@
 package org.hello.dao;
 
+import java.util.List;
+import java.util.Map;
+
 import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
+import org.hello.vo.BoardVo;
 import org.hello.vo.MemberVo;
 import org.springframework.stereotype.Repository;
 
@@ -26,5 +30,13 @@ public class MemberDAOImp implements MemberDAO {
 		memberVo.setIdChk(result);
 		return result;
 	}
-   
+
+	@Override
+	public List<MemberVo> memberList() {
+		sqlSession.selectList(namespace+".memberList");
+		return sqlSession.selectList(namespace+".memberList");
+		
+	}
+	
+	
 }

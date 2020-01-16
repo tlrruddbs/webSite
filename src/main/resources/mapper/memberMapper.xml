@@ -14,4 +14,7 @@
     	select count(*) from member where userId = #{userId}
     </select>
 
+	<select id="memberList" resultType = "org.hello.vo.MemberVo">
+    	select * from member
+    </select>
 </mapper>

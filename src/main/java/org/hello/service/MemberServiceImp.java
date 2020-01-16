@@ -1,8 +1,11 @@
 package org.hello.service;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import org.hello.dao.MemberDAO;
+import org.hello.vo.BoardVo;
 import org.hello.vo.MemberVo;
 import org.springframework.stereotype.Service;
 
@@ -23,6 +26,11 @@ public class MemberServiceImp implements MemberService{
 		result = dao.idChk(memberVo);
 		
 		return result;
+	}
+
+	@Override
+	public List<MemberVo> memberList() {
+		return dao.memberList();
 	}
 	
 
