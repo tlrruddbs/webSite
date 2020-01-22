@@ -32,6 +32,16 @@ public class MemberServiceImp implements MemberService{
 	public List<MemberVo> memberList() {
 		return dao.memberList();
 	}
+
+	@Override
+	public MemberVo getMember(String userId) {
+		return dao.getMember(userId);
+	}
+
+	@Override
+	public int saveMemberInfo(MemberVo memberVo) {
+		return dao.saveMemberInfo(memberVo);
+	}
 	
 
 }

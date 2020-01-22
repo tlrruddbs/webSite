@@ -37,6 +37,18 @@ public class MemberDAOImp implements MemberDAO {
 		return sqlSession.selectList(namespace+".memberList");
 		
 	}
+
+	@Override
+	public MemberVo getMember(String userId) {
+		sqlSession.selectOne(namespace+".getMember", userId);
+		return sqlSession.selectOne(namespace+".getMember", userId);
+	}
+
+	@Override
+	public int saveMemberInfo(MemberVo memberVo) {
+		sqlSession.update(namespace+".saveMemberInfo", memberVo);
+		return sqlSession.update(namespace+".saveMemberInfo", memberVo);
+	}
 	
 	
 }

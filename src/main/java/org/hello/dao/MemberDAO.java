@@ -12,4 +12,8 @@ public interface MemberDAO {
     public int idChk(MemberVo vo);
     
     public List<MemberVo> memberList();
+    
+    public MemberVo getMember(String userId);
+    
+    public int saveMemberInfo(MemberVo vo);
 }

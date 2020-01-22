@@ -7,8 +7,4 @@
 	<select id="loginRequest" parameterType = "org.hello.vo.MemberVo" resultType = "org.hello.vo.MemberVo">
 		select * from member where userId=#{userId} and userPw=#{userPw}
 	</select>
-	
-	<select id="getCommonCode" parameterType = "String" resultType = "String">
-		select
-	</select>
 </mapper>

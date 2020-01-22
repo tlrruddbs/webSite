@@ -41,6 +41,7 @@
 			<option value = "title">제목</option>
 			<option value = "id">아이디</option>
 		</select>
+		
 		<input type = "text" name = "keyWord"/>
 		<input type = "button" value ="검색" onclick="searchCheck(form)"/>
 	</form>
@@ -56,7 +57,7 @@
 		<c:forEach items = "${boardList}" var = "boardVo">
 			<tr>
 				<td>${boardVo.seq }</td>
-				<td><a href="/board/detail?seq=${boardVo.seq }&id=${boardVo.writer}">${boardVo.title }</a></td>
+				<td>${boardVo.title }</td>
 				<td>${boardVo.writer }</td>
 				<td><fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${boardVo.date }"/></td>
 				<td><span>${boardVo.count }</span></td>

@@ -17,4 +17,13 @@
 	<select id="memberList" resultType = "org.hello.vo.MemberVo">
     	select * from member
     </select>
+    
+    <select id="getMember" parameterType = "org.hello.vo.MemberVo" resultType = "org.hello.vo.MemberVo">
+    	select * from member where userId = #{userId}
+    </select>
+    
+    <select id = "saveMemberInfo" parameterType = "org.hello.vo.MemberVo" resultType ="org.hello.vo.MemberVo">
+    	update member set memberStatus = #{memberStatus} where userId = #{userId}
+    </select>
+    
 </mapper>

@@ -11,4 +11,8 @@ public interface MemberService {
 	public int idChk(MemberVo memberVo) throws Exception;
 	
 	public List<MemberVo> memberList();
+	
+	public MemberVo getMember(String userId);
+	
+	public int saveMemberInfo(MemberVo memberVo);
 }

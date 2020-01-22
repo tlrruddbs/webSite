@@ -10,6 +10,7 @@ public class MemberVo {
 	private String userName;
 	private Date regDate;
 	private String memberCode;
+	private String memberStatus;
 	
 	private int idChk;
 	
@@ -85,11 +86,19 @@ public class MemberVo {
 		this.memberCode = memberCode;
 	}
 
+	public String getMemberStatus() {
+		return memberStatus;
+	}
+
+	public void setMemberStatus(String memberStatus) {
+		this.memberStatus = memberStatus;
+	}
+
 	@Override
 	public String toString() {
 		return "MemberVo [seq=" + seq + ", userId=" + userId + ", userPw=" + userPw + ", userEmail=" + userEmail
-				+ ", userName=" + userName + ", regDate=" + regDate + ", memberCode=" + memberCode + ", idChk=" + idChk
-				+ ", loginMsg=" + loginMsg + "]";
+				+ ", userName=" + userName + ", regDate=" + regDate + ", memberCode=" + memberCode + ", memberStatus="
+				+ memberStatus + ", idChk=" + idChk + ", loginMsg=" + loginMsg + "]";
 	}
 	
 }
