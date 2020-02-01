@@ -12,11 +12,17 @@
 	</insert>
 	
 	<!-- 게시판 리스트 보기 -->
-	<select id="listBoard" resultType = "org.hello.vo.BoardVo">
-		<![CDATA[
-        select * from board 
-        order by seq DESC
- 	   ]]>
+	<select id="listBoard"  resultType = "org.hello.vo.BoardVo">
+        select * from board limit #{startList}, #{listSize}
+	</select>
+	
+	<select id="getBoardList" parameterType = "hashmap" resultType = "org.hello.vo.BoardVo">
+        select * from board	limit #{startIndex},#{pageSize}
+	</select>
+	
+	<select id="getBoardListCnt" resultType="int">
+	<!--	SELECT count(*) as listCnt FROM board -->
+		CALL proc_count_BoardList(#{searchType}, #{searchKeyWord});
 	</select>
 	
 	<!-- 게시판 상세보기 -->
@@ -44,7 +50,7 @@
 	
 	<!-- 리스트 검색 -->
 	<select id ="searchList" parameterType = "hashmap" resultType = "org.hello.vo.BoardVo">
-		CALL proc_search_BoardList(#{searchType}, #{searchKeyWord});
+		CALL proc_search_BoardList(#{searchType}, #{searchKeyWord}, #{page.startIndex}, #{page.pageSize});
 	</select>
 	
 </mapper>

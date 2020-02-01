@@ -3,6 +3,7 @@ package org.hello.dao;
 import java.util.List;
 import java.util.Map;
 
+import org.hello.controller.utils.Pagination;
 import org.hello.vo.BoardVo;
 
 public interface BoardDAO {
@@ -10,6 +11,10 @@ public interface BoardDAO {
 	public void create(BoardVo boardVo) throws Exception;
 	
 	public List<BoardVo> listAll() throws Exception;
+	
+	public List<BoardVo> getBoardList(Pagination pagination) throws Exception;
+	
+	public int getBoardListCnt(Map map) throws Exception;
 	
 	public BoardVo read(int seq) throws Exception;
 	

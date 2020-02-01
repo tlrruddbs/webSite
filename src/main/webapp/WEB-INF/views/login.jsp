@@ -13,6 +13,12 @@
 		alert("회원가입이 완료되었습니다. 로그인해주세요");
 	} else if (msg=="FAILURE"){
 		alert("아이디와 비밀번호를 확인해주세요");
+	} else if (msg=="Stop"){
+		alert("일시 정지된 ID입니다. 관리자에게 문의해주세요");
+	} else if (msg=="Ban"){
+		alert("영구 정지된 ID입니다. 관리자에게 문의해주세요");
+	} else if (msg=="Leave"){
+		alert("탈퇴한 회원입니다.");
 	}
 	 
 	

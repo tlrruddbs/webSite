@@ -5,6 +5,7 @@ import java.util.Map;
 
 import javax.inject.Inject;
 
+import org.hello.controller.utils.Pagination;
 import org.hello.dao.BoardDAO;
 import org.hello.vo.BoardVo;
 import org.springframework.stereotype.Service;
@@ -24,7 +25,17 @@ public class BoardServiceImp implements BoardService{
     public List<BoardVo> listAll() throws Exception {
         return dao.listAll();
     }
- 
+    
+	@Override
+	public List<BoardVo> getBoardList(Pagination pagination) throws Exception {
+		return dao.getBoardList(pagination);
+	}
+	
+	@Override
+	public int getBoardListCnt(Map map) throws Exception {
+		return dao.getBoardListCnt(map);
+	}
+	
     @Override
     public BoardVo read(int seq) throws Exception {
         return dao.read(seq);
@@ -55,6 +66,5 @@ public class BoardServiceImp implements BoardService{
 	public List<BoardVo> searchList(Map map) throws Exception {
 		dao.searchList(map);
 		return dao.searchList(map);
-	}
-	
+	}	
 }

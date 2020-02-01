@@ -9,9 +9,11 @@ import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.hello.controller.utils.Pagination;
 import org.hello.service.BoardService;
 import org.hello.vo.BoardVo;
 import org.hello.vo.MemberVo;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -82,13 +84,14 @@ public class BoardController {
 	}
 	
 	@RequestMapping(value = "/listAll", method= {RequestMethod.GET, RequestMethod.POST}, produces = "text/html; charset=UTF-8")
-	public ModelAndView listAll(Model model, HttpServletRequest request, @RequestParam(defaultValue = "") String type, @RequestParam(defaultValue = "") String keyWord) throws Exception{
-		
-		System.out.println("type :"+type+", keyWord :"+keyWord);
+	public ModelAndView listAll(Model model, HttpServletRequest request, 
+			@RequestParam(defaultValue = "") String type, 
+			@RequestParam(defaultValue = "") String keyWord,
+			@RequestParam(defaultValue = "1") int curPage) throws Exception{
 		
 		ModelAndView mav = new ModelAndView();
 		
-		Map<String, String> map = new HashMap<String, String>();
+		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("searchType", type);
 		map.put("searchKeyWord", keyWord);
 		
@@ -96,20 +99,33 @@ public class BoardController {
 		if(null == session.getAttribute("user")) {
 			mav.setViewName("redirect:/login");
 		}
-		System.out.println("전체 목록 페이지");
 		List<BoardVo> boardList = new ArrayList<BoardVo>();
+		/*
 		boardList = service.searchList(map);
 		for(int i=0;i<boardList.size();i++) {
 			System.out.println(boardList.get(i).toString());
 		}
-		model.addAttribute("boardList", service.searchList(map));
+		
+		System.out.println("boardList size: "+boardList.size());
+		*/
+		int listSize = service.getBoardListCnt(map);
+		Pagination page = new Pagination(listSize, curPage);
+		map.put("page", page);
+		//	map.put("startIndex", Integer.toString(page.getStartIndex()));
+	//	map.put("listSize", Integer.toString(listSize));
+	//	model.addAttribute("boardList", service.searchList(map));
+		boardList = service.searchList(map);
+	//	boardList = service.getBoardList(page);
+		mav.addObject("boardList", boardList);
 		if(service.searchList(map).isEmpty()) {
 			System.out.println("아무 내용이 없습니다.");
 			service.listAll();
-			model.addAttribute("boardList", service.listAll());
+			boardList = service.getBoardList(page);
+			mav.addObject("boardList", boardList);
 			mav.addObject("msg", "listEmpty");
 		}
-		
+		mav.addObject("listCnt",boardList.size());
+		mav.addObject("page",page);
 		return mav;
 	}
 	

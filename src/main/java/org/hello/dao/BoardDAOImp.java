@@ -6,6 +6,7 @@ import java.util.Map;
 import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
+import org.hello.controller.utils.Pagination;
 import org.hello.vo.BoardVo;
 import org.springframework.stereotype.Repository;
 
@@ -26,6 +27,19 @@ public class BoardDAOImp implements BoardDAO{
 	public List<BoardVo> listAll() throws Exception {
 		sqlSession.selectList(namespace+".listBoard");
 		return sqlSession.selectList(namespace+".listBoard");
+	}
+	
+	@Override
+	public List<BoardVo> getBoardList(Pagination pagination) throws Exception {
+		System.out.println("pagination option:"+pagination.getStartIndex()+", "+pagination.getPageSize());
+		sqlSession.selectList(namespace+".getBoardList", pagination);
+		return sqlSession.selectList(namespace+".getBoardList",pagination);
+	}
+	
+	@Override
+	public int getBoardListCnt(Map map) throws Exception {
+		
+		return sqlSession.selectOne(namespace+".getBoardListCnt", map);
 	}
 
 	@Override
@@ -63,5 +77,4 @@ public class BoardDAOImp implements BoardDAO{
 		sqlSession.selectList(namespace+".searchList", map);
 		return sqlSession.selectList(namespace+".searchList", map);
 	}
-
 }

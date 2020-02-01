@@ -52,7 +52,6 @@ public class LoginController {
 			
 			
 			String msg = (String)session.getAttribute("loginMsg");
-			System.out.println("log i n msg : "+ msg);
 			
 			MemberVo userVo = (MemberVo)session.getAttribute("user");
 			
@@ -63,10 +62,46 @@ public class LoginController {
 				System.out.println("commonCode :"+userVo.getMemberCode());
 				if(userVo.getMemberCode().equals("CMMMCD001")) {
 					System.out.println("관리자");
-					mav.setViewName("redirect:/svc/admin/adminMain");
+					String url = "";
+					if ( userVo.getMemberStatus().equals("CMMMST001")) {
+						System.out.println("정상회원입니다.");
+						session.setAttribute("msg", "Normal");
+						url = "redirect:/svc/admin/adminMain";
+					} else if ( userVo.getMemberStatus().equals("CMMMST002")) {
+						System.out.println("일시 정지 회원입니다.");
+						session.setAttribute("msg", "Normal");
+						url = "/login";
+					} else if ( userVo.getMemberStatus().equals("CMMMST003")) {
+						System.out.println("영구 정지 회원입니다.");
+						session.setAttribute("msg", "Ban");
+						url = "/login";
+					} else if ( userVo.getMemberStatus().equals("CMMMST004")) {
+						System.out.println("탈퇴한 회원입니다.");
+						session.setAttribute("msg", "Leave");
+						url = "/login";
+					}
+					mav.setViewName(url);
 				} else {
 					System.out.println("회원");
-					mav.setViewName("redirect:/svc/member/main");
+					String url = "";
+					if ( userVo.getMemberStatus().equals("CMMMST001")) {
+						System.out.println("정상회원입니다.");
+						session.setAttribute("msg", "Normal");
+						url = "redirect:/svc/member/main";
+					} else if ( userVo.getMemberStatus().equals("CMMMST002")) {
+						System.out.println("일시 정지 회원입니다.");
+						session.setAttribute("msg", "Stop");
+						url = "/login";
+					} else if ( userVo.getMemberStatus().equals("CMMMST003")) {
+						System.out.println("영구 정지 회원입니다.");
+						session.setAttribute("msg", "Ban");
+						url = "/login";
+					} else if ( userVo.getMemberStatus().equals("CMMMST004")) {
+						System.out.println("탈퇴한 회원입니다.");
+						session.setAttribute("msg", "Leave");
+						url = "/login";
+					}
+					mav.setViewName(url);
 				}
 				
 				
@@ -86,10 +121,9 @@ public class LoginController {
 		
 		if(userVo == null || !userVo.getUserPw().equals(memberVo.getUserPw())) {
 			userVo = null; 
-			System.out.println("아무것도 안담기겠지");
-			session.setAttribute("loginMsg", "There is no member information");
+			
+			session.setAttribute("loginMsg", "사용자 정보가 없습니다.");
 		}
-		System.out.println("담김");
 		mav.addObject("userVo",memberVo);
 		
 		session.setAttribute("user", userVo);
