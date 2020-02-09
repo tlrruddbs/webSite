@@ -37,16 +37,15 @@ public class BoardController {
 		HttpSession session = request.getSession();
 		
 		if(null == session.getAttribute("user")) {
-			
-			mav.setViewName("redirect:/login");
+			mav.addObject("msg","NoSession");
+			session.setAttribute("msg", "NoSession");
+			mav.setViewName("/login");
 		} else {
-			
 			System.out.println("session not null");
 			MemberVo memberVo = (MemberVo) session.getAttribute("user");
 			System.out.println(memberVo.getUserName());
 			mav.setViewName("/board/create");
 			mav.addObject("member", memberVo);
-		
 		}
 		return mav;
 	}
@@ -68,6 +67,7 @@ public class BoardController {
 		
 		if(null == session.getAttribute("user")) {
 			mav.setViewName("redirect:/login");
+			session.setAttribute("msg", "NoSession");
 		} else {
 			MemberVo memberVo = (MemberVo) session.getAttribute("user");
 			

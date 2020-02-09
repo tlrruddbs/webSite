@@ -17,19 +17,11 @@
 <title>Insert title here</title>
 	
 <script>
-	function back(){
-		var sessionId = <%=session.getAttribute("user") %>
-		alert(sessionid);
-		if(null == session.getAttribute("user")){
-			alert("1234");
-			location.href="/login";
-			
-		}else{
-			alert("1235");
-			location.href="/svc/member/main";
-			
-		}
-		
+	function mainPage(){
+		location.href="/svc/member/main?loginResult=no";
+	}
+	function mainPageCheck(){
+		location.href="/svc/member/main";
 	}
 
 	function searchCheck(frm){
@@ -67,7 +59,7 @@
 
 		<nav class="navbar navbar-expand-lg navbar-dark"> 
 		<%--	<nav class="navbar navbar-expand-lg bg-dark navbar-dark"> --%>
-		    <img src="/resources/images/logo.png" style="cursor:pointer" onclick="back()" width="100" height="50"  />
+		    <img src="/resources/images/logo.png" style="cursor:pointer" onclick="mainPage()" width="100" height="50"  />
 		    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
 		    <span class="navbar-toggler-icon"></span>
 		</button>
@@ -77,7 +69,7 @@
 		    <%--  	<a class="nav-item nav-link active text-light" href="#" >Home <span class="sr-only">(current)</span></a> --%>
 		      	<a class="nav-item nav-link text-light" href="/board/listAll" >자유게시판</a>
 		      	<a class="nav-item nav-link text-light" href="/login" >로그인</a>
-		      	<a class="nav-item nav-link text-light" href="#">회원가입</a>
+		      	<a class="nav-item nav-link text-light" href="/member/memberRegister">회원가입</a>
 		      <%--
 			     <div class="dropdown">
 			        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"  text-align="right">
@@ -101,7 +93,7 @@
 			<div align="right">
 			<button class="btn btn-light btn-sm" type = "button" onclick="location.href='/board/myBoardList' " height="80%" >내가 쓴 글</button>
 			<button class="btn btn-light btn-sm" type = "button" onclick="location.href='/svc/logout' ">로그아웃</button>
-			<button class="btn btn-light btn-sm" type = "button" onclick = "back();">메인화면</button>
+			<button class="btn btn-light btn-sm" type = "button" onclick = "mainPageCheck();">메인화면</button>
 			
 			<form class="form-inline my-2 my-lg-0" name = "type" action="/board/listAll" method="post">
 				<select class="form-control" name = "type">

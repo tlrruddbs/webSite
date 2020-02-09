@@ -4,10 +4,111 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<script type="text/javascript" src="/resources/js"></script>
+<link rel="stylesheet" href="/resources/css/bootstrap.css">
+<link rel="stylesheet" href="/resources/css/custom.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+<title>회원가입</title>
+
 </head>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+<script>
+	function loginPage(){
+		location.href="/login";
+	}
+
+</script>
 <body>
+	<style type = "text/css">
+		.jumbotron{
+			background-image:url('/resources/images/main.png');
+			background-size:cover;
+			text-shadow: black 0.2em 0.2em 0.2em;
+			color:black;
+			
+		}
+	</style>
+	
+	<nav class="navbar navbar-expand-lg navbar-dark"> 
+		<%--	<nav class="navbar navbar-expand-lg bg-dark navbar-dark"> --%>
+		    <img src="/resources/images/logo.png" style="cursor:pointer"  width="100" height="50" onclick="loginPage();"/>
+		    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+		    <span class="navbar-toggler-icon"></span>
+		</button>
+	
+		<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+		    <div class="navbar-nav">	
+		  <%--    	<a class="nav-item nav-link active text-light" href="#" >Home <span class="sr-only">(current)</span></a> --%>
+		      	<a class="nav-item nav-link text-light" href="/board/listAll" >자유게시판</a>
+		      	<a class="nav-item nav-link text-light" href="/login" >로그인</a>
+		      	<a class="nav-item nav-link text-light" href="/member/memberRegister">회원가입</a>
+		      <%--
+			     <div class="dropdown">
+			        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"  text-align="right">
+			          	로그인
+			        </a>
+			        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+				        <a class="dropdown-item" href="#">로그인</a>
+				        <a class="dropdown-item" href="#">회원가입</a>
+		    	    </div>
+	      		</div>
+	      		 --%>
+	    	</div>
+	 	</div>
+		</nav>
+		
+		<div class="jumbotron" >
+			<div class="container" role="main">
+				<div class="panel-heading">
+                     <div class="panel-title">환영합니다!</div>
+                 </div>
+                 <div class="panel-body">
+                     <form action="/member/register" id="login-form" method="post" onsubmit="return check()">
+                    	 <div>
+                             <input type="text" name="userId" placeholder="id" id="userId" autofocus>
+                             <input type="button" name ="idChk" onclick="checkId();" value = "중복 체크" class="btn btn-outline-light">
+                         </div>
+                         <div>
+                             <input type="password" id = "userPw" name="userPw" placeholder="Password" oninput="checkPwd()">
+                         </div>
+                         <div>
+                             <input type="password" name="userPwConfirm" placeholder="Confirm Password" id="userRePw" oninput="checkPwd()">
+                         </div>
+                         <div>
+                             <input type="email" name="userEmail" id="userEmail" placeholder="Email" autofocus>
+                         </div>
+                         <div>
+                             <input type="text" name="userName" id="userName" placeholder="Your name" oninput="checkNick()" autofocus>
+                         </div>
+                         <div>
+                             <button type="submit" class="btn btn-outline-light">회원가입</button>
+                             
+                             <!-- signupbtn" disabled="disabled" -->
+                         </div>
+                         
+                     </form>
+                 </div>
+				<div class="column_left">
+				
+				</div>
+				
+					
+					
+					
+	  			</div>
+				
+				<div class="column_right">
+					
+					
+					
+	  			</div>
+	  			
+	  		</div>
+		</div>
+	<%--
      <div class="container">
          <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
              <div class="panel panel-success">
@@ -41,12 +142,14 @@
                      </form>
                  </div>
              </div>
+             <%--
              <input type = "button" name="btn" id="btn" onclick="btnClick();" value="ajax test">
-             <input type = "button" name="btn2" id="btn2" onclick="btnClick2();" value="ajax test2">
+             <input type = "button" name="btn2" id="btn2" onclick="btnClick2();" value="ajax test2">  --%>
          </div>
      </div>
-     
-     <button id = "btn1">simpleAJAX</button>
+      --%>
+     <%--
+     <button id = "btn1">simpleAJAX</button> --%>
      <div id="result"></div>
      
      <script>

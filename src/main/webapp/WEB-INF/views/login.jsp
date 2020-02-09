@@ -14,6 +14,7 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
 	<script>
+	
 	var msg = "${msg}";
 	if(msg== "REGISTERED"){
 		alert("회원가입이 완료되었습니다. 로그인해주세요");
@@ -29,7 +30,9 @@
 		alert("로그인 후 이용해주세요.");
 	}
 	 
-	
+	function reload(){
+		location.reload();
+	}
 	
 </script>
 </head>
@@ -37,7 +40,7 @@
 <body>
 	<style type = "text/css">
 			.jumbotron{
-				background-image:url('resources/images/main.png');
+				background-image:url('/resources/images/main.png');
 				background-size:cover;
 				text-shadow: black 0.2em 0.2em 0.2em;
 				color:black;
@@ -47,7 +50,7 @@
 
 		<nav class="navbar navbar-expand-lg navbar-dark"> 
 		<%--	<nav class="navbar navbar-expand-lg bg-dark navbar-dark"> --%>
-		    <img src="/resources/images/logo.png" style="cursor:pointer"  width="100" height="50"/>
+		    <img src="/resources/images/logo.png" style="cursor:pointer"  width="100" height="50" onclick="reload();"/>
 		    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
 		    <span class="navbar-toggler-icon"></span>
 		</button>
@@ -56,8 +59,8 @@
 		    <div class="navbar-nav">	
 		  <%--    	<a class="nav-item nav-link active text-light" href="#" >Home <span class="sr-only">(current)</span></a> --%>
 		      	<a class="nav-item nav-link text-light" href="/board/listAll" >자유게시판</a>
-		      	<a class="nav-item nav-link text-light" href="#" >로그인</a>
-		      	<a class="nav-item nav-link text-light" href="#">회원가입</a>
+		      	<a class="nav-item nav-link text-light" onclick="reload();" >로그인</a>
+		      	<a class="nav-item nav-link text-light" href="/member/memberRegister">회원가입</a>
 		      <%--
 			     <div class="dropdown">
 			        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"  text-align="right">
@@ -82,11 +85,7 @@
 		
 		<div class="jumbotron" >
 			<div class="container" role="main">
-				<div class="column_left">
-				</div>
-				
-				<div class="column_right">
-					<h2><p class="text-light"> LOGIN</p></h2>
+			<h2><p class="text-light"> LOGIN</p></h2>
 					<form action="/login/loginRequest" id="login-form" method="post" >
 					 	<div>
 					        <input type="text" name="userId" placeholder="id" id="userId" autofocus>
@@ -101,6 +100,11 @@
 					    </div>
 				         
 				    </form>
+				<div class="column_left">
+				</div>
+				
+				<div class="column_right">
+					
 	  			</div>
 	  			
 	  		</div>

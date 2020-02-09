@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -20,13 +21,17 @@ public class SVCController {
 	@Inject CommonCodeService commonCodeService;
 	
 	@RequestMapping(value="member/main", method= {RequestMethod.GET,RequestMethod.GET})
-	public ModelAndView main(MemberVo memberVo, Model model, HttpServletRequest request)throws Exception{
+	public ModelAndView main(MemberVo memberVo, Model model, HttpServletRequest request, @RequestParam(value="loginResult", defaultValue="") String loginResult)throws Exception{
 		ModelAndView mav = new ModelAndView();
 		HttpSession session = request.getSession(false);
 		
 		if(null==session) {
 			System.out.println("세션끝남");
 			mav.setViewName("redirect:/login");
+		} else if(loginResult.equals("no")){
+			mav.setViewName("redirect:/login");
+			session.setAttribute("msg", "no");
+			return mav;
 		} else if(null == session.getAttribute("user")){
 			System.out.println("세션이 없습니다.");
 			session.setAttribute("msg", "NoSession");

@@ -36,7 +36,6 @@ public class MemberController {
 		System.out.println("register : "+memberVo.toString());
 		memberService.insertMember(memberVo);
 		mav.addObject("msg", "REGISTERED");
-		redirectAttributes.addFlashAttribute("msg", "REGISTERED");
 		mav.setViewName("redirect:/login");
 		return mav;
 	}
