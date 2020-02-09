@@ -48,9 +48,6 @@ public class LoginController {
 			System.out.println("session null");
 			
 		} else {
-			
-			
-			
 			String msg = (String)session.getAttribute("loginMsg");
 			
 			MemberVo userVo = (MemberVo)session.getAttribute("user");
@@ -122,7 +119,7 @@ public class LoginController {
 		if(userVo == null || !userVo.getUserPw().equals(memberVo.getUserPw())) {
 			userVo = null; 
 			
-			session.setAttribute("loginMsg", "사용자 정보가 없습니다.");
+			session.setAttribute("msg", "Failure");
 		}
 		mav.addObject("userVo",memberVo);
 		

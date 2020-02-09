@@ -96,9 +96,13 @@ public class BoardController {
 		map.put("searchKeyWord", keyWord);
 		
 		HttpSession session = request.getSession();
+		
+		/*주석 풀어야 됨
 		if(null == session.getAttribute("user")) {
 			mav.setViewName("redirect:/login");
 		}
+		*/
+		
 		List<BoardVo> boardList = new ArrayList<BoardVo>();
 		/*
 		boardList = service.searchList(map);

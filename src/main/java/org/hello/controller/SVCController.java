@@ -27,6 +27,10 @@ public class SVCController {
 		if(null==session) {
 			System.out.println("세션끝남");
 			mav.setViewName("redirect:/login");
+		} else if(null == session.getAttribute("user")){
+			System.out.println("세션이 없습니다.");
+			session.setAttribute("msg", "NoSession");
+			mav.setViewName("redirect:/login");
 		} else {
 			System.out.println("/main page 입니다.");
 		}
