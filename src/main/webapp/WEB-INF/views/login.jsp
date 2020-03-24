@@ -31,7 +31,7 @@
 	}
 	 
 	function reload(){
-		location.reload();
+		location.href = "/login";
 	}
 	
 </script>

@@ -13,7 +13,7 @@
 	
 	<!-- 게시판 리스트 보기 -->
 	<select id="listBoard"  resultType = "org.hello.vo.BoardVo">
-        select * from board limit #{startList}, #{listSize}
+        select * from board
 	</select>
 	
 	<select id="getBoardList" parameterType = "hashmap" resultType = "org.hello.vo.BoardVo">

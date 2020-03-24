@@ -26,4 +26,8 @@
     	update member set memberStatus = #{memberStatus} where userId = #{userId}
     </select>
     
+    <select id="getMemberList" parameterType = "hashmap" resultType = "org.hello.vo.MemberVo">
+        select * from member limit #{startIndex},#{pageSize}
+	</select>
+    
 </mapper>

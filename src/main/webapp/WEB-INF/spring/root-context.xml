@@ -17,7 +17,8 @@
         <property name="driverClassName" value="com.mysql.jdbc.Driver"></property>
         <property name="url" value="jdbc:mysql://127.0.0.1:3306/devproject?useSSL=false"></property>
         <property name="username" value="root"></property>   
-        <property name="password" value="dbsrudtlr1"></property>
+         <property name="password" value="dbsrudTlr1!"></property> 
+    <!--<property name="password" value="dbsrudtlr1"></property>-->
     </bean>
 	
 	<!--  mybatis와 스프링 연동작을 하기위한 SqlsessionFactory == DB연결 및 SQL의 실행을 대한객체 -->
@@ -35,5 +36,24 @@
         <constructor-arg name="sqlSessionFactory" ref="sqlSessionFactory"></constructor-arg>   
     </bean>
     
+    <bean id ="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver"></bean>
+    
 	<context:component-scan base-package="org.hello.dao"></context:component-scan>
+	
+	<!-- 메일보내기 -->
+   <bean id="mailSender" class = "org.springframework.mail.javamail.JavaMailSenderImpl">
+      <property name="host" value="smtp.gmail.com" />
+      <property name="port" value="587" />
+      <property name="username" value="tlrruddbs@gmail.com" />
+      <property name="password" value="dbsrudtlr1!" />
+      <property name="javaMailProperties">
+         <props>
+               <prop key="mail.transport.protocol">smtp</prop>
+               <prop key="mail.smtp.auth">true</prop>
+               <prop key="mail.smtp.starttls.enable">true</prop>
+               <prop key="mail.debug">true</prop>
+         </props>
+      </property>
+ 
+   </bean>
 </beans>

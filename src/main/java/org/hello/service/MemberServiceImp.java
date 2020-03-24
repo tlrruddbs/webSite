@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import org.hello.controller.utils.Pagination;
 import org.hello.dao.MemberDAO;
 import org.hello.vo.BoardVo;
 import org.hello.vo.MemberVo;
@@ -42,6 +43,9 @@ public class MemberServiceImp implements MemberService{
 	public int saveMemberInfo(MemberVo memberVo) {
 		return dao.saveMemberInfo(memberVo);
 	}
-	
 
+	@Override
+	public List<MemberVo> getMemberList(Pagination pagination) throws Exception {
+		return dao.getMemberList(pagination);
+	}
 }

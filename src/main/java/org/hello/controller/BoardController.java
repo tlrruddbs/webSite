@@ -37,9 +37,9 @@ public class BoardController {
 		HttpSession session = request.getSession();
 		
 		if(null == session.getAttribute("user")) {
-			mav.addObject("msg","NoSession");
+			System.out.println("No session");
 			session.setAttribute("msg", "NoSession");
-			mav.setViewName("/login");
+			mav.setViewName("/svc/member/main");
 		} else {
 			System.out.println("session not null");
 			MemberVo memberVo = (MemberVo) session.getAttribute("user");
@@ -52,7 +52,7 @@ public class BoardController {
 	
 	@RequestMapping(value="/create", method=RequestMethod.POST)
 	public ModelAndView createPOST(BoardVo boardVo, ModelAndView mav, HttpServletRequest request)throws Exception{
-	
+		System.out.println(boardVo.toString());
 		List<BoardVo> boardList = new ArrayList<BoardVo>();
 		service.create(boardVo);
 		boardList = service.listAll();
@@ -66,20 +66,60 @@ public class BoardController {
 		HttpSession session = request.getSession();
 		
 		if(null == session.getAttribute("user")) {
-			mav.setViewName("redirect:/login");
+			System.out.println("No session");
 			session.setAttribute("msg", "NoSession");
+			mav.setViewName("/svc/member/main");
 		} else {
 			MemberVo memberVo = (MemberVo) session.getAttribute("user");
 			
 			List<BoardVo> boardList = new ArrayList<BoardVo>();
 			boardList = service.myBoardList(memberVo.getUserId());
 			mav.addObject("boardList",boardList);
+			mav.addObject("listCnt",boardList.size());
+			System.out.println("listCnt:"+boardList.size());
 			mav.setViewName("board/myBoardList");
 			
 			for(int i=0;i<boardList.size();i++) {
 				System.out.println(boardList.get(i).toString());
 			}
 		}
+		
+		return mav;
+	}
+	@RequestMapping(value = "/adminListAll", method= {RequestMethod.GET, RequestMethod.POST}, produces = "text/html; charset=UTF-8")
+	public ModelAndView adminListAll(Model model, HttpServletRequest request, 
+			@RequestParam(defaultValue = "") String type, 
+			@RequestParam(defaultValue = "") String keyWord,
+			@RequestParam(defaultValue = "1") int curPage) throws Exception{
+		
+		ModelAndView mav = new ModelAndView();
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("searchType", type);
+		map.put("searchKeyWord", keyWord);
+		
+		HttpSession session = request.getSession();
+		
+		
+		List<BoardVo> boardList = new ArrayList<BoardVo>();
+		int listSize = service.getBoardListCnt(map);
+		Pagination page = new Pagination(listSize, curPage);
+		map.put("page", page);
+		//	map.put("startIndex", Integer.toString(page.getStartIndex()));
+	//	map.put("listSize", Integer.toString(listSize));
+	//	model.addAttribute("boardList", service.searchList(map));
+		boardList = service.searchList(map);
+	//	boardList = service.getBoardList(page);
+		mav.addObject("boardList", boardList);
+		if(service.searchList(map).isEmpty()) {
+			System.out.println("아무 내용이 없습니다.");
+			service.listAll();
+			boardList = service.getBoardList(page);
+			mav.addObject("boardList", boardList);
+			mav.addObject("msg", "listEmpty");
+		}
+		mav.addObject("listCnt",boardList.size());
+		mav.addObject("page",page);
 		return mav;
 	}
 	
@@ -97,21 +137,8 @@ public class BoardController {
 		
 		HttpSession session = request.getSession();
 		
-		/*주석 풀어야 됨
-		if(null == session.getAttribute("user")) {
-			mav.setViewName("redirect:/login");
-		}
-		*/
 		
 		List<BoardVo> boardList = new ArrayList<BoardVo>();
-		/*
-		boardList = service.searchList(map);
-		for(int i=0;i<boardList.size();i++) {
-			System.out.println(boardList.get(i).toString());
-		}
-		
-		System.out.println("boardList size: "+boardList.size());
-		*/
 		int listSize = service.getBoardListCnt(map);
 		Pagination page = new Pagination(listSize, curPage);
 		map.put("page", page);
@@ -168,8 +195,10 @@ public class BoardController {
 	}
 	
 	@RequestMapping(value = "/update", method = RequestMethod.POST)
-	public ModelAndView update(@RequestParam("title")String title, @RequestParam("content")String content, @RequestParam("seq")int seq, Model model) throws Exception{
+	public ModelAndView update(@RequestParam("title")String title, @RequestParam("content")String content, @RequestParam("seq")int seq,  HttpServletRequest request, Model model) throws Exception{
 		ModelAndView mav = new ModelAndView();
+		HttpSession session = request.getSession();
+		
 		List<BoardVo> boardList = new ArrayList<BoardVo>();
 		BoardVo boardVo = new BoardVo();
 		boardVo.setSeq(seq);
@@ -178,12 +207,13 @@ public class BoardController {
 		int num = service.update(boardVo);
 		if(num>0) {
 			boardVo.setResultMsg("성공적으로 수정되었습니다.");
+			session.setAttribute("msg", "ModifySuccess");
 		} else {
 			boardVo.setResultMsg("수정이 실패하였습니다.");
 		}
 		boardList = service.listAll();
 		mav.addObject("boardList",boardList);
-		mav.setViewName("/board/listAll");
+		mav.setViewName("redirect:/board/listAll");
 		return mav;
 	}
 }

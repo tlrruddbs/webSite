@@ -7,14 +7,14 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<script type="text/javascript" src="/resources/js"></script>
-	<link rel="stylesheet" href="/resources/css/bootstrap.css">
-	<link rel="stylesheet" href="/resources/css/custom.css">
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
-	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
-	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
-<title>Insert title here</title>
+<script type="text/javascript" src="/resources/js"></script>
+<link rel="stylesheet" href="/resources/css/bootstrap.css">
+<link rel="stylesheet" href="/resources/css/custom.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+<title>자유게시판</title>
 	
 <script>
 	function mainPage(){
@@ -38,6 +38,8 @@
 		alert("해당하는 검색 조건이 없습니다.");
 		location.href="/board/listAll";
 
+	} else if(msg=="ModifySuccess"){
+		alert("수정이 완료되었습니다.")
 	}
 	
 	function fn_paging(curPage) {
@@ -55,15 +57,15 @@
 				color:black;
 				
 			}
-		</style>
+	</style>
 
-		<nav class="navbar navbar-expand-lg navbar-dark"> 
-		<%--	<nav class="navbar navbar-expand-lg bg-dark navbar-dark"> --%>
-		    <img src="/resources/images/logo.png" style="cursor:pointer" onclick="mainPage()" width="100" height="50"  />
-		    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-		    <span class="navbar-toggler-icon"></span>
+	<nav class="navbar navbar-expand-lg navbar-dark"> 
+	<%--	<nav class="navbar navbar-expand-lg bg-dark navbar-dark"> --%>
+	    <img src="/resources/images/logo.png" style="cursor:pointer" onclick="mainPage()" width="100" height="50"  />
+	    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+	    <span class="navbar-toggler-icon"></span>
 		</button>
-	
+		
 		<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
 		    <div class="navbar-nav">	
 		    <%--  	<a class="nav-item nav-link active text-light" href="#" >Home <span class="sr-only">(current)</span></a> --%>
@@ -83,10 +85,8 @@
 	      		 --%>
 	    	</div>
 	 	</div>
-		</nav>
+	</nav>
 
-	
-	
 	<div class="jumbotron" >
 		<div class="container">
 		
@@ -109,7 +109,7 @@
 			</div>
 			
 			
-			<table class = "table table-board text-light" border="1px" width="80%" align="center">
+			<table class = "table table-board text-light" border="2px" width="80%" align="center">
 				<tr>
 					<th style = "width:10%">글 번호</th>
 					<th style = "width:30%">제목</th>
@@ -123,7 +123,7 @@
 				<tr>
 				<%--	<td>${status.count }</td> --%>
 					<td>${page.listCnt-(page.startIndex + status.count)+1 }</td>
-					<td>${boardVo.title }</td>
+				 	<td><a href="/board/detail?seq=${boardVo.seq }&id=${boardVo.writer}">${boardVo.title }</a></td>
 					<td>${boardVo.writer }</td>
 					<td><fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${boardVo.date }"/></td>
 					<td><span>${boardVo.count }</span></td>

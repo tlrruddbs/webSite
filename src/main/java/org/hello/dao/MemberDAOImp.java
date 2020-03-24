@@ -5,6 +5,7 @@ import java.util.Map;
 
 import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
+import org.hello.controller.utils.Pagination;
 import org.hello.vo.BoardVo;
 import org.hello.vo.MemberVo;
 import org.springframework.stereotype.Repository;
@@ -49,6 +50,12 @@ public class MemberDAOImp implements MemberDAO {
 		sqlSession.update(namespace+".saveMemberInfo", memberVo);
 		return sqlSession.update(namespace+".saveMemberInfo", memberVo);
 	}
-	
+
+	@Override
+	public List<MemberVo> getMemberList(Pagination pagination) throws Exception {
+		System.out.println("pagination option:"+pagination.getStartIndex()+", "+pagination.getPageSize());
+		sqlSession.selectList(namespace+".getMemberList", pagination);
+		return sqlSession.selectList(namespace+".getMemberList",pagination);
+	}
 	
 }

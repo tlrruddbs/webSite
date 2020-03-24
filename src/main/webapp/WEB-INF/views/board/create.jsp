@@ -85,6 +85,9 @@
 				            <input type="hidden" name="writer" class="createForm" placeholder = "작성자" value=${member.userId }>
 				        </div>
 				        
+				        <div>
+				        	<a href="#this" id="add" class="btn btn-outline-light">파일 추가하기</a>
+				        </div>
 				        <div class="Formfooter">
 				                <button type="submit" class="btn btn-outline-light">작성하기</button>
 				        </div>            

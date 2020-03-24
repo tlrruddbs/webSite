@@ -51,7 +51,11 @@ public class LoginController {
 			String msg = (String)session.getAttribute("loginMsg");
 			
 			MemberVo userVo = (MemberVo)session.getAttribute("user");
-			
+			String sessionChk = "NoSession";
+			if(sessionChk == session.getAttribute("msg")) {
+				System.out.println("loginController Nosession");
+				session.removeAttribute("msg");
+			}
 			if(userVo == null) {
 				System.out.println("userVo null");
 				mav.setViewName("/login");
