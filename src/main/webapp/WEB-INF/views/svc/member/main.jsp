@@ -18,6 +18,94 @@
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
 	
 	<script>
+	//localhost
+<!--	var wsUri = "ws://localhost:8181/websocket/echo.do"; -->
+	//ubuntu server
+	var wsUri = "ws://14.52.116.63:8282/websocket/echo.do";
+    
+    var userId = "${memberVo.userId}";
+
+    function init() {
+
+        output = document.getElementById("output");
+
+    }
+
+    function send_message() {
+
+        websocket = new WebSocket(wsUri);
+
+        websocket.onopen = function(evt) {
+
+            onOpen(evt)
+
+        };
+
+        websocket.onmessage = function(evt) {
+
+            onMessage(evt)
+
+        };
+
+        websocket.onerror = function(evt) {
+
+            onError(evt)
+
+        };
+
+    }
+
+   
+
+   
+
+    function onOpen(evt) {
+
+        writeToScreen("Connected to Endpoint!");
+
+        doSend(textID.value);
+
+    }
+
+    function onMessage(evt) {
+
+     <!--   writeToScreen("Message Received: " + evt.data);-->
+
+    }
+
+    function onError(evt) {
+
+        writeToScreen('ERROR: ' + evt.data);
+
+    }
+
+    function doSend(message) {
+    	
+        writeToScreen(userId +": " + message);
+
+        websocket.send(message);
+
+        //websocket.close();
+
+    }
+
+    function writeToScreen(message) {
+
+        var pre = document.createElement("p");
+
+        pre.style.wordWrap = "break-word";
+
+        pre.innerHTML = message;
+
+        
+
+        output.appendChild(pre);
+
+    }
+
+    window.addEventListener("load", init, false);
+
+	
 	
 		var msg = "${msg}";
 	<%--	var transferMsg = "${transferMsg}"; --%>
@@ -96,8 +184,25 @@
 		</div>
 
 
+		
+		<div style="text-align: center;">
 
-	
+            <form action="">
+
+                <input onclick="send_message()" value="Send" type="button">
+
+                <input id="textID" name="message" value="Hello WebSocket!" type="text"><br>
+
+            </form>
+
+        </div>
+
+        <div id="output"></div>
+        
+    <!-- Server responses get written here -->
+    <div id="messages"></div>
+
+
 	
 </body> 
 </html>
