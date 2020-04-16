@@ -45,14 +45,5 @@
 		</interceptor>
 	</interceptors>
 	
-	<websocket:handlers>
-
-        <websocket:mapping path="/websocket/echo.do" handler="myHandler"/>
-
-    </websocket:handlers>
-
- 
-
-    <beans:bean id="myHandler" class="org.hello.controller.socket.SocketHandler"/>
 	
 </beans:beans>
