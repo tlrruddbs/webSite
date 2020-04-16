@@ -45,8 +45,13 @@
 		    <div class="navbar-nav">	
 		    <%--  	<a class="nav-item nav-link active text-light" href="#" >Home <span class="sr-only">(current)</span></a> --%>
 		      	<a class="nav-item nav-link text-light" href="/board/listAll" >자유게시판</a>
+		      	<a class="nav-item nav-link text-light" href="/svc/fileDownload">사이트 이용하기 전에</a>
+		   		<a class="nav-item nav-link text-light" href="/svc/mail/mailForm">YKSCorp 지원하기</a>
+		      	<%--
 		      	<a class="nav-item nav-link text-light" href="/login" >로그인</a>
 		      	<a class="nav-item nav-link text-light" href="/member/memberRegister">회원가입</a>
+		      	 --%>
+		      	<a class="nav-item nav-link text-light" href="/svc/logout" >로그아웃</a>
 		      <%--
 			     <div class="dropdown">
 			        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"  text-align="right">

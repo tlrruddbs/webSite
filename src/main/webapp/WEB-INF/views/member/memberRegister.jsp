@@ -63,7 +63,7 @@
 		<div class="jumbotron" >
 			<div class="container" role="main">
 				<div class="panel-heading">
-                     <div class="panel-title">환영합니다!</div>
+                     <div class="panel-title"></div>
                  </div>
                  <div class="panel-body">
                      <form action="/member/register" id="login-form" method="post" onsubmit="return check()">
@@ -157,6 +157,8 @@
      var nickCheck = 0;
      var pwdCheck = 0;
      
+     
+     
      function check(){
     	 var userId = $("#userId").val();
     	 var userPw = $("#userPw").val();
@@ -235,89 +237,111 @@
      function checkId() {
          var form_data={};
          form_data["userId"] = $("#userId").val();
-         $.ajax({
-        	 data: JSON.stringify(form_data),
-        	 contentType:"application/json",
-             dataType:"json",
-             type : "POST",
-             url : "/member/idChk",
-             success : function(data) {
-            	 if(data.idChk>0){
-            		 alert("중복된 아이디입니다.")
-            	 } else {
-            		 alert("사용 가능한 아이디입니다.")
-            		 idCheck = 1;
-            	 }
-             },
-	         error: function(request, status, error) {
-	             //에러코드
-	             //alret(jqXHR + textStatus + errorThrown);
-	             var msg = "ERROR<br><br>"
-			      msg += request.status + "<br>" + request.responseText + "<br>" + error;
-			      console.log(msg);   
-	         }
-         });
-     }
-     <!--
-   //재입력 비밀번호 체크하여 가입버튼 비활성화 또는 맞지않음을 알림.
-     function checkPwd() {
-         var inputed = $('.pass').val();
-         var reinputed = $('#repwd').val();
-         console.log(inputed);
-         console.log(reinputed);
-         if(reinputed=="" && (inputed != reinputed || inputed == reinputed)){
-             $(".signupbtn").prop("disabled", true);
-             $(".signupbtn").css("background-color", "#aaaaaa");
-             $("#repwd").css("background-color", "#FFCECE");
-         }
-         else if (inputed == reinputed) {
-             $("#repwd").css("background-color", "#B0F6AC");
-             pwdCheck = 1;
-             if(idCheck==1 && pwdCheck == 1) {
-                 $(".signupbtn").prop("disabled", false);
-                 $(".signupbtn").css("background-color", "#4CAF50");
-             }
-         } else if (inputed != reinputed) {
-             pwdCheck = 0;
-             $(".signupbtn").prop("disabled", true);
-             $(".signupbtn").css("background-color", "#aaaaaa");
-             $("#repwd").css("background-color", "#FFCECE");
-             
-         }
-     }
-     //닉네임과 이메일 입력하지 않았을 경우 가입버튼 비활성화
-     function checkNick() {
-         var name = $("#name").val();
-         console.log(name);
-         $.ajax({
-             data : {
-                 name : name
-             },
-             url : "checkname.do",
-             success : function(data) {
-                 if(name=="" && data=='0') {
-                     $(".signupbtn").prop("disabled", true);
-                     $(".signupbtn").css("background-color", "#aaaaaa");
-                     $("#name").css("background-color", "#FFCECE");
-                     nickCheck = 0;
-                 } else if (data == '0') {
-                     $("#name").css("background-color", "#B0F6AC");
-                     nickCheck = 1;
-                     if(idCheck==1 && pwdCheck == 1) {
-                         $(".signupbtn").prop("disabled", false);
-                         $(".signupbtn").css("background-color", "#4CAF50");
-                     } 
-                 } else if (data == '1') {
-                     $(".signupbtn").prop("disabled", true);
-                     $(".signupbtn").css("background-color", "#aaaaaa");
-                     $("#name").css("background-color", "#FFCECE");
-                     nickCheck = 0;
-                 } 
-             }
-        });
-     }
-      -->
-    </script>
+			var deny_char = /^[a-z|A-Z|0-9|\*]+$/;
+
+				if (!deny_char.test($("#userId").val())) {
+					alert("영문자와 숫자만을 입력하세요");
+					objtext1.value = "";
+					objtext1.focus();
+					return false;
+				}
+
+				$.ajax({
+					data : JSON.stringify(form_data),
+					contentType : "application/json",
+					dataType : "json",
+					type : "POST",
+					url : "/member/idChk",
+					success : function(data) {
+						if (data.idChk > 0) {
+							alert("중복된 아이디입니다.")
+						} else {
+							alert("사용 가능한 아이디입니다.")
+							idCheck = 1;
+						}
+					},
+					error : function(request, status, error) {
+						//에러코드
+						//alret(jqXHR + textStatus + errorThrown);
+						var msg = "ERROR<br><br>"
+						msg += request.status + "<br>"
+								+ request.responseText + "<br>"
+								+ error;
+						console.log(msg);
+					}
+				});
+			}
+			<!--
+			//재입력 비밀번호 체크하여 가입버튼 비활성화 또는 맞지않음을 알림.
+			function checkPwd() {
+				var inputed = $('.pass').val();
+				var reinputed = $('#repwd').val();
+				console.log(inputed);
+				console.log(reinputed);
+				if (reinputed == ""
+						&& (inputed != reinputed || inputed == reinputed)) {
+					$(".signupbtn").prop("disabled", true);
+					$(".signupbtn").css("background-color",
+							"#aaaaaa");
+					$("#repwd").css("background-color", "#FFCECE");
+				} else if (inputed == reinputed) {
+					$("#repwd").css("background-color", "#B0F6AC");
+					pwdCheck = 1;
+					if (idCheck == 1 && pwdCheck == 1) {
+						$(".signupbtn").prop("disabled", false);
+						$(".signupbtn").css("background-color",
+								"#4CAF50");
+					}
+				} else if (inputed != reinputed) {
+					pwdCheck = 0;
+					$(".signupbtn").prop("disabled", true);
+					$(".signupbtn").css("background-color",
+							"#aaaaaa");
+					$("#repwd").css("background-color", "#FFCECE");
+
+				}
+			}
+			//닉네임과 이메일 입력하지 않았을 경우 가입버튼 비활성화
+			function checkNick() {
+				var name = $("#name").val();
+				console.log(name);
+				$.ajax({
+					data : {
+						name : name
+					},
+					url : "checkname.do",
+					success : function(data) {
+						if (name == "" && data == '0') {
+							$(".signupbtn").prop("disabled", true);
+							$(".signupbtn").css("background-color",
+									"#aaaaaa");
+							$("#name").css("background-color",
+									"#FFCECE");
+							nickCheck = 0;
+						} else if (data == '0') {
+							$("#name").css("background-color",
+									"#B0F6AC");
+							nickCheck = 1;
+							if (idCheck == 1 && pwdCheck == 1) {
+								$(".signupbtn").prop("disabled",
+										false);
+								$(".signupbtn").css(
+										"background-color",
+										"#4CAF50");
+							}
+						} else if (data == '1') {
+							$(".signupbtn").prop("disabled", true);
+							$(".signupbtn").css("background-color",
+									"#aaaaaa");
+							$("#name").css("background-color",
+									"#FFCECE");
+							nickCheck = 0;
+						}
+					}
+				});
+			}
+			-->
+		</script>
  </body>
 
 </html>

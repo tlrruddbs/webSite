@@ -19,6 +19,37 @@
 	
 	<script>
 
+	
+	var msg = "${msg}";
+<%--	var transferMsg = "${transferMsg}"; --%>
+	
+	
+	var transferMsg = getParameterByName('transferMsg');
+	
+	
+	if(transferMsg == "success"){
+		alert("메일을 성공적으로 보냈습니다.");
+		document.location.href="/svc/member/main"
+	} else if(transferMsg=="fail"){
+		alert("메일 전송이 실패하였습니다.");
+		document.location.href="/svc/member/main"
+	}
+	if(msg== "NoSession"){
+		alert("로그인 후 이용해주세요.");
+		location.href = "/login";
+	} 
+	
+	
+	function reload(){
+		location.reload();
+	}
+	function getParameterByName(name) {
+	    name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+	    var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+	        results = regex.exec(location.search);
+	    return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+	}
+	
 	</script>
 </head>
 
@@ -44,10 +75,10 @@
 		    <div class="navbar-nav">	
 		     <%-- 	<a class="nav-item nav-link active text-light" href="#" >Home <span class="sr-only">(current)</span></a> --%>
 		      	<a class="nav-item nav-link text-light" href="/board/listAll" >자유게시판</a>
-		      	<a class="nav-item nav-link text-light" href="/svc/logout" >로그아웃</a>
-		      	<a class="nav-item nav-link text-light" href="#">회원가입</a>
+		      	<%--<a class="nav-item nav-link text-light" href="#">회원가입</a> --%>
 		   		<a class="nav-item nav-link text-light" href="/svc/fileDownload">사이트 이용하기 전에</a>
 		   		<a class="nav-item nav-link text-light" href="/svc/mail/mailForm">YKSCorp 지원하기</a>
+	    		<a class="nav-item nav-link text-light" href="/svc/logout" >로그아웃</a>
 	    	</div>
 	 	</div>
 		</nav>
