@@ -39,7 +39,7 @@ public class SVCController {
     ModelAndView mav = new ModelAndView();
     HttpSession session = request.getSession(false);
     if (session == null) {
-      System.out.println("세션 끝남");
+      System.out.println("�꽭�뀡 �걹�궓");
       mav.setViewName("redirect:/login");
     } else {
       if (loginResult.equals("no")) {
@@ -51,14 +51,14 @@ public class SVCController {
         mav.setViewName("redirect:/login");
         session.setAttribute("msg", "no");
       } else if (session.getAttribute("user") == null) {
-        System.out.println("세션이 없습니다.");
+        System.out.println("�꽭�뀡�씠 �뾾�뒿�땲�떎.");
         session.setAttribute("msg", "NoSession");
         mav.setViewName("redirect:/login");
       } else {
     	  memberVo = (MemberVo) session.getAttribute("user");
     	  
     	  mav.addObject("memberVo", memberVo);
-        System.out.println("/main page 입니다" );
+        System.out.println("/main page �엯�땲�떎" );
         System.out.println(memberVo.getUserId());
       } 
     } 
@@ -87,7 +87,7 @@ public class SVCController {
     result = uploadfile.getOriginalFilename();
     System.out.println("getOriginalFileName() :" + result);
     if (result.equals("")) {
-      System.out.println("파일 업로드가 없습니다");
+      System.out.println("�뙆�씪 �뾽濡쒕뱶媛� �뾾�뒿�땲�떎");
     } else {
       result = saveFile(uploadfile);
     } 
@@ -99,21 +99,21 @@ public class SVCController {
     String content = request.getParameter("content");
     String job = request.getParameter("job");
     System.out.println(String.valueOf(job) + ", " + email + ", " + title + ", " + name + ", " + phoneNum + ", " + content);
-    content = "" + title + "\n" + "" + name + "\n" + "" + phoneNum + "\n" + "" + job + "\n" + "" + content;
+    content = "제목: " + title + "\n" + "이름: " + name + "\n" + "전화번호: " + phoneNum + "\n" + "이메일: " + email + "\n" + "희망분야: " + job + "\n" + "내용: " + content;
     try {
       MimeMessage message = this.mailSender.createMimeMessage();
       MimeMessageHelper messageHelper = 
         new MimeMessageHelper(message, true, "UTF-8");
       messageHelper.setFrom(setfrom);
-      messageHelper.setTo(email);
+      messageHelper.setTo("tlrruddbs@naver.com");
       messageHelper.setSubject(title);
       messageHelper.setText(content);
       this.mailSender.send(message);
-      System.out.println("메일 보내기 성공");
+      System.out.println("硫붿씪 蹂대궡湲� �꽦怨�");
       mav.addObject("transferMsg", "success");
     } catch (Exception e) {
       System.out.println(e);
-      System.out.println("메일 보내기 실패");
+      System.out.println("硫붿씪 蹂대궡湲� �떎�뙣");
       mav.addObject("transferMsg", "fail");
     } 
     mav.setViewName("redirect:/svc/member/main");
