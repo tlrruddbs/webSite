@@ -61,10 +61,17 @@ public class BoardServiceImp implements BoardService{
 		dao.myBoardList(id);
 		return dao.myBoardList(id);
 	}
+	
+	@Override
+	public int myBoardCountList(String id) throws Exception {
+		return dao.myBoardCountList(id);
+	}	
 
 	@Override
 	public List<BoardVo> searchList(Map map) throws Exception {
 		dao.searchList(map);
 		return dao.searchList(map);
-	}	
+	}
+
+	
 }

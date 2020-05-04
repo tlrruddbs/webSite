@@ -71,10 +71,17 @@ public class BoardDAOImp implements BoardDAO{
 		sqlSession.selectList(namespace+".myBoardList", id);
 		return sqlSession.selectList(namespace+".myBoardList", id);
 	}
+	
+	@Override
+	public int myBoardCountList(String id) throws Exception {
+		return sqlSession.selectOne(namespace+".myBoardCountList", id);
+	}
 
 	@Override
 	public List<BoardVo> searchList(Map map) throws Exception {
 		sqlSession.selectList(namespace+".searchList", map);
 		return sqlSession.selectList(namespace+".searchList", map);
 	}
+
+	
 }

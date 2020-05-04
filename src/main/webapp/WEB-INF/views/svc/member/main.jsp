@@ -86,6 +86,10 @@
 		
 		<div class="jumbotron" >
 			<div class="container" role="main">
+				<div align = "right">
+					<h1 class = "nav-item nav-link text-light">${memberVo.userId }님 환영합니다</h1>
+					<h1 class = "nav-item nav-link text-light">등급 : ${memberVo.userId }님 환영합니다</h1>
+				</div>
 				<div class="column_left">
 				</div>
 				

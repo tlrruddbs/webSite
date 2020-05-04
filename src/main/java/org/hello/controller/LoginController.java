@@ -36,7 +36,7 @@ public class LoginController {
 			if (userVo==null) {
 				mav.setViewName("/login");
 			} 
-			/* 삭제할것
+			/* �궘�젣�븷寃�
 			else if (userVo==null) {
 				mav.addObject("msg", "NoUser");
 				mav.setViewName("/login");
@@ -49,51 +49,51 @@ public class LoginController {
 			else {
 				System.out.println("commonCode :" + userVo.getMemberCode());
 				if (userVo.getMemberCode().equals("CMMMCD001")) {
-					System.out.println("관리자");
+					System.out.println("愿�由ъ옄");
 					String url = "";
 					if (userVo.getMemberStatus().equals("CMMMST001")) {
-						System.out.println("정상 회원입니다.");
+						System.out.println("�젙�긽 �쉶�썝�엯�땲�떎.");
 						mav.addObject("msg", "Normal");
 
 						// session.setAttribute("msg", "Normal");
 						url = "redirect:/svc/admin/adminMain";
 					} else if (userVo.getMemberStatus().equals("CMMMST002")) {
-						System.out.println("일시정지 회원입니다.");
+						System.out.println("�씪�떆�젙吏� �쉶�썝�엯�땲�떎.");
 						mav.addObject("msg", "Stop");
 						// session.setAttribute("msg", "Normal");
 						url = "/login";
 					} else if (userVo.getMemberStatus().equals("CMMMST003")) {
-						System.out.println("영구정지 회원입니다.");
+						System.out.println("�쁺援ъ젙吏� �쉶�썝�엯�땲�떎.");
 						mav.addObject("msg", "Ban");
 						// session.setAttribute("msg", "Ban");
 						url = "/login";
 					} else if (userVo.getMemberStatus().equals("CMMMST004")) {
-						System.out.println("탈퇴한 회원입니다.");
+						System.out.println("�깉�눜�븳 �쉶�썝�엯�땲�떎.");
 						mav.addObject("msg", "Leave");
 						// session.setAttribute("msg", "Leave");
 						url = "/login";
 					}
 					mav.setViewName(url);
 				} else {
-					System.out.println("회원");
+					System.out.println("�쉶�썝");
 					String url = "";
 					if (userVo.getMemberStatus().equals("CMMMST001")) {
-						System.out.println("정상 회원입니다.");
+						System.out.println("�젙�긽 �쉶�썝�엯�땲�떎.");
 						// session.setAttribute("msg", "Normal");
 						mav.addObject("msg", "Normal");
 						url = "redirect:/svc/member/main";
 					} else if (userVo.getMemberStatus().equals("CMMMST002")) {
-						System.out.println("일시정지 회원입니다.");
+						System.out.println("�씪�떆�젙吏� �쉶�썝�엯�땲�떎.");
 						mav.addObject("msg", "Stop");
 						// session.setAttribute("msg", "Stop");
 						url = "/login";
 					} else if (userVo.getMemberStatus().equals("CMMMST003")) {
-						System.out.println("영구정지 회원입니다.");
+						System.out.println("�쁺援ъ젙吏� �쉶�썝�엯�땲�떎.");
 						mav.addObject("msg", "Ban");
 						// session.setAttribute("msg", "Ban");
 						url = "/login";
 					} else if (userVo.getMemberStatus().equals("CMMMST004")) {
-						System.out.println("탈퇴한 회원입니다.");
+						System.out.println("�깉�눜�븳 �쉶�썝�엯�땲�떎.");
 						mav.addObject("msg", "Leave");
 						// session.setAttribute("msg", "Leave");
 						url = "/login";
@@ -119,7 +119,7 @@ public class LoginController {
 		}
 		mav.addObject("userVo", memberVo);
 		session.setAttribute("user", userVo);
-		session.setMaxInactiveInterval(120);
+		session.setMaxInactiveInterval(1200);
 		mav.setViewName("redirect:/login");
 		return mav;
 	}

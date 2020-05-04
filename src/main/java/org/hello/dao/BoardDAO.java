@@ -24,6 +24,8 @@ public interface BoardDAO {
 	
 	public List<BoardVo> myBoardList(String id) throws Exception;
 	
+	public int myBoardCountList(String id) throws Exception;
+	
 	public void plusCnt(int seq);
 	
 	public List<BoardVo> searchList(Map map) throws Exception;

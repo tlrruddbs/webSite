@@ -26,6 +26,8 @@ public void create(BoardVo boardVo) throws Exception;
 	
 	public List<BoardVo> myBoardList(String id) throws Exception;
 	
+	public int myBoardCountList(String id) throws Exception;
+	
 	public List<BoardVo> searchList(Map map) throws Exception;
 	
 }

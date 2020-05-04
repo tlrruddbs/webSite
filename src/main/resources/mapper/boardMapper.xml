@@ -43,6 +43,12 @@
 		
 	</select>
 	
+	<!-- 회원 게시물 갯수 -->
+	<select id = "myBoardCountList" parameterType = "String" resultType = "org.hello.vo.BoardVo">
+		SELECT count(*) FROM board WHERE writer = #{id} 
+		
+	</select>
+	
 	<!-- 조회수  + 1 -->
 	<update id="plusCnt" parameterType="int">
 	  UPDATE board SET count = count + 1 WHERE seq = #{seq}
