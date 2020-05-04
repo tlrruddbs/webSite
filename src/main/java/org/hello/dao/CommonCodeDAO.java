@@ -7,4 +7,4 @@ public interface CommonCodeDAO {
   
 	CommonCodeVo commonCodeValue(String paramString);
 }
-     
+      

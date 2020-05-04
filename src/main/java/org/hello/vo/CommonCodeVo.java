@@ -6,7 +6,7 @@ public class CommonCodeVo {
 	public String codeValue;
 	  
 	public String codeDesc;
-	  
+	   
 	public String getCode() {
 	    return this.code;
 	}

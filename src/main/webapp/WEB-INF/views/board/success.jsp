@@ -9,4 +9,4 @@
 <body>
 	<p>회원가입이 ${result} 하였습니다.</p>
 </body>
-</html>
+</html> 

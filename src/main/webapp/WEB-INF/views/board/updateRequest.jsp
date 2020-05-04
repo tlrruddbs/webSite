@@ -16,7 +16,7 @@
 <script>
 	function mainPage(){
 		location.href="/svc/member/main";
-	}
+	} 
 </script>
 <title>글 수정</title>
 </head>

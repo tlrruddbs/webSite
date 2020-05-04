@@ -9,7 +9,7 @@
         insert into member(userId, userPw, userEmail, userName, regDate) values
                           (#{userId},#{userPw},#{userEmail},#{userName}, SYSDATE())
     </insert>
-    
+     
     <select id="idChk" parameterType = "org.hello.vo.MemberVo" resultType = "int">
     	select count(*) from member where userId = #{userId}
     </select>

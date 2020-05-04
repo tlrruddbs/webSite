@@ -4,7 +4,7 @@
 
  				
 <mapper namespace="org.hello.mapper.BoardMapper">
-	
+	 
 	<!-- 게시판 추가 -->
 	<insert id = "insertBoard" parameterType = "org.hello.vo.BoardVo">
 		insert into board(title, writer, content, date) values

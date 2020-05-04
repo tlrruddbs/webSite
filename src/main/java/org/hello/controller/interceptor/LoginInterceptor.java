@@ -8,11 +8,11 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 public class LoginInterceptor extends HandlerInterceptorAdapter{
-
+ 
 	@Override
 	public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler,
 			ModelAndView modelAndView) throws Exception {
-		//session 객체를 가져옴
+		//session 媛앹껜瑜� 媛��졇�샂
 		HttpSession session = request.getSession();
 		
 		/*

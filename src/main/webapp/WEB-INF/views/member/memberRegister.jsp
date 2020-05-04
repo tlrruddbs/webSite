@@ -18,7 +18,7 @@
 <script>
 	function loginPage(){
 		location.href="/login";
-	}
+	} 
 
 </script>
 <body>

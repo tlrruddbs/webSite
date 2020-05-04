@@ -28,7 +28,7 @@ public class MemberServiceImp implements MemberService{
 		
 		return result;
 	}
-
+ 
 	@Override
 	public List<MemberVo> memberList() {
 		return dao.memberList();

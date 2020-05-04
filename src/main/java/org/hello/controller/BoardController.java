@@ -28,12 +28,12 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 public class BoardController {
 	@Inject
 	private BoardService service;
-	
+	 
 	@RequestMapping(value="/create", method=RequestMethod.GET)
 	public ModelAndView createGET(BoardVo boardVo, Model model, HttpServletRequest request)throws Exception{
 		ModelAndView mav = new ModelAndView();
 		
-		System.out.println("/board/crate 입니다. get방식");
+		System.out.println("/board/crate 입니다");
 		HttpSession session = request.getSession();
 		
 		if(null == session.getAttribute("user")) {
@@ -112,7 +112,7 @@ public class BoardController {
 	//	boardList = service.getBoardList(page);
 		mav.addObject("boardList", boardList);
 		if(service.searchList(map).isEmpty()) {
-			System.out.println("아무 내용이 없습니다.");
+			System.out.println("검색된 자료가 없습니다.");
 			service.listAll();
 			boardList = service.getBoardList(page);
 			mav.addObject("boardList", boardList);
@@ -149,7 +149,7 @@ public class BoardController {
 	//	boardList = service.getBoardList(page);
 		mav.addObject("boardList", boardList);
 		if(service.searchList(map).isEmpty()) {
-			System.out.println("아무 내용이 없습니다.");
+			System.out.println("검색된 자료가 없습니다.");
 			service.listAll();
 			boardList = service.getBoardList(page);
 			mav.addObject("boardList", boardList);
@@ -206,7 +206,7 @@ public class BoardController {
 		boardVo.setContent(content);
 		int num = service.update(boardVo);
 		if(num>0) {
-			boardVo.setResultMsg("성공적으로 수정되었습니다.");
+			boardVo.setResultMsg("수정이 완료되었습니다.");
 			session.setAttribute("msg", "ModifySuccess");
 		} else {
 			boardVo.setResultMsg("수정이 실패하였습니다.");

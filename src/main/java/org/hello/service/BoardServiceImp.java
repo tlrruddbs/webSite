@@ -50,7 +50,7 @@ public class BoardServiceImp implements BoardService{
     public int update(BoardVo boardVo) throws Exception {
         return dao.update(boardVo);
     }
-
+ 
 	@Override
 	public void plusCnt(int seq) {
 		dao.plusCnt(seq);

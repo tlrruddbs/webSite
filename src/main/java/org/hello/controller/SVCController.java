@@ -142,7 +142,7 @@ public class SVCController {
 		result = uploadfile.getOriginalFilename();
 		System.out.println("getOriginalFileName() :" + result);
 		if (result.equals("")) {
-			System.out.println("�뙆�씪 �뾽濡쒕뱶媛� �뾾�뒿�땲�떎");
+			System.out.println("첨부파일이 없습니다.");
 		} else {
 			result = saveFile(uploadfile);
 		}
@@ -165,11 +165,11 @@ public class SVCController {
 			messageHelper.setSubject(title);
 			messageHelper.setText(content);
 			this.mailSender.send(message);
-			System.out.println("硫붿씪 蹂대궡湲� �꽦怨�");
+		
 			mav.addObject("transferMsg", "success");
 		} catch (Exception e) {
 			System.out.println(e);
-			System.out.println("硫붿씪 蹂대궡湲� �떎�뙣");
+			
 			mav.addObject("transferMsg", "fail");
 		}
 		mav.setViewName("redirect:/svc/member/main");

@@ -89,7 +89,7 @@
 
 	<div class="jumbotron" >
 		<div class="container">
-		
+		 
 			<div align="right">
 			<button class="btn btn-light btn-sm" type = "button" onclick="location.href='/board/myBoardList' " height="80%" >내가 쓴 글</button>
 			<button class="btn btn-light btn-sm" type = "button" onclick="location.href='/svc/logout' ">로그아웃</button>

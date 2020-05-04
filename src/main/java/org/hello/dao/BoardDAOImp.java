@@ -22,7 +22,7 @@ public class BoardDAOImp implements BoardDAO{
 	public void create(BoardVo boardVo) throws Exception {
 		sqlSession.insert(namespace+".insertBoard", boardVo);
 	}
-
+ 
 	@Override
 	public List<BoardVo> listAll() throws Exception {
 		sqlSession.selectList(namespace+".listBoard");

@@ -84,7 +84,7 @@
 		</nav>
 		
 		
-		<div class="jumbotron" >
+		<div class="jumbotron" > 
 			<div class="container" role="main">
 				<div align = "right">
 					<h1 class = "nav-item nav-link text-light">${memberVo.userId }님 환영합니다</h1>

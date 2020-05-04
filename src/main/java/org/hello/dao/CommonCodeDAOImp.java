@@ -23,3 +23,4 @@ public class CommonCodeDAOImp implements CommonCodeDAO {
 		return (CommonCodeVo)this.sqlSession.selectOne(String.valueOf(namespace) + ".commonCodeValue", code);
 	}
 }  
+ 

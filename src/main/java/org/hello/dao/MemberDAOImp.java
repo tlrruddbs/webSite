@@ -57,5 +57,5 @@ public class MemberDAOImp implements MemberDAO {
 		sqlSession.selectList(namespace+".getMemberList", pagination);
 		return sqlSession.selectList(namespace+".getMemberList",pagination);
 	}
-	
+	 
 }

@@ -15,7 +15,7 @@ public class LoginServiceImp implements LoginService{
 	@Override
 	public MemberVo loginRequest(MemberVo memberVo)throws Exception{
 		return dao.loginRequest(memberVo);
-	}
+	} 
 /*
 	@Override
 	public String getCommonCode(String codeValue) {

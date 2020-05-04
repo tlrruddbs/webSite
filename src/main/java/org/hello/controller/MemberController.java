@@ -48,9 +48,9 @@ public class MemberController {
 		
 		System.out.println("result:"+result);
 		if(result>0) {
-			System.out.println("ì¤‘ë³µëœ ì•„ì´ë””ê°€ ìˆìŠµë‹ˆë‹¤.");
+			System.out.println("Áßº¹µÈ ¾ÆÀÌµğÀÔ´Ï´Ù.");
 		} else {
-			System.out.println("ì‚¬ìš© ê°€ëŠ¥í•œ ì•„ì´ë””ì…ë‹ˆë‹¤.");
+			System.out.println("»ç¿ë°¡´ÉÇÑ ¾ÆÀÌµğÀÔ´Ï´Ù.");
 		}
 		
 		return memberVo;

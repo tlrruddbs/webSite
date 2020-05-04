@@ -18,4 +18,4 @@ public class LoginDAOImp implements LoginDAO{
 		return sqlSession.selectOne(namespace+".loginRequest",memberVo);
 		
 	}
-}
+} 

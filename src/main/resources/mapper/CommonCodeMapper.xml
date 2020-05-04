@@ -12,5 +12,5 @@
 		SELECT CODE_VALUE FROM common_code WHERE CODE_VALUE = #{code}	
 	</select>
 	
-	
+	 
 </mapper>

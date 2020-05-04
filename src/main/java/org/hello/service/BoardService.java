@@ -9,7 +9,7 @@ import org.hello.vo.BoardVo;
 public interface BoardService {
 	
 public void create(BoardVo boardVo) throws Exception;
-	
+	 
 	public List<BoardVo> listAll() throws Exception;
 	
 	public List<BoardVo> getBoardList(Pagination pagination) throws Exception;

@@ -19,7 +19,7 @@ public class CommonCodeServiceImp implements CommonCodeService {
 		code = commonCodeVo.getCode();
 		return code;
 	} 
-  
+   
 	public String commonCodeValue(String code) {
 		String codeValue = "";
 		CommonCodeVo commonCodeVo = this.dao.commonCode(code);

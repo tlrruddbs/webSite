@@ -15,7 +15,7 @@ public interface BoardDAO {
 	public List<BoardVo> getBoardList(Pagination pagination) throws Exception;
 	
 	public int getBoardListCnt(Map map) throws Exception;
-	
+	 
 	public BoardVo read(int seq) throws Exception;
 	
 	public void delete(Integer seq) throws Exception;

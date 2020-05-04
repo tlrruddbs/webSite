@@ -15,7 +15,7 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
 <title>글 상세보기</title>
 </head>
-<style>
+<style> 
 	h2 { text-align: center;}
   table { width: 100%;}
   textarea { width: 100%;}

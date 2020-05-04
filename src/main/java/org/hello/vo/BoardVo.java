@@ -9,7 +9,7 @@ public class BoardVo {
 	private String writer;
 	private Date date;
 	private int count;
-	
+	 
 	private String resultMsg;
 	
 	public BoardVo() {

@@ -19,3 +19,4 @@ public interface MemberService {
 	
 	public List<MemberVo> getMemberList(Pagination pagination) throws Exception;
 }
+ 
