@@ -2,7 +2,7 @@ package org.hello.vo;
 
 import java.util.Date;
 
-public class MemberVo {
+public class MemberVo extends WeatherVo {
 	private int seq;
 	private String userId;
 	private String userPw;
