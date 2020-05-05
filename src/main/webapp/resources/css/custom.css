@@ -1,0 +1,47 @@
+/*전체 영역을 통틀어서 스타일 정의*/
+@import url(https://fonts.googleapis.com/earlyaccess/nanumgothic.css);
+*{
+	font-family:'Nanum Gothic';
+}
+a {
+	color:#bbbbbb;
+	text-decoration:none;
+}
+a:hover {
+	color:#ffffff;
+	text-decoration: none;
+	cursor:pointer;
+}
+
+/*네비게이션 영역*/
+.navbar-expand-lg{ /*배경 색상*/
+	border-color:#000000;
+	background-color:#000000;
+}
+
+.navbar-nav{
+	color:#ffffff;
+}
+.navbar-expand-lg .navbar-brand:hover,
+.navbar-expand-lg .navbar-brand:focus{  /*네비게이션에 마우스를 올렸을 때*/
+
+	color: #ffffff;
+}
+.navbar-toggler{
+	border-color: rgb(255,102,203);
+}
+.jumbotron{
+    height: 100vh;
+}
+.column_left{
+	float:left;
+}
+.column_right{
+	float:right;
+}
+.column_center{
+	float:center;
+}
+.bg-dark {
+    background-color: #000000;
+}
