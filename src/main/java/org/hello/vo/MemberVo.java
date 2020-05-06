@@ -11,7 +11,17 @@ public class MemberVo extends WeatherVo {
 	private Date regDate;
 	private String memberCode;
 	private String memberStatus;
+	private int myBoardCountList;
+	private String memberCodeString;
 	
+	public String getMemberCodeString() {
+		return memberCodeString;
+	}
+
+	public void setMemberCodeString(String memberCodeString) {
+		this.memberCodeString = memberCodeString;
+	}
+
 	private int idChk;
 	
 	private String loginMsg;
@@ -92,6 +102,14 @@ public class MemberVo extends WeatherVo {
 
 	public void setMemberStatus(String memberStatus) {
 		this.memberStatus = memberStatus;
+	}
+
+	public int getMyBoardCountList() {
+		return myBoardCountList;
+	}
+
+	public void setMyBoardCountList(int myBoardCountList) {
+		this.myBoardCountList = myBoardCountList;
 	}
 
 	@Override

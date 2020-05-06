@@ -8,7 +8,9 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
+import java.text.DecimalFormat;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 
 import javax.inject.Inject;
@@ -18,8 +20,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import org.hello.controller.SVCController;
+import org.hello.service.BoardService;
 import org.hello.service.CommonCodeService;
+import org.hello.vo.CommonCodeVo;
 import org.hello.vo.MemberVo;
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,6 +45,9 @@ public class SVCController {
 	@Inject
 	CommonCodeService commonCodeService;
 
+	@Inject
+	BoardService boardService;
+	
 	@Autowired
 	private JavaMailSender mailSender;
 
@@ -71,6 +79,7 @@ public class SVCController {
 				mav.addObject("memberVo", memberVo);
 				System.out.println("/main page 입니다.");
 				
+				
 				//날씨 api 사용
 				BufferedReader br = null;
 				try {
@@ -91,21 +100,48 @@ public class SVCController {
 					// Json parser를 만들어 만들어진 문자열 데이터를 객체화 합니다.
 					JSONParser parser = new JSONParser();
 					JSONObject obj = (JSONObject) parser.parse(result);
-					JSONObject objDetail = (JSONObject) obj.get("main");
-					double temp = (double) objDetail.get("temp");
+					JSONObject objTemp = (JSONObject) obj.get("main");
+					
+					
+					JSONArray objWeatherParsing = new JSONArray();//(JSONObject) obj.get("weather");
+					objWeatherParsing.add(obj.get("weather"));
+					
+					String str = objWeatherParsing.get(0).toString();
+					str = str.replace("[", "");
+					str = str.replace("]", "");
+					System.out.println("json parsing: "+str);
+					JSONObject objWeather = (JSONObject)parser.parse(str);
+					System.out.println("weather is: "+objWeather.get("main"));
+					
+				//	objWeather
+				//	JSONObject weather = (JSONObject) objWeather.get(0);
+				//	System.out.println("weather: "+weather.toString());
+					
+					
+					double temp = (double) objTemp.get("temp");
+					
+					//서울 날씨 첫째자리 반올림
 					temp = temp - 273.0;
+				    temp = Double.parseDouble(String.format(Locale.KOREAN, "%.1f",temp));
+					
+					System.out.println("현재온도: "+temp);
+					
 					Map map = new HashMap<>();
 					map.put("name", obj.get("name"));
-					map.put("weather", objDetail.get("main"));
-					
-					//여기 vo구조 바꿔야함
-					
-					System.out.println(map.get("name") + " weather: " + map.get("weather") + "temp: " + temp);
+					map.put("weather", objWeather.get("main"));
+				
 					System.out.println("name to String: "+(String)obj.get("name"));
 					System.out.println("temp:" + temp);
-					// System.out.println("playerId: "+obj.get("playerId"));
-					// System.out.println("records: "+obj.get("records"));
 					
+					int boardCnt = boardService.myBoardCountList(memberVo.getUserId());
+					System.out.println("memberVo to string : "+memberVo.toString());
+					System.out.println("memberVo.getMemberCode: "+memberVo.getMemberCode());
+					
+					String commonCodeValue ="";
+					commonCodeValue = commonCodeService.commonCodeValue(memberVo.getMemberCode());
+					System.out.println("commonCodeValue is : "+commonCodeValue);
+					memberVo.setMemberCodeString(commonCodeValue);
+					memberVo.setMyBoardCountList(boardCnt);
 					memberVo.setTemp(temp);
 					memberVo.setWeather(map.get("weather"));
 					memberVo.setName(map.get("name"));

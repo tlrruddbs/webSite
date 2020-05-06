@@ -86,10 +86,21 @@
 		
 		<div class="jumbotron" > 
 			<div class="container" role="main">
-				<div align = "right">
-					<h1 class = "nav-item nav-link text-light">${memberVo.userId }님 환영합니다</h1>
-					<h1 class = "nav-item nav-link text-light">등급 : ${memberVo.userId }님 환영합니다</h1>
+				<div align = "center"; border:1px solid white;>
+					<h1 class = "nav-item nav-link text-light">서울날씨 : ${memberVo.weather}</h1>
+					<h1 class = "nav-item nav-link text-light">서울온도 : ${memberVo.temp}</h1>
 				</div>
+				
+				<div style='width:25%; height:330px;float:right; border:1px solid white;'>
+					<h4 class = "nav-item nav-link text-light" align="center">등급: ${memberVo.memberCodeString }</h1>
+					<h4 class = "nav-item nav-link text-light" align="center">${memberVo.userName }님</h1>
+					<h4 class = "nav-item nav-link text-light" align="center">${memberVo.userEmail }</h1>
+					<h4 class = "nav-item nav-link text-light" align="center">내 게시물 <a href="/board/myBoardList"> ${memberVo.myBoardCountList }</a>개</h4>
+					
+					
+				</div>
+
+				
 				<div class="column_left">
 				</div>
 				

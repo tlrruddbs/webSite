@@ -13,19 +13,21 @@ public class CommonCodeServiceImp implements CommonCodeService {
   
 	public String commonCode(String codeValue) {
 		String code = "";
-		CommonCodeVo commonCodeVo = this.dao.commonCode(codeValue);
-		if (commonCodeVo == null)
+		String commonCode = this.dao.commonCode(codeValue);
+		if (commonCode == null)
 			return code; 
-		code = commonCodeVo.getCode();
+		code = commonCode;
 		return code;
 	} 
    
 	public String commonCodeValue(String code) {
+		System.out.println("commonCodeSerivce: "+code);
 		String codeValue = "";
-		CommonCodeVo commonCodeVo = this.dao.commonCode(code);
-		if (commonCodeVo == null)
+		String commonCodeValue = this.dao.commonCodeValue(code);
+		if (commonCodeValue == null)
 			return codeValue; 
-		codeValue = commonCodeVo.getCode();
+		codeValue = commonCodeValue;
+		System.out.println("codeValue: "+codeValue);
 		return codeValue;
 	}
 }

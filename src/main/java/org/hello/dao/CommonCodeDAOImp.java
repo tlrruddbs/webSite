@@ -13,14 +13,15 @@ public class CommonCodeDAOImp implements CommonCodeDAO {
   
 	private static String namespace = "org.hello.mapper.CommonCodeMapper";
   
-	public CommonCodeVo commonCode(String codeValue) {
+	public String commonCode(String codeValue) {
 	    this.sqlSession.selectOne(String.valueOf(namespace) + ".commonCode", codeValue);
-	    return (CommonCodeVo)this.sqlSession.selectOne(String.valueOf(namespace) + ".commonCode", codeValue);
+	    return this.sqlSession.selectOne(String.valueOf(namespace) + ".commonCode", codeValue);
 	}
   
-	public CommonCodeVo commonCodeValue(String code) {
+	public String commonCodeValue(String code) {
+		System.out.println("commonCodeDAO code: "+code);
 		this.sqlSession.selectOne(String.valueOf(namespace) + ".commonCodeValue", code);
-		return (CommonCodeVo)this.sqlSession.selectOne(String.valueOf(namespace) + ".commonCodeValue", code);
+		return this.sqlSession.selectOne(String.valueOf(namespace) + ".commonCodeValue", code);
 	}
 }  
  

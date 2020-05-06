@@ -89,6 +89,7 @@
 		
 		<div class="jumbotron" >
 			<div class="container" role="main">
+				<div style='width:25%; height:330px;float:right; '>
 			<h2><p class="text-light"> LOGIN</p></h2>
 					<form action="/login/loginRequest" id="login-form" method="post" >
 					 	<div>
@@ -110,7 +111,7 @@
 				<div class="column_right">
 					
 	  			</div>
-	  			
+	  			</div>
 	  		</div>
 		</div>
 
