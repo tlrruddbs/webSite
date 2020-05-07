@@ -1,5 +1,6 @@
 package org.hello.dao;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -52,10 +53,12 @@ public class MemberDAOImp implements MemberDAO {
 	}
 
 	@Override
-	public List<MemberVo> getMemberList(Pagination pagination) throws Exception {
+	public List<Map> getMemberList(Pagination pagination) throws Exception {
 		System.out.println("pagination option:"+pagination.getStartIndex()+", "+pagination.getPageSize());
-		sqlSession.selectList(namespace+".getMemberList", pagination);
-		return sqlSession.selectList(namespace+".getMemberList",pagination);
+		
+		List<Map> map = sqlSession.selectList(namespace+".getMemberList", pagination);
+		
+		return map;
 	}
 	 
 }

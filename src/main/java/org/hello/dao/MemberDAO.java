@@ -19,5 +19,5 @@ public interface MemberDAO {
     
     public int saveMemberInfo(MemberVo vo);
     
-    public List<MemberVo> getMemberList(Pagination pagination) throws Exception;
+    public List<Map> getMemberList(Pagination pagination) throws Exception;
 } 

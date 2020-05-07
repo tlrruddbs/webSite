@@ -1,6 +1,7 @@
 package org.hello.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.hello.controller.utils.Pagination;
 import org.hello.vo.MemberVo;
@@ -17,6 +18,6 @@ public interface MemberService {
 	
 	public int saveMemberInfo(MemberVo memberVo);
 	
-	public List<MemberVo> getMemberList(Pagination pagination) throws Exception;
+	public List<Map> getMemberList(Pagination pagination) throws Exception;
 }
  

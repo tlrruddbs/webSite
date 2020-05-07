@@ -12,16 +12,23 @@
 		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd">
 	
 	<!-- Root Context: defines shared resources visible to all other web components -->
+	
+	<!-- MariaDB -->
+    <bean id="dataSource" class="org.springframework.jdbc.datasource.SimpleDriverDataSource">
+        <property name="driverClass" value="org.mariadb.jdbc.Driver"/>
+        <property name="url" value="jdbc:mariadb://localhost:3306/nctdb"></property>
+        <property name="username" value="root"/>
+        <property name="password" value="dbsrudtlr1"/>
+    </bean>
+	
 	<!-- jdbc모듈을 이용하여 dataSource추가하기. -->
+	<!-- 
     <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <property name="driverClassName" value="com.mysql.jdbc.Driver"></property>
         <property name="url" value="jdbc:mysql://127.0.0.1:3306/devproject?useSSL=false"></property>
         <property name="username" value="root"></property>  
-    	<!-- ubuntu -->   
-      	<property name="password" value="dbsrudTlr1!"></property>  
-   		<!-- <property name="password" value="dbsrudtlr1"></property> -->  
     </bean>
-	
+	 -->
 	<!--  mybatis와 스프링 연동작을 하기위한 SqlsessionFactory == DB연결 및 SQL의 실행을 대한객체 -->
     
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">

@@ -48,60 +48,21 @@ public class LoginController {
 			 */
 			
 			else {
-				System.out.println("commonCode :" + userVo.getMemberCode());
-				if (userVo.getMemberCode().equals("CMMMCD001")) {
-					System.out.println("관리자입니다.");
-					String url = "";
-					if (userVo.getMemberStatus().equals("CMMMST001")) {
-						System.out.println("정상입니다.");
-						mav.addObject("msg", "Normal");
-
-						// session.setAttribute("msg", "Normal");
-						url = "redirect:/svc/admin/adminMain";
-					} else if (userVo.getMemberStatus().equals("CMMMST002")) {
-						System.out.println("일시정지입니다.");
-						mav.addObject("msg", "Stop");
-						// session.setAttribute("msg", "Normal");
-						url = "/login";
-					} else if (userVo.getMemberStatus().equals("CMMMST003")) {
-						System.out.println("영구정지입니다.");
-						mav.addObject("msg", "Ban");
-						// session.setAttribute("msg", "Ban");
-						url = "/login";
-					} else if (userVo.getMemberStatus().equals("CMMMST004")) {
-						System.out.println("탈퇴한 회원입니다.");
-						mav.addObject("msg", "Leave");
-						// session.setAttribute("msg", "Leave");
-						url = "/login";
-					}
-					mav.setViewName(url);
+				String url = "";
+				System.out.println("userPower :" + userVo.getPower());
+				if (userVo.getPower()==2) {
+					System.out.println("시스템 관리자입니다.");
+					
+					url = "redirect:/svc/admin/adminMain";
 				} else {
-					System.out.println("회원입니다.");
-					String url = "";
-					if (userVo.getMemberStatus().equals("CMMMST001")) {
-						System.out.println("정상입니다.");
-						// session.setAttribute("msg", "Normal");
-						mav.addObject("msg", "Normal");
-						url = "redirect:/svc/member/main";
-					} else if (userVo.getMemberStatus().equals("CMMMST002")) {
-						System.out.println("일시정지입니다.");
-						mav.addObject("msg", "Stop");
-						// session.setAttribute("msg", "Stop");
-						url = "/login";
-					} else if (userVo.getMemberStatus().equals("CMMMST003")) {
-						System.out.println("영구정지입니다.");
-						mav.addObject("msg", "Ban");
-						// session.setAttribute("msg", "Ban");
-						url = "/login";
-					} else if (userVo.getMemberStatus().equals("CMMMST004")) {
-						System.out.println("탈퇴한 회원입니다.");
-						mav.addObject("msg", "Leave");
-						// session.setAttribute("msg", "Leave");
-						url = "/login";
-					}
-					mav.setViewName(url);
-				}
-			}
+					System.out.println("일시정지입니다.");
+					mav.addObject("msg", "Stop");
+					// session.setAttribute("msg", "Normal");
+					url = "/login";
+				} 
+				mav.setViewName(url);
+			} 
+			
 		}
 		return mav;
 	}
@@ -110,10 +71,14 @@ public class LoginController {
 	public ModelAndView loginRequest(MemberVo memberVo, Model model, HttpServletRequest request) throws Exception {
 		ModelAndView mav = new ModelAndView();
 		HttpSession session = request.getSession();
-		System.out.println(String.valueOf(memberVo.getUserId()) + ", " + memberVo.getUserPw());
-		MemberVo userVo = this.loginService.loginRequest(memberVo);
-		
-		if (userVo == null || !userVo.getUserPw().equals(memberVo.getUserPw())) {
+		String userId = memberVo.getUserId();
+		String userPw = memberVo.getUserPw();
+		MemberVo userVo = null;
+		userVo = this.loginService.loginRequest(memberVo);
+		System.out.println("userVo: "+userVo.toString());
+		System.out.println("userVo detail: "+userVo.getUserPhoneNum());
+		System.out.println("userVo id"+userVo.getUserId()+", userVoPW: "+userVo.getUserPw()+", memberVo Pw:"+userPw);
+		if (userVo.getUserId().equals("") || !userVo.getUserPw().equals(userPw)) {
 			userVo = null;
 			//mav.addObject("msg","Failure");
 			session.setAttribute("msg", "Failure");

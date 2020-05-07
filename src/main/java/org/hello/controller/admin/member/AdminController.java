@@ -29,19 +29,6 @@ public class AdminController {
 	CommonCodeService commonCodeService;
 
 	@RequestMapping(value = { "/adminMain" }, method = { RequestMethod.GET, RequestMethod.GET })
-	public ModelAndView adminMain(MemberVo memberVo, Model model, HttpServletRequest request) throws Exception {
-		ModelAndView mav = new ModelAndView();
-		HttpSession session = request.getSession(false);
-		if (session == null) {
-			System.out.println("세션이 만료되었습니다.");
-			mav.setViewName("redirect:/login");
-		} else {
-			System.out.println("/adminMain page입니다.");
-		}
-		return mav;
-	}
-
-	@RequestMapping(value = { "/memberList" }, method = { RequestMethod.GET, RequestMethod.GET })
 	public ModelAndView memberList(MemberVo memberVo, Model model, HttpServletRequest request,
 			@RequestParam(defaultValue = "1") int curPage) throws Exception {
 		ModelAndView mav = new ModelAndView();
@@ -54,13 +41,13 @@ public class AdminController {
 			System.out.println("세션이 만료되었습니다.");
 			mav.setViewName("redirect:/login");
 		}
-		List<MemberVo> memberList = this.memberService.getMemberList(page);
+		List<Map> memberList = this.memberService.getMemberList(page);
+		
 		mav.addObject("memberList", memberList);
 		mav.addObject("listCnt", Integer.valueOf(listCnt));
 		mav.addObject("page", page);
 		return mav;
-	} 
-
+	}
 	@RequestMapping({ "/memberList/singleMemberView" })
 	public ModelAndView singleMemberView(HttpServletRequest request, @RequestParam(defaultValue = "") String userId)
 			throws Exception {
@@ -78,7 +65,20 @@ public class AdminController {
 		}
 		return mav;
 	}
-
+	
+	@RequestMapping({ "/memberList/register" })
+	public ModelAndView register(HttpServletRequest request) throws Exception {
+		System.out.println("/memberList/register");
+		ModelAndView mav = new ModelAndView();
+		HttpSession session = request.getSession(false);
+		if (session == null) {
+			System.out.println("세션이 만료되었습니다.");
+			mav.setViewName("redirect:/login");
+		}
+		mav.setViewName("/svc/admin/register");
+		return mav;
+	}
+/*
 	@RequestMapping({ "/memberList/singleMemberView/modifyInfo" })
 	@ResponseBody
 	public MemberVo modify(HttpServletRequest request, @RequestBody MemberVo memberInfo) throws Exception {
@@ -97,4 +97,5 @@ public class AdminController {
 		int result = this.memberService.saveMemberInfo(memberVo);
 		return memberVo;
 	}
+	*/
 }

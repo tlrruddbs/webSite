@@ -1,6 +1,7 @@
 package org.hello.service;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -45,7 +46,7 @@ public class MemberServiceImp implements MemberService{
 	}
 
 	@Override
-	public List<MemberVo> getMemberList(Pagination pagination) throws Exception {
+	public List<Map> getMemberList(Pagination pagination) throws Exception {
 		return dao.getMemberList(pagination);
 	}
 }

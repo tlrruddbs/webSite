@@ -41,21 +41,7 @@
 	
 		<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
 		    <div class="navbar-nav">	
-		  <%--    	<a class="nav-item nav-link active text-light" href="#" >Home <span class="sr-only">(current)</span></a> --%>
-		      	<a class="nav-item nav-link text-light" href="/board/listAll" >자유게시판</a>
-		      	<a class="nav-item nav-link text-light" href="/login" >로그인</a>
-		      	<a class="nav-item nav-link text-light" href="/member/memberRegister">회원가입</a>
-		      <%--
-			     <div class="dropdown">
-			        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"  text-align="right">
-			          	로그인
-			        </a>
-			        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-				        <a class="dropdown-item" href="#">로그인</a>
-				        <a class="dropdown-item" href="#">회원가입</a>
-		    	    </div>
-	      		</div>
-	      		 --%>
+		 
 	    	</div>
 	 	</div>
 		</nav>
@@ -68,11 +54,11 @@
                  <div class="panel-body">
                      <form action="/member/register" id="login-form" method="post" onsubmit="return check()">
                     	 <div>
-                             <input type="text" name="userId" placeholder="id" id="userId" autofocus>
+                             <input type="text" name="userId" placeholder="userId" id="userId" autofocus>
                              <input type="button" name ="idChk" onclick="checkId();" value = "중복 체크" class="btn btn-outline-light">
                          </div>
                          <div>
-                             <input type="password" id = "userPw" name="userPw" placeholder="Password" oninput="checkPwd()">
+                             <input type="password" id = "userPw" name="userPw" placeholder="userPw" oninput="checkPwd()">
                          </div>
                          <div>
                              <input type="password" name="userPwConfirm" placeholder="Confirm Password" id="userRePw" oninput="checkPwd()">
@@ -108,48 +94,10 @@
 	  			
 	  		</div>
 		</div>
-	<%--
-     <div class="container">
-         <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
-             <div class="panel panel-success">
-                 <div class="panel-heading">
-                     <div class="panel-title">환영합니다!</div>
-                 </div>
-                 <div class="panel-body">
-                     <form action="/member/register" id="login-form" method="post" onsubmit="return check()">
-                    	 <div>
-                             <input type="text" name="userId" placeholder="id" id="userId" autofocus>
-                             <input type="button" name ="idChk" onclick="checkId();" value = "중복 체크">
-                         </div>
-                         <div>
-                             <input type="password" id = "userPw" name="userPw" placeholder="Password" oninput="checkPwd()">
-                         </div>
-                         <div>
-                             <input type="password" name="userPwConfirm" placeholder="Confirm Password" id="userRePw" oninput="checkPwd()">
-                         </div>
-                         <div>
-                             <input type="email" name="userEmail" id="userEmail" placeholder="Email" autofocus>
-                         </div>
-                         <div>
-                             <input type="text" name="userName" id="userName" placeholder="Your name" oninput="checkNick()" autofocus>
-                         </div>
-                         <div>
-                             <button type="submit">회원가입</button>
-                             
-                             <!-- signupbtn" disabled="disabled" -->
-                         </div>
-                         
-                     </form>
-                 </div>
-             </div>
-             <%--
-             <input type = "button" name="btn" id="btn" onclick="btnClick();" value="ajax test">
-             <input type = "button" name="btn2" id="btn2" onclick="btnClick2();" value="ajax test2">  --%>
+	
          </div>
      </div>
-      --%>
-     <%--
-     <button id = "btn1">simpleAJAX</button> --%>
+     
      <div id="result"></div>
      
      <script>
@@ -239,13 +187,12 @@
          form_data["userId"] = $("#userId").val();
 			var deny_char = /^[a-z|A-Z|0-9|\*]+$/;
 
-				if (!deny_char.test($("#userId").val())) {
+				if (!deny_char.test($("#USERID").val())) {
 					alert("영문자와 숫자만을 입력하세요");
 					objtext1.value = "";
 					objtext1.focus();
 					return false;
 				}
-
 				$.ajax({
 					data : JSON.stringify(form_data),
 					contentType : "application/json",
