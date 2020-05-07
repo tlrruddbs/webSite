@@ -90,21 +90,8 @@
 		<div class="jumbotron" >
 			<div class="container" role="main">
 				<div style='width:25%; height:330px;float:right; '>
-			<h2><p class="text-light"> LOGIN</p></h2>
-					<form action="/login/loginRequest" id="login-form" method="post" >
-					 	<div>
-					        <input type="text" name="userId" placeholder="id" id="userId" autofocus>
-					    </div>
-					    <div class="form-group">
-					        <input type="password" id = "userPw" name="userPw" placeholder="Password" oninput="checkPwd()">
-					    </div>
-					    <div>
-					        <button type="submit" class="btn btn-outline-light">로그인</button>
-					        <!-- signupbtn" disabled="disabled" -->
-					        <button type="button" class="btn btn-outline-light" onclick="location.href='/member/memberRegister' ">회원가입</button>
-					    </div>
-				         
-				    </form>
+			<h2><p class="text-light"> 브랜치확인</p></h2>
+					
 				<div class="column_left">
 				</div>
 				
