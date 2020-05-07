@@ -90,7 +90,7 @@
 		<div class="jumbotron" >
 			<div class="container" role="main">
 				<div style='width:25%; height:330px;float:right; '>
-			<h2><p class="text-light"> LOGIN</p></h2>
+			<h2><p class="text-light"> 브랜치확인</p></h2>
 					
 				<div class="column_left">
 				</div>
