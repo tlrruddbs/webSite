@@ -15,9 +15,7 @@
       insert into nc_b_user_t(USERID, USERNM, PASSWD, TEL, EMAIL, POWER) values
                         (#{userId},#{userName},#{userPw},#{userPhoneNum}, #{userEmail}, #{power})
     </insert>
-    <select id="idChk" parameterType = "org.hello.vo.MemberVo" resultType = "int">
-    	select count(*) from nc_b_user_t where USERID = #{userId}
-    </select>
+    
 
 	<select id="memberList" resultType = "org.hello.vo.MemberVo">
     	select * from nc_b_user_t
@@ -34,5 +32,45 @@
     <select id="getMemberList" parameterType = "hashmap" resultType = "Map">
         select * from nc_b_user_t limit #{startIndex},#{pageSize}
 	</select>
+	
+	<select id="getMemberListAuthority" parameterType = "hashmap" resultType = "Map">
+        SELECT * FROM nctdb.nc_b_user_t where POWER = 1 or POWER = 0;
+	</select>
+	
+	<insert id ="insertUserPower" parameterType = "hashmap" >
+		insert into nc_b_user_power_t (USERID, STATECD, STATENM, POLEVEL) values 
+		(#{userId},#{seq},#{stationName},1);
+	</insert>
+	
+	<update id ="upAuthority" parameterType = "String">
+		update nc_b_user_t set POWER = 1 where USERID=#{userId}
+	</update>
+	
+	<select id="idChk" parameterType = "org.hello.vo.MemberVo" resultType = "int">
+    	select count(*) from nc_b_user_t where USERID = #{userId}
+    </select>
     
+    <select id="authorityIdChk" parameterType = "String" resultType = "int">
+    	select count(*) from nc_b_user_power_t where USERID = #{selectId}
+    </select>
+    
+    <select id="authorityDeleteChk" parameterType ="map" resultType ="int">
+    	select count(*) from nc_b_user_power_t where USERID = #{selectId} and STATECD =#{strSeq}
+    </select>
+    
+    <delete id="deleteAuthorityId" parameterType = "String">
+    	DELETE FROM nc_b_user_power_t where USERID=#{selectId}
+    </delete>
+    
+    <update id ="updateUserPassWord" parameterType = "String">
+		update nc_b_user_t set PASSWD = #{userPw} where USERID=#{userId}
+	</update>
+	
+	<select id ="getUserInfo" parameterType = "String" resultType="map" >
+		select * from nc_b_user_t where USERID=#{userId}
+	</select>
+	
+	<update id ="memberModify" parameterType = "org.hello.vo.MemberVo">
+		update nc_b_user_t set USERNM=#{userName}, EMAIL=#{userEmail}, TEL=#{userPhoneNum}, PASSWD=#{userPw}, POWER=#{power} where USERID=#{userId}
+	</update>
 </mapper>

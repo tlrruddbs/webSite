@@ -1,12 +1,15 @@
 package org.hello.controller;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import javax.swing.plaf.synth.SynthSeparatorUI;
 
 import org.hello.service.MemberService;
+import org.hello.vo.AddVo;
 import org.hello.vo.BoardVo;
 import org.hello.vo.MemberVo;
 import org.springframework.stereotype.Controller;
@@ -57,6 +60,7 @@ public class MemberController {
 		
 		return memberVo;
 	}
+	
 
 	
 }

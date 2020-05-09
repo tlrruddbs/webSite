@@ -60,5 +60,69 @@ public class MemberDAOImp implements MemberDAO {
 		
 		return map;
 	}
+	
+	@Override
+	public List<Map> getMemberListAuthority() throws Exception {
+		
+		List<Map> map = sqlSession.selectList(namespace+".getMemberListAuthority");
+		
+		return map;
+	}
+	
+	@Override
+	public void insertUserPower(Map map) {
+		sqlSession.insert(namespace+".insertUserPower", map);
+	}
+
+	@Override
+	public int upAuthority(String userId) throws Exception {
+		return sqlSession.update(namespace+".upAuthority",userId);
+	}
+
+	@Override
+	public int authorityIdChk(String selectId) {
+		return sqlSession.selectOne(namespace+".authorityIdChk", selectId);
+	}
+
+	@Override
+	public int authorityDeleteChk(Map map) {
+		return sqlSession.selectOne(namespace+".authorityDeleteChk", map);
+	}
+
+	@Override
+	public int deleteAuthorityId(String selectId) {
+		return sqlSession.delete(namespace+".deleteAuthorityId",selectId);
+		
+	}
+
+	@Override
+	public int updateUserPassWord(Map map) {
+		return sqlSession.update(namespace+".updateUserPassWord", map);
+	}
+
+	@Override
+	public MemberVo getUserInfo(String userId) {
+		MemberVo memberVo = new MemberVo();
+		Map<String,Object>map = new HashMap<>();
+		map = sqlSession.selectOne(namespace+".getUserInfo",userId);
+		System.out.println("dao구간");
+		if(map==null) {
+			System.out.println("맵이 비었습니다.");
+			return memberVo;
+		}
+		memberVo.setUserId((String)map.get("USERID"));
+		memberVo.setUserPhoneNum((String)map.get("TEL"));
+		memberVo.setUserPw((String)map.get("PASSWD"));
+		memberVo.setUserEmail((String)map.get("EMAIL"));
+		memberVo.setPower((int)map.get("POWER"));
+		memberVo.setUserName((String)map.get("USERNM"));
+		System.out.println("dao: "+(String)map.get("EMAIL"));
+		return memberVo;
+	}
+
+	@Override
+	public int memberModify(Map map) {
+		return sqlSession.update(namespace+".memberModify", map);
+	}
 	 
 }

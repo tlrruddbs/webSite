@@ -19,5 +19,23 @@ public interface MemberService {
 	public int saveMemberInfo(MemberVo memberVo);
 	
 	public List<Map> getMemberList(Pagination pagination) throws Exception;
+	
+	public List<Map> getMemberListAuthority() throws Exception;
+	
+	public void insertUserPower(Map map) throws Exception;
+	
+	public int upAuthority(String userId) throws Exception;
+	
+	public int authorityIdChk(String selectId) throws Exception;
+	
+	public int authorityDeleteChk(Map map) throws Exception;
+	
+	public int deleteAuthorityId(String selectId) throws Exception;
+	
+	public int updateUserPassWord(Map map) throws Exception;
+	
+	public MemberVo getUserInfo(String userId) throws Exception;
+	
+	public int memberModify(Map map)throws Exception;
 }
  

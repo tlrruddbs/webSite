@@ -36,17 +36,6 @@ public class LoginController {
 			if (userVo==null) {
 				mav.setViewName("/login");
 			} 
-			/* �궘�젣�븷寃�
-			else if (userVo==null) {
-				mav.addObject("msg", "NoUser");
-				mav.setViewName("/login");
-			}
-			*/
-			/*
-			 * if (userVo == null) { System.out.println("userVo null");
-			 * mav.addObject("msg","NoUser"); mav.setViewName("/login"); }
-			 */
-			
 			else {
 				String url = "";
 				System.out.println("userPower :" + userVo.getPower());

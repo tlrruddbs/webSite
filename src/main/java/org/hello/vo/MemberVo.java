@@ -9,6 +9,9 @@ public class MemberVo {
 	String userEmail;
 	int power;
 	int idChk;
+	int modifyChk;
+	int memberModifyChk;
+	
 	public String getUserId() {
 		return userId;
 	}
@@ -50,6 +53,18 @@ public class MemberVo {
 	}
 	public void setIdChk(int idChk) {
 		this.idChk = idChk;
+	}
+	public int getModifyChk() {
+		return modifyChk;
+	}
+	public void setModifyChk(int modifyChk) {
+		this.modifyChk = modifyChk;
+	}
+	public int getMemberModifyChk() {
+		return memberModifyChk;
+	}
+	public void setMemberModifyChk(int memberModifyChk) {
+		this.memberModifyChk = memberModifyChk;
 	}
 	
 }

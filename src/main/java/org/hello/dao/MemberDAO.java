@@ -20,4 +20,22 @@ public interface MemberDAO {
     public int saveMemberInfo(MemberVo vo);
     
     public List<Map> getMemberList(Pagination pagination) throws Exception;
+    
+    public List<Map> getMemberListAuthority() throws Exception;
+    
+    public void insertUserPower(Map map) throws Exception;
+    
+    public int upAuthority(String userId) throws Exception;
+    
+    public int authorityIdChk(String selectId);
+    
+    public int authorityDeleteChk(Map map);
+    
+    public int deleteAuthorityId(String selectId);
+    
+    public int updateUserPassWord(Map map);
+    
+    public MemberVo getUserInfo(String userId);
+    
+    public int memberModify(Map map);
 } 

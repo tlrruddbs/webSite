@@ -17,13 +17,6 @@
 	
 <script> 
 
-	var msg = "${msg}";
-	alert(msg);
-	if(msg== "REGISTERED"){
-		alert("회원가입이 완료되었습니다.");
-		window.close();
-	}
-	
 	
 
 
@@ -40,7 +33,35 @@
 		var popupY= (window.screen.height /2) - (height / 2);
 		// 1/2 
 		
-		window.open('/svc/admin/memberList/register?', 'Guardian-CCS User Info', 'resizable=yes, menubar=no, status=no, toolbar=no, location=no, width='+width+', height='+height+', left='+ popupX + ', top='+ popupY + ', screenX='+ popupX + ', screenY= '+ popupY);
+		window.open('/svc/admin/memberList/register', 'Guardian-CCS User Info', 'resizable=yes, menubar=no, status=no, toolbar=no, location=no, width='+width+', height='+height+', left='+ popupX + ', top='+ popupY + ', screenX='+ popupX + ', screenY= '+ popupY);
+	}
+	
+
+	function authority(){
+		var width = 1076;
+		var height = 940;
+		
+		var popupX = (window.screen.width / 2) - (width / 2);
+		// 1/2 
+
+		var popupY= (window.screen.height /2) - (height / 2);
+		// 1/2 
+		
+		window.open('/svc/admin/memberList/authority', 'Guardian-CCS User Info', 'resizable=yes, menubar=no, status=no, toolbar=no, location=no, width='+width+', height='+height+', left='+ popupX + ', top='+ popupY + ', screenX='+ popupX + ', screenY= '+ popupY);
+	}
+	
+			
+	function passwordModify(){
+		var width = 1076;
+		var height = 940;
+		
+		var popupX = (window.screen.width / 2) - (width / 2);
+		// 1/2 
+
+		var popupY= (window.screen.height /2) - (height / 2);
+		// 1/2 
+		
+		window.open('/svc/admin/memberList/passwordModify', 'Guardian-CCS User Info', 'resizable=yes, menubar=no, status=no, toolbar=no, location=no, width='+width+', height='+height+', left='+ popupX + ', top='+ popupY + ', screenX='+ popupX + ', screenY= '+ popupY);
 	}
 	
 	function details(userId){
@@ -56,6 +77,19 @@
 		window.open('/svc/admin/memberList/singleMemberView?userId='+userId, 'Guardian-CCS User Info', 'resizable=yes, menubar=no, status=no, toolbar=no, location=no, width='+width+', height='+height+', left='+ popupX + ', top='+ popupY + ', screenX='+ popupX + ', screenY= '+ popupY);
 	}
 	
+	function infoModify(userId){
+		var width = 1076;
+		var height = 940;
+		
+		var popupX = (window.screen.width / 2) - (width / 2);
+		// 1/2 
+
+		var popupY= (window.screen.height /2) - (height / 2);
+		// 1/2 
+		
+		window.open('/svc/admin/memberList/infoModify?userId='+userId, 'Guardian-CCS User Info', 'resizable=yes, menubar=no, status=no, toolbar=no, location=no, width='+width+', height='+height+', left='+ popupX + ', top='+ popupY + ', screenX='+ popupX + ', screenY= '+ popupY);
+	}
+	
 	function fn_paging(curPage) {
 		location.href = "/svc/admin/adminMain?curPage=" + curPage;
 	}
@@ -64,6 +98,22 @@
 	
 </head>
 <body>
+	<% 
+            String msg=request.getParameter("msg");
+            
+            if(msg!=null && msg.equals("REGISTERED")) 
+            {
+            	String resultMsg = "";
+            	resultMsg += "<script type='text/javascript'>";
+            	resultMsg += "alert('회원가입 성공.');";	
+            	resultMsg += "window.close();";	
+            	resultMsg += "</script>";
+            	out.print(resultMsg);
+                
+            }
+        %>    
+
+
 	<style type = "text/css">
 			.jumbotron{
 				background-image:url('/resources/images/mainOpaque.png');
@@ -118,7 +168,7 @@
 				<c:forEach items = "${memberList}" var = "memberVo" varStatus="status">
 					<tr>
 						
-						<td><a href onclick="details('${memberVo.USERID }')">${memberVo.USERID }</a></td>
+						<td><a href onclick="infoModify('${memberVo.USERID }')">${memberVo.USERID }</a></td>
 						<td>${memberVo.USERNM }</td>
 						<td>${memberVo.TEL }</td>
 						<td>${memberVo.EMAIL }</td>
@@ -140,8 +190,8 @@
 			</table>
 			
 			<input type="button" name ="idChk" onclick="register()" value = "사용자 등록" class="btn btn-outline-light">
-			<input type="button" name ="idChk" onclick="checkId();" value = "관할 관리소 권한등록" class="btn btn-outline-light">
-			<input type="button" name ="idChk" onclick="checkId();" value = "정보수정" class="btn btn-outline-light">
+			<input type="button" name ="idChk" onclick="authority();" value = "관할 관리소 권한등록" class="btn btn-outline-light">
+			<input type="button" name ="idChk" onclick="passwordModify();" value = "정보수정" class="btn btn-outline-light">
 			<div align="center">
 		        <c:if test="${page.curRange ne 1 }">
 		            <a href="#" onClick="fn_paging(1)">이전</a> 
