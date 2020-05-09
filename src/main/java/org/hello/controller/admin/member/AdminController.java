@@ -10,6 +10,7 @@ import org.hello.controller.utils.Pagination;
 import org.hello.service.CommonCodeService;
 import org.hello.service.MemberService;
 import org.hello.vo.MemberVo;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -22,10 +23,10 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 @RequestMapping({ "/svc/admin" })
 public class AdminController {
-	@Inject
+	@Autowired
 	MemberService memberService;
-
-	@Inject
+ 
+	@Autowired
 	CommonCodeService commonCodeService;
 
 	@RequestMapping(value = { "/adminMain" }, method = { RequestMethod.GET, RequestMethod.GET })
