@@ -117,7 +117,7 @@ public class LoginController {
 			userVo = null;
 			//mav.addObject("msg","Failure");
 			session.setAttribute("msg", "Failure");
-		}
+		} 
 		mav.addObject("userVo", memberVo);
 		session.setAttribute("user", userVo);
 		session.setMaxInactiveInterval(1200);

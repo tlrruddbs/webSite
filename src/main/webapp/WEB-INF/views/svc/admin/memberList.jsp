@@ -127,7 +127,7 @@
 		                    <a href="#" onClick="fn_paging('${pageNum }')">${pageNum }</a> 
 		                </c:otherwise>
 		            </c:choose>
-		        </c:forEach>
+		        </c:forEach> 
 		        <c:if test="${page.curPage ne page.pageCnt && page.pageCnt > 0}">
 		            <a href="#" onClick="fn_paging('${page.nextPage }')">다음</a> 
 		        </c:if>

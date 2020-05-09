@@ -84,7 +84,7 @@
 				            
 				            <input type="hidden" name="writer" class="createForm" placeholder = "" value=${member.userId }>
 				        </div>
-				        <!-- 
+				        <!--  
 				        <div>
 				        	<a href="#this" id="add" class="btn btn-outline-light">
 				        </div>

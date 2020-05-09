@@ -42,10 +42,10 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 @RequestMapping({ "/svc" })
 public class SVCController {
-	@Inject
+	@Autowired
 	CommonCodeService commonCodeService;
 
-	@Inject
+	@Autowired
 	BoardService boardService;
 	
 	@Autowired
@@ -58,7 +58,7 @@ public class SVCController {
 		ModelAndView mav = new ModelAndView();
 		HttpSession session = request.getSession(false);
 		if (session == null) {
-			System.out.println("세션이 없습니다.");
+			System.out.println("�꽭�뀡�씠 �뾾�뒿�땲�떎.");
 			mav.setViewName("redirect:/login");
 		} else {
 			if (loginResult.equals("no")) {
@@ -70,17 +70,17 @@ public class SVCController {
 				mav.setViewName("redirect:/login");
 				session.setAttribute("msg", "no");
 			} else if (session.getAttribute("user") == null) {
-				System.out.println("회원정보가 없습니다.");
+				System.out.println("�쉶�썝�젙蹂닿� �뾾�뒿�땲�떎.");
 				session.setAttribute("msg", "NoSession");
 				mav.setViewName("redirect:/login");
 			} else {
 				memberVo = (MemberVo) session.getAttribute("user");
 
 				mav.addObject("memberVo", memberVo);
-				System.out.println("/main page 입니다.");
+				System.out.println("/main page �엯�땲�떎.");
 				
 				
-				//날씨 api 사용
+				//�궇�뵪 api �궗�슜
 				BufferedReader br = null;
 				try {
 					String urlstr = "http://api.openweathermap.org/data/2.5/weather?lat=37.56826&lon=126.977829&appid=b4b4a2990dbdcb7d81fc1020af363d50";
@@ -95,9 +95,9 @@ public class SVCController {
 					while ((line = br.readLine()) != null) {
 						result = result + line + "\n";
 					}
-					System.out.println("결과: " + result);
+					System.out.println("寃곌낵: " + result);
 
-					// Json parser를 만들어 만들어진 문자열 데이터를 객체화 합니다.
+					// Json parser瑜� 留뚮뱾�뼱 留뚮뱾�뼱吏� 臾몄옄�뿴 �뜲�씠�꽣瑜� 媛앹껜�솕 �빀�땲�떎.
 					JSONParser parser = new JSONParser();
 					JSONObject obj = (JSONObject) parser.parse(result);
 					JSONObject objTemp = (JSONObject) obj.get("main");
@@ -120,11 +120,11 @@ public class SVCController {
 					
 					double temp = (double) objTemp.get("temp");
 					
-					//서울 날씨 첫째자리 반올림
+					//�꽌�슱 �궇�뵪 泥レ㎏�옄由� 諛섏삱由�
 					temp = temp - 273.0;
 				    temp = Double.parseDouble(String.format(Locale.KOREAN, "%.1f",temp));
 					
-					System.out.println("현재온도: "+temp);
+					System.out.println("�쁽�옱�삩�룄: "+temp);
 					
 					Map map = new HashMap<>();
 					map.put("name", obj.get("name"));
@@ -177,7 +177,7 @@ public class SVCController {
 		result = uploadfile.getOriginalFilename();
 		System.out.println("getOriginalFileName() :" + result);
 		if (result.equals("")) {
-			System.out.println("첨부파일이 없습니다.");
+			System.out.println("泥⑤��뙆�씪�씠 �뾾�뒿�땲�떎.");
 		} else {
 			result = saveFile(uploadfile);
 		}
@@ -190,8 +190,8 @@ public class SVCController {
 		String job = request.getParameter("job");
 		System.out.println(
 				String.valueOf(job) + ", " + email + ", " + title + ", " + name + ", " + phoneNum + ", " + content);
-		content = "제목: " + title + "\n" + "이름: " + name + "\n" + "전화번호: " + phoneNum + "\n" + "이메일: " + email + "\n"
-				+ "희망분야: " + job + "\n" + "내용: " + content;
+		content = "�젣紐�: " + title + "\n" + "�씠由�: " + name + "\n" + "�쟾�솕踰덊샇: " + phoneNum + "\n" + "�씠硫붿씪: " + email + "\n"
+				+ "�씗留앸텇�빞: " + job + "\n" + "�궡�슜: " + content;
 		try {
 			MimeMessage message = this.mailSender.createMimeMessage();
 			MimeMessageHelper messageHelper = new MimeMessageHelper(message, true, "UTF-8");
@@ -282,9 +282,9 @@ public class SVCController {
  * br = new BufferedReader(new
  * InputStreamReader(urlconnection.getInputStream(),"UTF-8")); String result =
  * ""; String line; while((line = br.readLine()) != null) { result = result +
- * line + "\n"; } System.out.println("결과: "+result);
+ * line + "\n"; } System.out.println("寃곌낵: "+result);
  * 
- * //Json parser를 만들어 만들어진 문자열 데이터를 객체화 합니다. JSONParser parser = new
+ * //Json parser瑜� 留뚮뱾�뼱 留뚮뱾�뼱吏� 臾몄옄�뿴 �뜲�씠�꽣瑜� 媛앹껜�솕 �빀�땲�떎. JSONParser parser = new
  * JSONParser(); JSONObject obj = (JSONObject)parser.parse(result);
  * System.out.println("playerId: "+obj.get("playerId"));
  * System.out.println("records: "+obj.get("records"));

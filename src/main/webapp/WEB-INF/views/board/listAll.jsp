@@ -140,7 +140,7 @@
 		        </c:if>
 		        <c:if test="${page.curPage ne 1}">
 		            <a href="#" onClick="fn_paging('${page.prevPage }')">[</a> 
-		        </c:if>
+		        </c:if> 
 		        <c:forEach var="pageNum" begin="${page.startPage }" end="${page.endPage }">
 		            <c:choose>
 		                <c:when test="${pageNum eq  page.curPage}">

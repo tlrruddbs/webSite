@@ -24,7 +24,7 @@ public class BoardServiceImp implements BoardService {
   
   public List<BoardVo> getBoardList(Pagination pagination) throws Exception {
     return this.dao.getBoardList(pagination);
-  }
+  } 
   
   public int getBoardListCnt(Map map) throws Exception {
     return this.dao.getBoardListCnt(map);

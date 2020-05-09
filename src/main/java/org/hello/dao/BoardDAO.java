@@ -10,7 +10,7 @@ public interface BoardDAO {
 	  void create(BoardVo paramBoardVo) throws Exception;
 	  
 	  List<BoardVo> listAll() throws Exception;
-	  
+	   
 	  List<BoardVo> getBoardList(Pagination paramPagination) throws Exception;
 	  
 	  int getBoardListCnt(Map map) throws Exception;

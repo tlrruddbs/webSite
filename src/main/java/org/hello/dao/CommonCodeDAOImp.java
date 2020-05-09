@@ -7,11 +7,11 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public class CommonCodeDAOImp implements CommonCodeDAO {
-  @Inject
+  @Autowired
   private SqlSession sqlSession;
   
   private static String namespace = "org.hello.mapper.CommonCodeMapper";
-  
+   
   public String commonCode(String codeValue) {
     this.sqlSession.selectOne(String.valueOf(String.valueOf(namespace)) + ".commonCode", codeValue);
     return (String)this.sqlSession.selectOne(String.valueOf(String.valueOf(namespace)) + ".commonCode", codeValue);

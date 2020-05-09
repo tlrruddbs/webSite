@@ -89,7 +89,7 @@
 		    <img src="/resources/images/logo.png" width="100" height="50" style="cursor:pointer" onclick="reload();"/>
 		    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
 		    <span class="navbar-toggler-icon"></span>
-		</button>
+		</button> 
 	
 		<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
 		    <div class="navbar-nav">	

@@ -6,7 +6,7 @@ import org.hello.controller.utils.Pagination;
 import org.hello.vo.MemberVo;
 
 public interface MemberService {
-	
+	 
 	public void insertMember(MemberVo memberVo) throws Exception;
 	
 	public int idChk(MemberVo memberVo) throws Exception;

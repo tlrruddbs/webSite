@@ -6,5 +6,5 @@
 <mapper namespace="org.hello.mapper.LoginMapper">
 	<select id="loginRequest" parameterType = "org.hello.vo.MemberVo" resultType = "org.hello.vo.MemberVo">
 		select * from member where userId=#{userId} and userPw=#{userPw}
-	</select>
+	</select> 
 </mapper> 

@@ -7,7 +7,7 @@
 <title>Websocket Client</title>
 <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
 <script type="text/javascript">
-$(function () {
+$(function () { 
     var url = window.location.host;//웹브라우저의 주소창의 포트까지 가져옴
     var pathname = window.location.pathname; /* '/'부터 오른쪽에 있는 모든 경로*/
     var appCtx = pathname.substring(0, pathname.indexOf("/",2));

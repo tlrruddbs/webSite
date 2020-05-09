@@ -8,12 +8,13 @@ import org.apache.ibatis.session.SqlSession;
 import org.hello.controller.utils.Pagination;
 import org.hello.vo.BoardVo;
 import org.hello.vo.MemberVo;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 @Repository 
 public class MemberDAOImp implements MemberDAO {
 
-	@Inject
+	@Autowired
     private SqlSession sqlSession;
 	
     private static String namespace = "org.hello.mapper.MemberMapper";

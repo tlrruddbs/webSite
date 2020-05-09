@@ -2,7 +2,7 @@ package org.hello.vo;
 
 public class WeatherVo {
   Double temp;
-  
+   
   Object weather;
   
   Object Name;

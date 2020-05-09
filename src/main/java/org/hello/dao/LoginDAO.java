@@ -6,4 +6,4 @@ public interface LoginDAO {
 	
 	public MemberVo loginRequest(MemberVo memberVo) throws Exception;
 }
- 
+  

@@ -8,7 +8,7 @@ public class Pagination {
   private int curPage = 1;
   
   private int curRange = 1;
-  
+   
   private int listCnt;
   
   private int pageCnt;

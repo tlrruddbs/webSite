@@ -9,7 +9,7 @@
 <script>
 	window.location.href="/login";
 </script>
-<body>
+<body> 
 bhv hgvjh
 </body>
 </html> 

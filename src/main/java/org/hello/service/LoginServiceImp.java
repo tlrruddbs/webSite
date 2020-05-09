@@ -6,10 +6,10 @@ import org.hello.dao.LoginDAO;
 import org.hello.vo.CommonCodeVo;
 import org.hello.vo.MemberVo;
 import org.springframework.stereotype.Service;
-
+ 
 @Service
 public class LoginServiceImp implements LoginService{
-	@Inject
+	@Autowired
     private LoginDAO dao;
 	
 	@Override

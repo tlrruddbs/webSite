@@ -51,7 +51,7 @@ public class MemberController {
 			System.out.println("중복된 아이디입니다.");
 		} else {
 			System.out.println("사용가능한 아이디입니다.");
-		}
+		} 
 		
 		return memberVo;
 	}

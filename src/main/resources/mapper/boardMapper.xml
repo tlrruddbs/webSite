@@ -30,7 +30,7 @@
 		SELECT * FROM board 
 		WHERE seq = #{seq}
 	</select>
-	
+	 
 	<!-- -->
 	<update id = "updateBoard" parameterType = "org.hello.vo.BoardVo">
 		UPDATE board SET title = #{title}, content = #{content}	, date = SYSDATE() WHERE seq = #{seq} 

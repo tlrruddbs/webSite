@@ -17,7 +17,7 @@ public interface BoardService {
   BoardVo read(int paramInt) throws Exception;
   
   void delete(Integer paramInteger) throws Exception;
-  
+   
   int update(BoardVo paramBoardVo) throws Exception;
   
   void plusCnt(int paramInt);

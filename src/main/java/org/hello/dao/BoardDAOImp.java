@@ -8,7 +8,7 @@ import org.hello.controller.utils.Pagination;
 import org.hello.dao.BoardDAO;
 import org.hello.vo.BoardVo;
 import org.springframework.stereotype.Repository;
-
+ 
 @Repository
 public class BoardDAOImp implements BoardDAO {
   @Inject

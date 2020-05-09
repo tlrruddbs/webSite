@@ -32,7 +32,7 @@
 		alert("탈퇴한 회원입니다.");
 	} else if (msg=="NoSession"){
 		alert("로그인 후 이용해주세요.");
-	} 
+	}  
 	 
 	function reload(){
 		location.href = "/login";

@@ -114,7 +114,7 @@
 					<c:when test = "${memberVo.memberStatus eq 'CMMMST002'}">일시정지
 					
 						<td>
-						일시정지
+						일시정지 
 							<select id = "type">
 								<option value = "Normal">정상</option>
 								<option value = "Stop">일시정지</option>

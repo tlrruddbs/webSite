@@ -80,7 +80,7 @@
 		   		<a class="nav-item nav-link text-light" href="/svc/mail/mailForm">YKSCorp </a>
 	    		<a class="nav-item nav-link text-light" href="/svc/logout" >로그아웃</a>
 	    	</div>
-	 	</div>
+	 	</div> 
 		</nav>
 		
 		

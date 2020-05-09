@@ -87,7 +87,7 @@
 	</table>
 	<input class="btn btn-light" type="submit" value="ert" style="float: right;">
 	<input class="btn btn-light" type="button" value="qwe" style="float: right;" onclick="location.href='listAll';"> 
-	</form>
+	</form> 
 </div>
 			 
 		</div>

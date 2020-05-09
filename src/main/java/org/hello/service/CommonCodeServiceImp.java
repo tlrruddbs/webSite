@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class CommonCodeServiceImp implements CommonCodeService {
-	@Inject
+	@Autowired
 	private CommonCodeDAO dao;
   
 	public String commonCode(String codeValue) {

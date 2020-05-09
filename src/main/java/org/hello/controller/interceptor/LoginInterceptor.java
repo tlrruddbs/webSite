@@ -12,9 +12,9 @@ public class LoginInterceptor extends HandlerInterceptorAdapter{
 	@Override
 	public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler,
 			ModelAndView modelAndView) throws Exception {
-		//session 媛앹껜瑜� 媛��졇�샂
+		//session 揶쏆빘猿쒐몴占� 揶쏉옙占쎌죬占쎌긾
 		HttpSession session = request.getSession();
-		
+		 
 		/*
 		Object obj = session.getAttribute("user");
 		
