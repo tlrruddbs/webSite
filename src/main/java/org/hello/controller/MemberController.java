@@ -33,7 +33,7 @@ public class MemberController {
 		mav.addObject("msg", "REGISTERED");
 		mav.setViewName("redirect:/svc/admin/adminMain");
 		return mav;
-	}
+	}   
 	
 	@RequestMapping(value="/idChk", method= {RequestMethod.POST, RequestMethod.GET}, produces="application/json; charset=utf-8")
 	@ResponseBody 
@@ -48,8 +48,8 @@ public class MemberController {
 			System.out.println("중복된 아이디입니다.");
 		} else {
 			System.out.println("사용가능한 아이디입니다.");
-		}
-		
+		}   
+		   
 		return memberVo;
 	}
 	

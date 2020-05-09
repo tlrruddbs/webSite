@@ -60,7 +60,7 @@ public class LoginController {
 		HttpSession session = request.getSession();
 		String userId = memberVo.getUserId();
 		String userPw = memberVo.getUserPw();
-		MemberVo userVo = null;
+		MemberVo userVo = null;  
 		userVo = this.loginService.loginRequest(memberVo);
 		System.out.println("userVo: "+userVo.toString());
 		System.out.println("userVo detail: "+userVo.getUserPhoneNum());
