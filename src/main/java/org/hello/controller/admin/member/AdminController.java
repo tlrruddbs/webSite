@@ -1,20 +1,15 @@
 package org.hello.controller.admin.member;
 
-import java.io.BufferedReader;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import org.hello.controller.utils.Pagination;
-import org.hello.service.CommonCodeService;
 import org.hello.service.MemberService;
 import org.hello.service.StationService;
 import org.hello.vo.AddVo;
 import org.hello.vo.MemberVo;
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -24,16 +19,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 @RequestMapping({ "/svc/admin" })
 public class AdminController {
 	@Autowired
 	MemberService memberService;
-
-	@Autowired
-	CommonCodeService commonCodeService;
 
 	@Autowired
 	StationService stationService;
@@ -57,23 +48,6 @@ public class AdminController {
 		mav.addObject("memberList", memberList);
 		mav.addObject("listCnt", Integer.valueOf(listCnt));
 		mav.addObject("page", page);
-		return mav;
-	}
-	@RequestMapping({ "/memberList/singleMemberView" })
-	public ModelAndView singleMemberView(HttpServletRequest request, @RequestParam(defaultValue = "") String userId)
-			throws Exception {
-		ModelAndView mav = new ModelAndView();
-		HttpSession session = request.getSession(false);
-		if (session == null) {
-			System.out.println("세션이 만료되었습니다.");
-			mav.setViewName("redirect:/login");
-		}
-		System.out.println("singleMemberView userId :" + userId);
-		MemberVo memberVo = this.memberService.getMember(userId);
-		if (memberVo != null) {
-			mav.addObject("memberVo", memberVo);
-			mav.setViewName("/svc/admin/singleMemberView");
-		}
 		return mav;
 	}
 	
@@ -158,24 +132,13 @@ public class AdminController {
 	        	System.out.println("memberTable 수정 실패");
 	        	addVo.setAuthorityChk(authorityChk);
 	        }
-	 
-	    
-
 		addVo.setStationList(this.stationService.stationList());
 		addVo.setMemberAuthorityList(this.memberService.getMemberListAuthority());
-	//	List<Map> stationList = this.stationService.stationList();
-	//	List<Map> memberAuthorityList = this.memberService.getMemberListAuthority();
-	//	mav.addObject("stationList", stationList);
-	//	mav.addObject("memberAuthorityList", memberAuthorityList);
-		
 		return addVo;
 		
 	}
-	
-	
 	@RequestMapping({ "/memberList/authority/delete" })
 	@ResponseBody public AddVo delete(HttpServletRequest request, @RequestBody AddVo addVo) throws Exception {
-		
 		
 		System.out.println("/authority/delete");
 		ModelAndView mav = new ModelAndView();
@@ -378,24 +341,12 @@ public class AdminController {
 		return memberVo;
 	}
 	
-/*
-	@RequestMapping({ "/memberList/singleMemberView/modifyInfo" })
-	@ResponseBody
-	public MemberVo modify(HttpServletRequest request, @RequestBody MemberVo memberInfo) throws Exception {
+	@RequestMapping(value = { "memberList/logout" }, method = { RequestMethod.POST, RequestMethod.GET }, produces = {"application/json; charset=utf-8" })
+	@ResponseBody public ModelAndView logout(HttpServletRequest request) {
+		System.out.println("logout!!");
 		ModelAndView mav = new ModelAndView();
-		HttpSession session = request.getSession(false);
-		System.out.println("memberStatus :" + memberInfo.getMemberStatus());
-		memberInfo.setMemberStatus(this.commonCodeService.commonCode(memberInfo.getMemberStatus()));
-		if (session == null) {
-			System.out.println("세션이 만료되었습니다.");
-			mav.setViewName("redirect:/login");
-		}
-		MemberVo memberVo = this.memberService.getMember(memberInfo.getUserId());
-		if (memberVo.getMemberStatus() != null)
-			memberVo.setMemberStatus(memberInfo.getMemberStatus());
-		System.out.println("memberStatus:" + memberVo.getMemberStatus());
-		int result = this.memberService.saveMemberInfo(memberVo);
-		return memberVo;
+		request.getSession().removeAttribute("user");
+		mav.setViewName("redirect:/login");
+		return mav;
 	}
-	*/
 }

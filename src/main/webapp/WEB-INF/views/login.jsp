@@ -14,7 +14,7 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
 	<script>
-	 
+	<%-- 
 	var msg = "${msg}";
 	if(msg== "REGISTERED"){
 		alert("회원가입이 완료되었습니다. 로그인해주세요");
@@ -26,10 +26,6 @@
 		%>
 	} else if (msg=="Stop"){
 		alert("시스템 관리자만 로그인이 가능합니다");
-	} else if (msg=="Ban"){
-		alert("영구 정지된 ID입니다. 관리자에게 문의해주세요");
-	} else if (msg=="Leave"){
-		alert("탈퇴한 회원입니다.");
 	} else if (msg=="NoSession"){
 		alert("로그인 후 이용해주세요.");
 	} 
@@ -37,7 +33,7 @@
 	function reload(){
 		location.href = "/login";
 	}
-	
+	--%>
 </script>
 </head>
 
@@ -61,21 +57,7 @@
 	
 		<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
 		    <div class="navbar-nav">	
-		  <%--    	<a class="nav-item nav-link active text-light" href="#" >Home <span class="sr-only">(current)</span></a> --%>
-		      	<a class="nav-item nav-link text-light" href="/board/listAll" >자유게시판</a>
-		      	<a class="nav-item nav-link text-light" onclick="reload();" >로그인</a>
-		      	<a class="nav-item nav-link text-light" href="/member/memberRegister">회원가입</a>
-		      <%--
-			     <div class="dropdown">
-			        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"  text-align="right">
-			          	로그인
-			        </a>
-			        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-				        <a class="dropdown-item" href="#">로그인</a>
-				        <a class="dropdown-item" href="#">회원가입</a>
-		    	    </div>
-	      		</div>
-	      		 --%>
+		 
 	    	</div>
 	 	</div>
 		</nav>

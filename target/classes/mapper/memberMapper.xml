@@ -4,29 +4,14 @@
 
  
 <mapper namespace="org.hello.mapper.MemberMapper">
-<!-- 
-    <insert id="insertMember" parameterType = "org.hello.vo.MemberVo">
-        insert into member(userId, userPw, userEmail, userName, regDate) values
-                          (#{userId},#{userPw},#{userEmail},#{userName}, SYSDATE())
-    </insert>
-      -->
       
     <insert id="insertMember" parameterType = "org.hello.vo.MemberVo" >
       insert into nc_b_user_t(USERID, USERNM, PASSWD, TEL, EMAIL, POWER) values
                         (#{userId},#{userName},#{userPw},#{userPhoneNum}, #{userEmail}, #{power})
     </insert>
     
-
 	<select id="memberList" resultType = "org.hello.vo.MemberVo">
     	select * from nc_b_user_t
-    </select>
-    
-    <select id="getMember" parameterType = "org.hello.vo.MemberVo" resultType = "org.hello.vo.MemberVo">
-    	select * from member where userId = #{userId}
-    </select>
-    
-    <select id = "saveMemberInfo" parameterType = "org.hello.vo.MemberVo" resultType ="org.hello.vo.MemberVo">
-    	update member set memberStatus = #{memberStatus} where userId = #{userId}
     </select>
     
     <select id="getMemberList" parameterType = "hashmap" resultType = "Map">

@@ -4,7 +4,6 @@ import java.util.List;
 import java.util.Map;
 
 import org.hello.controller.utils.Pagination;
-import org.hello.vo.BoardVo;
 import org.hello.vo.MemberVo;
 
 public interface MemberDAO {

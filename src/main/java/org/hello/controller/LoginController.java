@@ -30,8 +30,6 @@ public class LoginController {
 			String sessionChk = "NoSession";
 			if (sessionChk == session.getAttribute("msg")) {
 				mav.addObject("msg", "NoSession");
-				// System.out.println("loginController Nosession");
-				// session.removeAttribute("msg");
 			}
 			if (userVo==null) {
 				mav.setViewName("/login");

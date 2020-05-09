@@ -7,7 +7,6 @@ import java.util.Map;
 import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.hello.controller.utils.Pagination;
-import org.hello.vo.BoardVo;
 import org.hello.vo.MemberVo;
 import org.springframework.stereotype.Repository;
 
@@ -105,9 +104,7 @@ public class MemberDAOImp implements MemberDAO {
 		MemberVo memberVo = new MemberVo();
 		Map<String,Object>map = new HashMap<>();
 		map = sqlSession.selectOne(namespace+".getUserInfo",userId);
-		System.out.println("dao구간");
 		if(map==null) {
-			System.out.println("맵이 비었습니다.");
 			return memberVo;
 		}
 		memberVo.setUserId((String)map.get("USERID"));
@@ -116,7 +113,6 @@ public class MemberDAOImp implements MemberDAO {
 		memberVo.setUserEmail((String)map.get("EMAIL"));
 		memberVo.setPower((int)map.get("POWER"));
 		memberVo.setUserName((String)map.get("USERNM"));
-		System.out.println("dao: "+(String)map.get("EMAIL"));
 		return memberVo;
 	}
 

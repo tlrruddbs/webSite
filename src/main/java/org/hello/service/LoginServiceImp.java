@@ -3,7 +3,6 @@ package org.hello.service;
 import javax.inject.Inject;
 
 import org.hello.dao.LoginDAO;
-import org.hello.vo.CommonCodeVo;
 import org.hello.vo.MemberVo;
 import org.springframework.stereotype.Service;
 
