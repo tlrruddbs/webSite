@@ -25,10 +25,10 @@
    		
    		
    		if(userPw == ""){
-   		 alert(");
+   		 alert("비밀번호를 입력해주세요");
    		 return false;
 	   	} else if (userPw != userRePw){
-	   		alert(");
+	   		alert("비밀번호를 확인해주세요");
    			return false;
 	   	}
    		
@@ -44,10 +44,10 @@
             data: JSON.stringify(jobj),	
     		success:function(data){
     			if(data.modifyChk>0){
-    				alert(");
+    				alert("수정완료");
     				window.close();
     			} else {
-    				alert(");
+    				alert("수정실패");
     				window.close();
     			}
     			
@@ -74,12 +74,12 @@
             data: JSON.stringify(jobj),	
     		success:function(data){
     			if(data.idChk>0){
-    				alert(");
+    				alert("중복된 아이디입니다.");
     			} else {
     				if(data.authorityChk>0){
-    					alert(");
+    					alert("추가 완료");
     				} else {
-    					alert(");
+    					alert("추가 실패");
     				}
     			}
     			
@@ -107,12 +107,12 @@
             data: JSON.stringify(jobj),	
     		success:function(data){
     			if(data.idChk==0){
-    				alert(");
+    				alert("해당 정보가 없습니다.");
     			} else if(data.idChk>0){
     				if(data.deleteChk==0){
-        				alert(");
+        				alert("삭제에 실패하였습니다");
         			} else if(data.deleteChk>0){
-        				alert(");
+        				alert("삭제되었습니다.");
         			}
     			}
     			
@@ -152,13 +152,13 @@
 	</nav>
 		<form>
 	   	 	<div>
-	            	id ${userId }
+	            	사용자 id ${userId }
 	        </div>
 	        <div>
-	            <input type="password" id = "userPw" name="userPw" placeholder="userPw">
+	            새 비밀번호<input type="password" id = "userPw" name="userPw" placeholder="userPw">
 	        </div>
 	        <div>
-	            <input type="password" name="userPwConfirm" placeholder="Confirm Password" id="userRePw">
+	            새 비밀번호 확인<input type="password" name="userPwConfirm" placeholder="Confirm Password" id="userRePw">
 	        </div>
 	        
 	        <!-- hidden -->
@@ -169,7 +169,7 @@
     
                      
 		<div style="float:right;">
-			<button class="btn btn-secondary btn-sm" type="button" onclick = "check()" ></button>
+			<button class="btn btn-secondary btn-sm" type="button" onclick = "check()" >수정</button>
 		</div>
 	</div>
 	

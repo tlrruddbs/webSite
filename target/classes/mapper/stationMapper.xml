@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+ 				
+<mapper namespace="org.hello.mapper.StationMapper">
+	<select id="stationList"  resultType = "Map">
+        select * from nc_r_station_t
+	</select>
+	
+	<select id="stationName"  parameterType = "int" resultType = "String">
+        SELECT NAME FROM nc_r_station_t where SEQ = #{seq};
+	</select>
+</mapper>

@@ -137,7 +137,7 @@
 		    <%--  	<a class="nav-item nav-link text-light" href="/board/adminListAll" >관리자목록</a> --%>
 		    	
 		      	<a class="nav-item nav-link text-light" onclick="location.href='/svc/admin/memberList' ">${msg }</a>
-		      	<a class="nav-item nav-link text-light" onclick="location.href='/svc/admin/memberList/logout' ">로그아웃</a>
+		      	<a class="nav-item nav-link text-light" onclick="location.href='/svc/admin/logout' ">로그아웃</a>
 		      	
 		      <%--
 			     <div class="dropdown">

@@ -34,12 +34,12 @@
             data: JSON.stringify(jobj),	
     		success:function(data){
     			if(data.idChk>0){
-    				alert("아이디 중복입니다.");
+    				alert("중복된 아이디입니다.");
     			} else {
     				if(data.authorityChk>0){
-    					alert("");
+    					alert("추가 완료");
     				} else {
-    					alert("");
+    					alert("추가 실패");
     				}
     			}
     			
@@ -66,16 +66,15 @@
             type: "POST",                                
             data: JSON.stringify(jobj),	
     		success:function(data){
-    			if(data.idChk==0){
-    				alert(");
-    			} else if(data.idChk>0){
-    				if(data.deleteChk==0){
-        				alert(");
-        			} else if(data.deleteChk>0){
-        				alert(");
-        			}
+    			if(data.idChk>0){
+    				alert("중복된 아이디입니다.");
+    			} else {
+    				if(data.authorityChk>0){
+    					alert("추가 완료");
+    				} else {
+    					alert("추가 실패");
+    				}
     			}
-    			
     			
     		},
     		error:function(){
@@ -142,10 +141,10 @@
 				</c:if>
 		
 		<div style="float:right;">
-			<button class="btn btn-secondary btn-sm" type="button" onclick = "add()" ></button>
+			<button class="btn btn-secondary btn-sm" type="button" onclick = "add()" >추가</button>
 		</div>
 		<div style="float:right;">
-			<button class="btn btn-secondary btn-sm" type="button" onclick = "deleteId()" ></button>
+			<button class="btn btn-secondary btn-sm" type="button" onclick = "deleteId()" >삭제</button>
 		</div>
 	</div>
 	
