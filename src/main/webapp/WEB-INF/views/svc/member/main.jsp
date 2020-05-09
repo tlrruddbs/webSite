@@ -87,8 +87,8 @@
 		<div class="jumbotron" > 
 			<div class="container" role="main">
 				<div align = "center"; border:1px solid white;>
-					<h1 class = "nav-item nav-link text-light">: ${memberVo.weather}</h1>
-					<h1 class = "nav-item nav-link text-light">: ${memberVo.temp}</h1>
+					<h1 class = "nav-item nav-link text-light">날씨: ${memberVo.weather}</h1>
+					<h1 class = "nav-item nav-link text-light">온도: ${memberVo.temp}</h1>
 				</div>
 				
 				<div style='width:25%; height:330px;float:right; border:1px solid white;'>

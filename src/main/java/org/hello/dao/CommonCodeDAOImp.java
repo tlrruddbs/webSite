@@ -3,6 +3,7 @@ package org.hello.dao;
 import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.hello.dao.CommonCodeDAO;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 @Repository

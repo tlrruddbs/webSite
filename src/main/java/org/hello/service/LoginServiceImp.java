@@ -5,6 +5,7 @@ import javax.inject.Inject;
 import org.hello.dao.LoginDAO;
 import org.hello.vo.CommonCodeVo;
 import org.hello.vo.MemberVo;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
  
 @Service

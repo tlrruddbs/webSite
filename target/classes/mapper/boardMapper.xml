@@ -5,13 +5,13 @@
  				
 <mapper namespace="org.hello.mapper.BoardMapper">
 	 
-	<!-- -->
+	<!-- 게시판 추가 -->
 	<insert id = "insertBoard" parameterType = "org.hello.vo.BoardVo">
 		insert into board(title, writer, content, date) values
 		(#{title}, #{writer}, #{content}, SYSDATE())
 	</insert>
 	
-	<!-- -->
+	<!-- 게시판 리스트 보기 -->
 	<select id="listBoard"  resultType = "org.hello.vo.BoardVo">
         select * from board
 	</select>
@@ -25,36 +25,36 @@
 		CALL proc_count_BoardList(#{searchType}, #{searchKeyWord});
 	</select>
 	
-	<!-- -->
+	<!-- 게시판 상세보기 -->
 	<select id = "detailBoard" parameterType = "int" resultType = "org.hello.vo.BoardVo">
 		SELECT * FROM board 
 		WHERE seq = #{seq}
 	</select>
 	
-	<!-- -->
+	<!-- 게시판 수정하기 -->
 	<update id = "updateBoard" parameterType = "org.hello.vo.BoardVo">
 		UPDATE board SET title = #{title}, content = #{content}	, date = SYSDATE() WHERE seq = #{seq} 
 		
 	</update>
 	
-	<!-- -->
+	<!-- 회원 게시물 리스트 -->
 	<select id = "myBoardList" parameterType = "String" resultType = "org.hello.vo.BoardVo">
 		SELECT * FROM board WHERE writer = #{id} 
 		
 	</select>
 	
-	<!-- -->
+	<!-- 회원 게시물 갯수 -->
 	<select id = "myBoardCountList" parameterType = "String" resultType = "int">
 		SELECT count(*) FROM board WHERE writer = #{id} 
 		
 	</select>
 	
-	<!--  + 1 -->
+	<!-- 조회수  + 1 -->
 	<update id="plusCnt" parameterType="int">
 	  UPDATE board SET count = count + 1 WHERE seq = #{seq}
 	</update>
 	
-	<!-- -->
+	<!-- 리스트 검색 -->
 	<select id ="searchList" parameterType = "hashmap" resultType = "org.hello.vo.BoardVo">
 		CALL proc_search_BoardList(#{searchType}, #{searchKeyWord}, #{page.startIndex}, #{page.pageSize});
 	</select>

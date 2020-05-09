@@ -4,6 +4,7 @@ import javax.inject.Inject;
 import org.hello.dao.CommonCodeDAO;
 import org.hello.service.CommonCodeService;
 import org.hello.vo.CommonCodeVo;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service

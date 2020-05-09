@@ -20,7 +20,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
-@RequestMapping("/member/")
+@RequestMapping("/member")
 public class MemberController {
 	
 	@Inject 
@@ -42,16 +42,18 @@ public class MemberController {
 	
 	@RequestMapping(value="/idChk", method= {RequestMethod.POST, RequestMethod.GET}, produces="application/json; charset=utf-8")
 	@ResponseBody 
-	public MemberVo idChk(@RequestBody MemberVo memberVo) throws Exception{
+	public MemberVo idChk(@RequestBody MemberVo memberVo, HttpServletRequest request) throws Exception{
+		System.out.println("PARAM: "+request.getParameter("userId"));
+		
 		System.out.println("userId: "+ memberVo.getUserId());
 		int result = memberService.idChk(memberVo);
 		
 		System.out.println("result:"+result);
 		if(result>0) {
-			System.out.println("Áßº¹µÈ ¾ÆÀÌµðÀÔ´Ï´Ù.");
+			System.out.println("ï¿½ßºï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ìµï¿½ï¿½Ô´Ï´ï¿½.");
 		} else {
-			System.out.println("»ç¿ë°¡´ÉÇÑ ¾ÆÀÌµðÀÔ´Ï´Ù.");
-		} 
+			System.out.println("ï¿½ï¿½ë°¡ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ìµï¿½ï¿½Ô´Ï´ï¿½.");
+		}
 		
 		return memberVo;
 	}

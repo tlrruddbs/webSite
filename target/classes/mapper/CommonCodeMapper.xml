@@ -7,7 +7,7 @@
 	<select id = "commonCode" parameterType = "String" resultType="String">
 		SELECT CODE FROM common_code WHERE CODE_VALUE = #{codeValue}	
 	</select>
-	
+	 
 	<select id = "commonCodeValue" parameterType = "String" resultType="String">
 		SELECT CODE_VALUE FROM common_code WHERE CODE = #{code}	
 	</select>

@@ -29,5 +29,5 @@
     <select id="getMemberList" parameterType = "hashmap" resultType = "org.hello.vo.MemberVo">
         select * from member limit #{startIndex},#{pageSize}
 	</select>
-    
+     
 </mapper>

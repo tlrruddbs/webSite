@@ -34,10 +34,10 @@ public class AdminController {
 		ModelAndView mav = new ModelAndView();
 		HttpSession session = request.getSession(false);
 		if (session == null) {
-			System.out.println("�꽭�뀡�씠 留뚮즺�릺�뿀�뒿�땲�떎.");
+			System.out.println("세션이 만료되었습니다.");
 			mav.setViewName("redirect:/login");
 		} else {
-			System.out.println("/adminMain page�엯�땲�떎.");
+			System.out.println("/adminMain page입니다.");
 		}
 		return mav;
 	}
@@ -52,7 +52,7 @@ public class AdminController {
 		Pagination page = new Pagination(listCnt, curPage);
 		map.put("page", page);
 		if (session == null) {
-			System.out.println("�꽭�뀡�씠 留뚮즺�릺�뿀�뒿�땲�떎.");
+			System.out.println("세션이 만료되었습니다.");
 			mav.setViewName("redirect:/login");
 		}
 		List<MemberVo> memberList = this.memberService.getMemberList(page);
@@ -68,7 +68,7 @@ public class AdminController {
 		ModelAndView mav = new ModelAndView();
 		HttpSession session = request.getSession(false);
 		if (session == null) {
-			System.out.println("�꽭�뀡�씠 留뚮즺�릺�뿀�뒿�땲�떎.");
+			System.out.println("세션이 만료되었습니다.");
 			mav.setViewName("redirect:/login");
 		}
 		System.out.println("singleMemberView userId :" + userId);
@@ -88,7 +88,7 @@ public class AdminController {
 		System.out.println("memberStatus :" + memberInfo.getMemberStatus());
 		memberInfo.setMemberStatus(this.commonCodeService.commonCode(memberInfo.getMemberStatus()));
 		if (session == null) {
-			System.out.println("�꽭�뀡�씠 留뚮즺�릺�뿀�뒿�땲�떎.");
+			System.out.println("세션이 만료되었습니다.");
 			mav.setViewName("redirect:/login");
 		}
 		MemberVo memberVo = this.memberService.getMember(memberInfo.getUserId());
