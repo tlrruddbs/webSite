@@ -7,6 +7,6 @@
 <title>Success</title>
 </head>
 <body>
-	<p>회원가입이 ${result} 하였습니다.</p>
+	<p>${result} </p>
 </body>
 </html> 

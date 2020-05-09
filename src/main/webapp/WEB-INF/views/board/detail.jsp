@@ -13,7 +13,7 @@
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
-<title>글 상세보기</title>
+<title></title>
 </head>
 <style> 
 	h2 { text-align: center;}
@@ -55,11 +55,11 @@
 			<div class="text-light" id="outter">
 			<table class = "table table-board text-light" border="2px" width="80%" align="center">
 				<tr>
-					<td>제목: ${board.title }</td>
+					<td>${board.title }</td>
 				</tr>
 				<tr>
 					<td>
-						작성자: ${board.writer }
+						${board.writer }
 						<span style="float: right;"><fmt:formatDate value="${board.date }" pattern="yyyy.MM.dd"/></span>
 					</td>
 				</tr>
@@ -69,18 +69,18 @@
 			</table>
 			<c:set var ="idChk" value = "${idChk }"/>
 			<c:if test = "${ idChk eq true}">
-				<input class="btn btn-light" type="button" value="글 수정" style="float: right;" onclick="location.href='updateRequest?seq=${board.seq}';">
+				<input class="btn btn-light" type="button" value=" style="float: right;" onclick="location.href='updateRequest?seq=${board.seq}';">
 				
 			</c:if>
 			
-			<input class="btn btn-light" type="button" value="글 목록" style="float: right;" onclick="location.href='listAll';">
+			<input class="btn btn-light" type="button" value=" style="float: right;" onclick="location.href='listAll';">
 				
 			 
 		</div>
 		</div>
 	</div>
 
-<h2>게시판</h2>
+<h2></h2>
 <br><br><br>
 
 </body>

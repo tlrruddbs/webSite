@@ -18,7 +18,7 @@
 		location.href="/svc/member/main";
 	} 
 </script>
-<title>글 수정</title>
+<title></title>
 </head>
 <style>
 	h2 { text-align: center;}
@@ -59,20 +59,20 @@
 	
 	<div class="jumbotron" >
 		<div class="container">
-			<h2>게시판</h2>
+			<h2></h2>
 <br><br><br>
 <div id="outter">
 	<table  class = "table table-board text-light" border="2px" width="80%" align="center">
 	<form action="/board/update" method="POST">
 		<tr class="inlineBox">
-			<h4 class="text-light inlineBox" style="width:30%" >제목 :</h5> <input class="form-control" style="width: 70%" type="text" id="title" name="title" value="${board.title }"/></h4> 
+			<h4 class="text-light inlineBox" style="width:30%" >:</h5> <input class="form-control" style="width: 70%" type="text" id="title" name="title" value="${board.title }"/></h4> 
 			
 		
 		</tr>
 		
 		<tr>
 			<td>
-				작성자: ${board.writer }
+				${board.writer }
 				<span style="float: right;"><fmt:formatDate value="${board.date }" pattern="yyyy.MM.dd"/></span>
 			</td>
 		</tr>
@@ -80,13 +80,13 @@
 			<td>
 			<input type ="text" id="content" value="${board.content }" name="content" style="width:300px; height:250px";/>
 			</td>
-		<!-- 	<td><textarea rows="20" cols="100" title="내용" id="content" name="content"></textarea></td> -->
+		<!-- 	<td><textarea rows="20" cols="100" title="id="content" name="content"></textarea></td> -->
 		<!-- 	<td><input type = "text" id=div style="height: 300px; margin: 10px; display: inline-block">${board.content }</div></td> -->
 		</tr>
 		<input type="hidden" name="seq" value=${board.seq }>
 	</table>
-	<input class="btn btn-light" type="submit" value="수정하기" style="float: right;">
-	<input class="btn btn-light" type="button" value="글 목록" style="float: right;" onclick="location.href='listAll';"> 
+	<input class="btn btn-light" type="submit" value="ert" style="float: right;">
+	<input class="btn btn-light" type="button" value="qwe" style="float: right;" onclick="location.href='listAll';"> 
 	</form>
 </div>
 			 

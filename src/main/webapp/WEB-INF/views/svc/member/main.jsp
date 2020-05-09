@@ -28,14 +28,14 @@
 	
 	
 	if(transferMsg == "success"){
-		alert("메일을 성공적으로 보냈습니다.");
+		alert(");
 		document.location.href="/svc/member/main"
 	} else if(transferMsg=="fail"){
-		alert("메일 전송이 실패하였습니다.");
+		alert(");
 		document.location.href="/svc/member/main"
 	}
 	if(msg== "NoSession"){
-		alert("로그인 후 이용해주세요.");
+		alert(");
 		location.href = "/login";
 	} 
 	
@@ -75,9 +75,9 @@
 		    <div class="navbar-nav">	
 		     <%-- 	<a class="nav-item nav-link active text-light" href="#" >Home <span class="sr-only">(current)</span></a> --%>
 		      	<a class="nav-item nav-link text-light" href="/board/listAll" >자유게시판</a>
-		      	<%--<a class="nav-item nav-link text-light" href="#">회원가입</a> --%>
-		   		<a class="nav-item nav-link text-light" href="/svc/fileDownload">사이트 이용하기 전에</a>
-		   		<a class="nav-item nav-link text-light" href="/svc/mail/mailForm">YKSCorp 지원하기</a>
+		      	<%--<a class="nav-item nav-link text-light" href="#">--%>
+		   		<a class="nav-item nav-link text-light" href="/svc/fileDownload">파일다운로드</a>
+		   		<a class="nav-item nav-link text-light" href="/svc/mail/mailForm">YKSCorp </a>
 	    		<a class="nav-item nav-link text-light" href="/svc/logout" >로그아웃</a>
 	    	</div>
 	 	</div>
@@ -87,15 +87,15 @@
 		<div class="jumbotron" > 
 			<div class="container" role="main">
 				<div align = "center"; border:1px solid white;>
-					<h1 class = "nav-item nav-link text-light">서울날씨 : ${memberVo.weather}</h1>
-					<h1 class = "nav-item nav-link text-light">서울온도 : ${memberVo.temp}</h1>
+					<h1 class = "nav-item nav-link text-light">: ${memberVo.weather}</h1>
+					<h1 class = "nav-item nav-link text-light">: ${memberVo.temp}</h1>
 				</div>
 				
 				<div style='width:25%; height:330px;float:right; border:1px solid white;'>
-					<h4 class = "nav-item nav-link text-light" align="center">등급: ${memberVo.memberCodeString }</h1>
-					<h4 class = "nav-item nav-link text-light" align="center">${memberVo.userName }님</h1>
+					<h4 class = "nav-item nav-link text-light" align="center">${memberVo.memberCodeString }</h1>
+					<h4 class = "nav-item nav-link text-light" align="center">${memberVo.userName }</h1>
 					<h4 class = "nav-item nav-link text-light" align="center">${memberVo.userEmail }</h1>
-					<h4 class = "nav-item nav-link text-light" align="center">내 게시물 <a href="/board/myBoardList"> ${memberVo.myBoardCountList }</a>개</h4>
+					<h4 class = "nav-item nav-link text-light" align="center"><a href="/board/myBoardList"> ${memberVo.myBoardCountList }</a></h4>
 					
 					
 				</div>

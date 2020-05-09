@@ -36,14 +36,5 @@
     
     <context:component-scan base-package="org.hello.vo" />
 	
-	<beans:bean id = "LoginInterceptor" class="org.hello.controller.interceptor.LoginInterceptor">
-	</beans:bean>
-	<interceptors>
-		<interceptor>
-			<mapping path="/login"/>
-			<beans:ref bean="LoginInterceptor"/>
-		</interceptor>
-	</interceptors>
-	
 	
 </beans:beans>

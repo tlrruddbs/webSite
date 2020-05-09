@@ -44,22 +44,22 @@
 		<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
 		    <div class="navbar-nav">	
 		    <%--  	<a class="nav-item nav-link active text-light" href="#" >Home <span class="sr-only">(current)</span></a> --%>
-		      	<a class="nav-item nav-link text-light" href="/board/listAll" >자유게시판</a>
-		      	<a class="nav-item nav-link text-light" href="/svc/fileDownload">사이트 이용하기 전에</a>
-		   		<a class="nav-item nav-link text-light" href="/svc/mail/mailForm">YKSCorp 지원하기</a>
+		      	<a class="nav-item nav-link text-light" href="/board/listAll" ></a>
+		      	<a class="nav-item nav-link text-light" href="/svc/fileDownload"></a>
+		   		<a class="nav-item nav-link text-light" href="/svc/mail/mailForm">YKSCorp </a>
 		      	<%--
-		      	<a class="nav-item nav-link text-light" href="/login" >로그인</a>
-		      	<a class="nav-item nav-link text-light" href="/member/memberRegister">회원가입</a>
+		      	<a class="nav-item nav-link text-light" href="/login" >
+		      	<a class="nav-item nav-link text-light" href="/member/memberRegister">
 		      	 --%>
-		      	<a class="nav-item nav-link text-light" href="/svc/logout" >로그아웃</a>
+		      	<a class="nav-item nav-link text-light" href="/svc/logout" ></a>
 		      <%--
 			     <div class="dropdown">
 			        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"  text-align="right">
-			          	로그인
+			          	
 			        </a>
 			        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-				        <a class="dropdown-item" href="#">로그인</a>
-				        <a class="dropdown-item" href="#">회원가입</a>
+				        <a class="dropdown-item" href="#">
+				        <a class="dropdown-item" href="#">
 		    	    </div>
 	      		</div>
 	      		 --%>
@@ -71,11 +71,11 @@
 		<div class="container">
 			<table class = "table table-board text-light" border="2px" width="80%" align="center">
 				<tr>
-					<th style = "width:10%">글 번호</th>
-					<th style = "width:30%">제목</th>
-					<th style = "width:20%">작성자</th>
-					<th style = "width:20%">날짜</th>
-					<th style = "width:20%">조회수</th>
+					<th style = "width:10%"></th>
+					<th style = "width:30%"></th>
+					<th style = "width:20%"></th>
+					<th style = "width:20%"></th>
+					<th style = "width:20%"></th>
 				</tr>
 				<c:forEach items = "${boardList}" var = "boardVo" varStatus="status">
 					<tr>
@@ -88,7 +88,7 @@
 				</c:forEach>	
 			</table>
 			
-			<button class="btn btn-light" type = "button" onclick = "back();">뒤로가기</button>
+			<button class="btn btn-light" type = "button" onclick = "back();"></button>
 			
 		</div>
 	</div>

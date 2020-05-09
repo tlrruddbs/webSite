@@ -11,7 +11,7 @@
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
-<title>게시판</title>
+<title></title>
 </head>
 <script> 
 	function back(){
@@ -43,17 +43,17 @@
 		<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
 		    <div class="navbar-nav">	
 		  <%--    	<a class="nav-item nav-link active text-light" href="#" >Home <span class="sr-only">(current)</span></a> --%>
-		      	<a class="nav-item nav-link text-light" href="/board/listAll" >자유게시판</a>
-		      	<a class="nav-item nav-link text-light" href="#" >로그인</a>
-		      	<a class="nav-item nav-link text-light" href="/member/memberRegister">회원가입</a>
+		      	<a class="nav-item nav-link text-light" href="/board/listAll" ></a>
+		      	<a class="nav-item nav-link text-light" href="#" ></a>
+		      	<a class="nav-item nav-link text-light" href="/member/memberRegister"></a>
 		      <%--
 			     <div class="dropdown">
 			        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"  text-align="right">
-			          	로그인
+			          	
 			        </a>
 			        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-				        <a class="dropdown-item" href="#">로그인</a>
-				        <a class="dropdown-item" href="#">회원가입</a>
+				        <a class="dropdown-item" href="#">
+				        <a class="dropdown-item" href="#">
 		    	    </div>
 	      		</div>
 	      		 --%>
@@ -68,33 +68,33 @@
 				
 				<div class="column_center">
 					
-					<h1 class="text-light">게시판 등록하기</h1>
+					<h1 class="text-light"></h1>
 	
 					<form action="/board/create" method="POST">
 				        <div class="createForm">
-				            <label class="text-light">제목</label>
-				            <input type="text" name="title" class="createForm" placeholder = "게시판 제목">
+				            <label class="text-light"></label>
+				            <input type="text" name="title" class="createForm" placeholder = "">
 				        </div>
 				        <div class="createForm">
-				            <label class="text-light">내용</label>
-				            <textarea rows="4" cols="15" name="content" class="createForm" placeholder = "게시판 내용"></textarea>
+				            <label class="text-light"></label>
+				            <textarea rows="4" cols="15" name="content" class="createForm" placeholder = ""></textarea>
 				        </div>
 				        <div class="createForm">
-				            <label class="text-light">작성자 : ${member.userId }</label>
+				            <label class="text-light">: ${member.userId }</label>
 				            
-				            <input type="hidden" name="writer" class="createForm" placeholder = "작성자" value=${member.userId }>
+				            <input type="hidden" name="writer" class="createForm" placeholder = "" value=${member.userId }>
 				        </div>
 				        <!-- 
 				        <div>
-				        	<a href="#this" id="add" class="btn btn-outline-light">파일 추가하기</a>
+				        	<a href="#this" id="add" class="btn btn-outline-light">
 				        </div>
 				         -->
 				        <div class="Formfooter">
-				                <button type="submit" class="btn btn-outline-light">작성하기</button>
+				                <button type="submit" class="btn btn-outline-light"></button>
 				        </div>            
 				        
 					</form>
-					<button type = "button" class="btn btn-outline-light" onclick = "back();">뒤로가기</button>
+					<button type = "button" class="btn btn-outline-light" onclick = "back();"></button>
 					
 					
 	  			</div>

@@ -14,7 +14,7 @@
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
-<title>자유게시판</title>
+<title></title>
 	
 <script>
 	function mainPage(){
@@ -26,7 +26,7 @@
 
 	function searchCheck(frm){
 		if(frm.keyWord.value == ""){
-			alert("검색 단어를 입력하세요.");
+			alert(");
 			frm.keyWord.focus();
 			return;
 		}
@@ -35,11 +35,11 @@
 	
 	var msg = "${msg}";
 	if(msg == "listEmpty"){
-		alert("해당하는 검색 조건이 없습니다.");
+		alert(");
 		location.href="/board/listAll";
 
 	} else if(msg=="ModifySuccess"){
-		alert("수정이 완료되었습니다.")
+		alert(")
 	}
 	
 	function fn_paging(curPage) {
@@ -75,11 +75,11 @@
 		      <%--
 			     <div class="dropdown">
 			        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"  text-align="right">
-			          	로그인
+			          	
 			        </a>
 			        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-				        <a class="dropdown-item" href="#">로그인</a>
-				        <a class="dropdown-item" href="#">회원가입</a>
+				        <a class="dropdown-item" href="#">
+				        <a class="dropdown-item" href="#">
 		    	    </div>
 	      		</div>
 	      		 --%>
@@ -102,8 +102,8 @@
 				</select>
 				
 				<input class="form-control mr-sm-2" type = "search" name = "keyWord" placeholder="Search" aria-label="Search">
-			<%--	<input type = "button" value ="검색" onclick="searchCheck(form)"/> --%>
-				<button class="btn btn-outline-light" type = "submit" value ="검색" onclick="searchCheck(form)">검색</button>
+			<%--	<input type = "button" value ="onclick="searchCheck(form)"/> --%>
+				<button class="btn btn-outline-light" type = "submit" value =" onclick="searchCheck(form)">검색</button>
 			</form>
 			
 			</div>
@@ -111,9 +111,9 @@
 			
 			<table class = "table table-board text-light" border="2px" width="80%" align="center">
 				<tr>
-					<th style = "width:10%">글 번호</th>
+					<th style = "width:10%">번호</th>
 					<th style = "width:30%">제목</th>
-					<th style = "width:20%">작성자</th>
+					<th style = "width:20%">아이디</th>
 					<th style = "width:20%">날짜</th>
 					<th style = "width:20%">조회수</th>
 				</tr>
@@ -136,10 +136,10 @@
 			</div>
 			<div align="center">
 		        <c:if test="${page.curRange ne 1 }">
-		            <a href="#" onClick="fn_paging(1)">[처음]</a> 
+		            <a href="#" onClick="fn_paging(1)">[</a> 
 		        </c:if>
 		        <c:if test="${page.curPage ne 1}">
-		            <a href="#" onClick="fn_paging('${page.prevPage }')">[이전]</a> 
+		            <a href="#" onClick="fn_paging('${page.prevPage }')">[</a> 
 		        </c:if>
 		        <c:forEach var="pageNum" begin="${page.startPage }" end="${page.endPage }">
 		            <c:choose>
@@ -152,15 +152,15 @@
 		            </c:choose>
 		        </c:forEach>
 		        <c:if test="${page.curPage ne page.pageCnt && page.pageCnt > 0}">
-		            <a href="#" onClick="fn_paging('${page.nextPage }')">[다음]</a> 
+		            <a href="#" onClick="fn_paging('${page.nextPage }')">다음</a> 
 		        </c:if>
 		        <c:if test="${page.curRange ne page.rangeCnt && page.rangeCnt > 0}">
-		            <a href="#" onClick="fn_paging('${page.pageCnt }')">[끝]</a> 
+		            <a href="#" onClick="fn_paging('${page.pageCnt }')">[</a> 
 		        </c:if>
 		    </div>
 		    <%--
 		    <div>
-		        총 게시글 수 : ${page.listCnt } /    총 페이지 수 : ${page.pageCnt } / 현재 페이지 : ${page.curPage } / 현재 블럭 : ${page.curRange } / 총 블럭 수 : ${page.rangeCnt }
+		        : ${page.listCnt } /    : ${page.pageCnt } / : ${page.curPage } / : ${page.curRange } / : ${page.rangeCnt }
 		    </div>
 		     --%>
 		</div>
