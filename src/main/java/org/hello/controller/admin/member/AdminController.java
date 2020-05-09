@@ -24,6 +24,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 @RequestMapping({ "/svc/admin" })
@@ -344,6 +345,36 @@ public class AdminController {
 			memberVo.setMemberModifyChk(memberModifyChk);
 		}
 		
+		return memberVo;
+	}
+	
+	@RequestMapping({ "/memberList/memberRegister" })
+	@ResponseBody MemberVo memberRegister(@RequestBody Map<String, Object> params, HttpServletRequest request)throws Exception{
+		
+		System.out.println("/memberList/memberRegister");
+		
+		MemberVo memberVo = new MemberVo();
+		memberVo.setMemberRegisterChk(0);
+		String userId = (String)params.get("userId");
+		String userPw = (String)params.get("userPw");
+		String userEmail = (String)params.get("userEmail");
+		String userName = (String)params.get("userName");
+		String userPhoneNum = (String)params.get("userPhoneNum");
+		String strPower = (String)params.get("power");
+		int power = Integer.parseInt(strPower);
+		
+		System.out.println("id: "+userId+", power: "+power+", name: "+userName+", userEmail: "+userEmail+", userPw: "+userPw+", userPhoneNum: "+userPhoneNum);
+		
+		memberVo.setUserId(userId);
+		memberVo.setPower(power);
+		memberVo.setUserName(userName);
+		memberVo.setUserEmail(userEmail);
+		memberVo.setUserPw(userPw);
+		memberVo.setUserPhoneNum(userPhoneNum);
+		
+		memberService.insertMember(memberVo);
+		memberVo.setMemberRegisterChk(1);
+		System.out.println("추가 성공");
 		return memberVo;
 	}
 	

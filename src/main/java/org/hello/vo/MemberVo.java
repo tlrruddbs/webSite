@@ -11,7 +11,14 @@ public class MemberVo {
 	int idChk;
 	int modifyChk;
 	int memberModifyChk;
+	int memberRegisterChk;
 	
+	public int getMemberRegisterChk() {
+		return memberRegisterChk;
+	}
+	public void setMemberRegisterChk(int memberRegisterChk) {
+		this.memberRegisterChk = memberRegisterChk;
+	}
 	public String getUserId() {
 		return userId;
 	}

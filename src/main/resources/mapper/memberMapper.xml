@@ -11,7 +11,7 @@
     </insert>
       -->
       
-    <insert id="insertMember" parameterType = "org.hello.vo.MemberVo">
+    <insert id="insertMember" parameterType = "org.hello.vo.MemberVo" >
       insert into nc_b_user_t(USERID, USERNM, PASSWD, TEL, EMAIL, POWER) values
                         (#{userId},#{userName},#{userPw},#{userPhoneNum}, #{userEmail}, #{power})
     </insert>
