@@ -51,38 +51,38 @@
 <body>
 	<style type = "text/css">
 			.jumbotron{
-				background-image:url('/resources/images/mainOpaque.png');
+				background-image:url('/resources/images/background.jpg');
 				background-size:cover;
-				text-shadow: black 0.2em 0.2em 0.2em;
 				color:black;
 				
 			}
+			.flex-container{ 
+			width: 100%; height: 70vh; display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-align: center; -ms-flex-align: center; align-items: center; -webkit-box-pack: center; -ms-flex-pack: center; justify-content: center;"; 
+			}
+			.line{
+			border-bottom:1px solid gray;
+			}
+			.form-inline {
+		      vertical-align: right;
+		    }
 	</style>
 
 	<nav class="navbar navbar-expand-lg navbar-dark"> 
 	<%--	<nav class="navbar navbar-expand-lg bg-dark navbar-dark"> --%>
-	    <img src="/resources/images/logo.png" style="cursor:pointer" onclick="mainPage()" width="100" height="50"  />
+	    <img src="/resources/images/Logo.png" style="cursor:pointer" onclick="mainPage()" width="100" height="50%"  />
 	    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
 	    <span class="navbar-toggler-icon"></span>
 		</button>
-		
-		<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-		    <div class="navbar-nav">	
-		    <%--  	<a class="nav-item nav-link active text-light" href="#" >Home <span class="sr-only">(current)</span></a> --%>
-		      	<a class="nav-item nav-link text-light" href="/board/listAll" >자유게시판</a>
-		      	<a class="nav-item nav-link text-light" href="/login" >로그인</a>
-		      	<a class="nav-item nav-link text-light" href="/member/memberRegister">회원가입</a>
-		      <%--
-			     <div class="dropdown">
-			        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"  text-align="right">
-			          	
-			        </a>
-			        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-				        <a class="dropdown-item" href="#">
-				        <a class="dropdown-item" href="#">
-		    	    </div>
-	      		</div>
-	      		 --%>
+		<div class="collapse navbar-collapse">
+      
+    	</div>
+		<div align="right" class="nav navbar-nav navbar-right" >	
+		    <div class="collapse navbar-collapse">
+		      	<a class="nav-item nav-link text-dark" href="/board/listAll" >board</a>
+		   		<a class="nav-item nav-link text-dark" href="/svc/fileDownload">Read me</a>
+		   		<a class="nav-item nav-link text-dark" href="/svc/mail/mailForm">Recruit </a>
+		   		<a class="nav-item nav-link text-dark" href="/board/myBoardList">My page </a>
+	    		<a class="nav-item nav-link text-dark" href="/svc/logout" >Logout</a>
 	    	</div>
 	 	</div>
 	</nav>
@@ -90,47 +90,51 @@
 	<div class="jumbotron" >
 		<div class="container">
 		 
-			<div align="right">
-			<button class="btn btn-light btn-sm" type = "button" onclick="location.href='/board/myBoardList' " height="80%" >내가 쓴 글</button>
-			<button class="btn btn-light btn-sm" type = "button" onclick="location.href='/svc/logout' ">로그아웃</button>
-			<button class="btn btn-light btn-sm" type = "button" onclick = "mainPageCheck();">메인화면</button>
+		 	<div class="flex-container" style="background-color:#ffffff"> 
+		 	
+		 		<div width="900"  >
+		 		
+		 			<div align="right">
+		 			
+					<form class="form-inline my-2 my-lg-0 float-sm-right"" name = "type" action="/board/listAll" method="post" padding-left="300px">
+					
+						<select class="form-control " name = "type"  >
+							<option value = "title">제목</option>
+							<option value = "id">아이디</option>
+						</select>
+						
+						<input class="form-control mr-sm-2" type = "search" name = "keyWord" placeholder="Search" aria-label="Search">
+						<button class="btn btn-outline-dark" type = "submit" value =" onclick="searchCheck(form)">검색</button>
+						
+					</form>
+					</div>	
+				<table border="0" width="900">
+					<tr>
+						<th style = "width:10%">번호</th>
+						<th style = "width:30%">제목</th>
+						<th style = "width:20%">아이디</th>
+						<th style = "width:20%">날짜</th>
+						<th style = "width:20%">조회수</th>
+					</tr>
+					
+				<%--	<c:forEach items = "${boardList}" var = "boardVo"> --%> 
+					<c:forEach items = "${boardList}" var = "boardVo" varStatus="status">
+					<tr class="line">
+					<%--	<td>${status.count }</td> --%>
+						<td><p>${page.listCnt-(page.startIndex + status.count)+1 }</p></td>
+					 	<td><a href="/board/detail?seq=${boardVo.seq }&id=${boardVo.writer}">${boardVo.title }</a></td>
+						<td>${boardVo.writer }</td>
+						<td><fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${boardVo.date }"/></td>
+						<td><span>${boardVo.count }</span></td>
+					</tr>
 			
-			<form class="form-inline my-2 my-lg-0" name = "type" action="/board/listAll" method="post">
-				<select class="form-control" name = "type">
-					<option value = "title">제목</option>
-					<option value = "id">아이디</option>
-				</select>
-				
-				<input class="form-control mr-sm-2" type = "search" name = "keyWord" placeholder="Search" aria-label="Search">
-			<%--	<input type = "button" value ="onclick="searchCheck(form)"/> --%>
-				<button class="btn btn-outline-light" type = "submit" value =" onclick="searchCheck(form)">검색</button>
-			</form>
-			
+					</c:forEach>	
+				</table>
 			</div>
-			
-			
-			<table class = "table table-board text-light" border="2px" width="80%" align="center">
-				<tr>
-					<th style = "width:10%">번호</th>
-					<th style = "width:30%">제목</th>
-					<th style = "width:20%">아이디</th>
-					<th style = "width:20%">날짜</th>
-					<th style = "width:20%">조회수</th>
-				</tr>
 				
-			<%--	<c:forEach items = "${boardList}" var = "boardVo"> --%> 
-				<c:forEach items = "${boardList}" var = "boardVo" varStatus="status">
-				<tr>
-				<%--	<td>${status.count }</td> --%>
-					<td>${page.listCnt-(page.startIndex + status.count)+1 }</td>
-				 	<td><a href="/board/detail?seq=${boardVo.seq }&id=${boardVo.writer}">${boardVo.title }</a></td>
-					<td>${boardVo.writer }</td>
-					<td><fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${boardVo.date }"/></td>
-					<td><span>${boardVo.count }</span></td>
-				</tr>
-		
-				</c:forEach>	
-			</table>
+		 </div>
+		 
+			
 			<div align="right">
 				<button class="btn btn-light" type = "button" onclick="location.href='/board/create' " >글쓰기</button>
 			</div>

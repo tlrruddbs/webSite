@@ -24,7 +24,7 @@
 <body>
 	<style type = "text/css">
 		.jumbotron{
-			background-image:url('/resources/images/main.png');
+			background-image:url('/resources/images/background.jpg');
 			background-size:cover;
 			text-shadow: black 0.2em 0.2em 0.2em;
 			color:black;

@@ -43,44 +43,25 @@
 
 <body>
 	<style type = "text/css">
+			.flex-container{ 
+			width: 100%; height: 80vh; display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-align: center; -ms-flex-align: center; align-items: center; -webkit-box-pack: center; -ms-flex-pack: center; justify-content: center; 
+			} 
+			.logoBox { 
+			width: 25%; height: 60vh;
+			background-image: url(/resources/images/log-inWG.png); 
+			text-align: center; padding: 2em; 
+			}
+			.settingForm{
+				width: 25%; height: 50vh;
+				text-align: center; padding: 2em; 
+			}
+
 			.jumbotron{
-				background-image:url('/resources/images/main.png');
+				background-image:url('/resources/images/background.jpg');
 				background-size:cover;
-				text-shadow: black 0.2em 0.2em 0.2em;
 				color:black;
-				
 			}
 		</style>
-
-		<nav class="navbar navbar-expand-lg navbar-dark"> 
-		<%--	<nav class="navbar navbar-expand-lg bg-dark navbar-dark"> --%>
-		    <img src="/resources/images/logo.png" style="cursor:pointer"  width="100" height="50" onclick="reload();"/>
-		    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-		    <span class="navbar-toggler-icon"></span>
-		</button>
-	
-		<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-		    <div class="navbar-nav">	
-		  <%--    	<a class="nav-item nav-link active text-light" href="#" >Home <span class="sr-only">(current)</span></a> --%>
-		      	<a class="nav-item nav-link text-light" href="/board/listAll" >자유게시판</a>
-		      	<a class="nav-item nav-link text-light" onclick="reload();" >로그인</a>
-		      	<a class="nav-item nav-link text-light" href="/member/memberRegister">회원가입</a>
-		      <%--
-			     <div class="dropdown">
-			        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"  text-align="right">
-			          	로그인
-			        </a>
-			        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-				        <a class="dropdown-item" href="#">로그인</a>
-				        <a class="dropdown-item" href="#">회원가입</a>
-		    	    </div>
-	      		</div>
-	      		 --%>
-	    	</div>
-	 	</div>
-		</nav>
-		
-		
 		<c:set var ="loginMsg" value = "${loginMsg }"/>
 		<c:if test = "${ loginMsg eq 'There is no member information'}">
 		<%-- 	out.println("<script>alert("There is no member information");</script>");--%>
@@ -89,8 +70,48 @@
 		
 		<div class="jumbotron" >
 			<div class="container" role="main">
+				<div class="flex-container"> 
+				<div class="logoBox">
+					<div class="settingForm" style="padding-top:120px;">
+					<form action="/login/loginRequest" id="login-form" method="post"  >
+					 	<div>
+					        <input type="text" name="userId" placeholder="ID" id="userId" autofocus>
+					    </div>
+					    <div class="form-group" style="padding-top:15px">
+					        <input type="password" id = "userPw" name="userPw" placeholder="PASSWORD" oninput="checkPwd()">
+					    </div>
+					    
+					    <div style="align:center;">
+					    	<a href="#" onclick="document.getElementById('login-form').submit();"><img src="/resources/images/log-in botton_login.png" style="width:170px; height:35px;" /></a>
+					    	
+					    	
+
+					        
+					        <%--
+					        <button type="button" class="btn btn-outline-light" onclick="location.href='/member/memberRegister' ">회원가입</button>
+					    	--%>
+					    </div>
+					    <div style="padding-top:120px;">
+					    	<a href="/member/memberRegister"><img src="/resources/images/log-in botton_signin.png" style="width:170px; height:35px;" /></a>
+					    </div>
+					   
+					     
+				    <div> 
+				    </form>
+				
+				</div> 
+				</div>
+
+				<%--
 				<div style='width:25%; height:330px;float:right; '>
 			<h2><p class="text-light"> LOGIN</p></h2>
+				
+					<!-- 네이버 로그인 창으로 이동 -->
+					<div id="naver_id_login" style="text-align:center"><a href="${url}">
+					<img width="223" src="https://developers.naver.com/doc/review_201802/CK_bEFnWMeEBjXpQ5o8N_20180202_7aot50.png"/></a></div>
+					<br>
+
+			
 					<form action="/login/loginRequest" id="login-form" method="post" >
 					 	<div>
 					        <input type="text" name="userId" placeholder="id" id="userId" autofocus>
@@ -111,6 +132,7 @@
 				<div class="column_right">
 					
 	  			</div>
+	  			 --%>
 	  			</div>
 	  		</div>
 		</div>

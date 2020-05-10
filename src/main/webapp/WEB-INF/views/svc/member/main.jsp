@@ -21,21 +21,21 @@
 
 	
 	var msg = "${msg}";
-<%--	var transferMsg = "${transferMsg}"; --%>
-	
+	<%--	var transferMsg = "${transferMsg}"; --%>
+		
 	
 	var transferMsg = getParameterByName('transferMsg');
 	
 	
 	if(transferMsg == "success"){
-		alert(");
+		alert("메일을 성공적으로 보냈습니다.");
 		document.location.href="/svc/member/main"
 	} else if(transferMsg=="fail"){
-		alert(");
+		alert("메일 전송이 실패하였습니다.");
 		document.location.href="/svc/member/main"
 	}
 	if(msg== "NoSession"){
-		alert(");
+		alert("로그인 후 이용해주세요.");
 		location.href = "/login";
 	} 
 	
@@ -56,29 +56,37 @@
 <body>
 	<style type = "text/css">
 			.jumbotron{
-				background-image:url('/resources/images/main.png');
+				background-image:url('/resources/images/background.jpg');
 				background-size:cover;
-				text-shadow: black 0.2em 0.2em 0.2em;
 				color:black;
 				
 			}
+			.flex-container{ 
+			width: 100%; height: 60vh; display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-align: center; -ms-flex-align: center; align-items: center; -webkit-box-pack: center; -ms-flex-pack: center; justify-content: center; 
+			} 
+			
+		}
 		</style>
 
-		<nav class="navbar navbar-expand-lg navbar-dark"> 
+		<nav class="navbar navbar-expand-lg "> 
 		<%--	<nav class="navbar navbar-expand-lg bg-dark navbar-dark"> --%>
-		    <img src="/resources/images/logo.png" width="100" height="50" style="cursor:pointer" onclick="reload();"/>
-		    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+		    <img src="/resources/images/Logo.png" width="100" height="50%" style="cursor:pointer" onclick="reload();"/>
+		    <button class="navbar-toggler " type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
 		    <span class="navbar-toggler-icon"></span>
 		</button>
 	
-		<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-		    <div class="navbar-nav">	
-		     <%-- 	<a class="nav-item nav-link active text-light" href="#" >Home <span class="sr-only">(current)</span></a> --%>
-		      	<a class="nav-item nav-link text-light" href="/board/listAll" >자유게시판</a>
-		      	<%--<a class="nav-item nav-link text-light" href="#">--%>
-		   		<a class="nav-item nav-link text-light" href="/svc/fileDownload">파일다운로드</a>
-		   		<a class="nav-item nav-link text-light" href="/svc/mail/mailForm">YKSCorp </a>
-	    		<a class="nav-item nav-link text-light" href="/svc/logout" >로그아웃</a>
+		<div class="collapse navbar-collapse">
+      
+    	</div>
+	
+		<div id="navbarNavAltMarkup">
+		    <div align="right" class="nav navbar-nav navbar-right" >	
+		    <div class="collapse navbar-collapse">
+		      	<a class="nav-item nav-link text-dark" href="/board/listAll" >board</a>
+		   		<a class="nav-item nav-link text-dark" href="/svc/fileDownload">Read me</a>
+		   		<a class="nav-item nav-link text-dark" href="/svc/mail/mailForm">Recruit </a>
+		   		<a class="nav-item nav-link text-dark" href="/board/myBoardList">My page </a>
+	    		<a class="nav-item nav-link text-dark" href="/svc/logout" >Logout</a>
 	    	</div>
 	 	</div> 
 		</nav>
@@ -86,11 +94,16 @@
 		
 		<div class="jumbotron" > 
 			<div class="container" role="main">
+			<div class="flex-container"> 
 				<div align = "center"; border:1px solid white;>
-					<h1 class = "nav-item nav-link text-light">날씨: ${memberVo.weather}</h1>
-					<h1 class = "nav-item nav-link text-light">온도: ${memberVo.temp}</h1>
+					<h2 class = "nav-item nav-link text-dark">Seoul, Korea</h1>
+					<br>
+					<h2 class = "nav-item nav-link text-dark">${memberVo.temp}°C</h1>
+					<h2 class = "nav-item nav-link text-dark">${memberVo.weather}</h1>
+					
 				</div>
-				
+				</div>
+				<%--
 				<div style='width:25%; height:330px;float:right; border:1px solid white;'>
 					<h4 class = "nav-item nav-link text-light" align="center">${memberVo.memberCodeString }</h1>
 					<h4 class = "nav-item nav-link text-light" align="center">${memberVo.userName }</h1>
@@ -99,7 +112,7 @@
 					
 					
 				</div>
-
+				 --%>
 				
 				<div class="column_left">
 				</div>

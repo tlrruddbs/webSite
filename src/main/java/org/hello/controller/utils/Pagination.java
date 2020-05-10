@@ -1,7 +1,7 @@
 package org.hello.controller.utils;
 
 public class Pagination {
-  private int pageSize = 10;
+  private int pageSize = 8;
   
   private int rangeSize = 10;
    

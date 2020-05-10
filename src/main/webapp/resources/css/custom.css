@@ -15,8 +15,8 @@ a:hover {
 
 /*네비게이션 영역*/
 .navbar-expand-lg{ /*배경 색상*/
-	border-color:#000000;
-	background-color:#000000;
+	background-image:url('/resources/images/background.jpg');
+	background-color: rgba( 255, 255, 255, 0.5 );
 }
 
 .navbar-nav{

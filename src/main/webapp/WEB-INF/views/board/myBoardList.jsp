@@ -26,72 +26,73 @@
 <body>
 	<style type = "text/css">
 		.jumbotron{
-			background-image:url('/resources/images/mainOpaque.png');
+			background-image:url('/resources/images/background.jpg');
 			background-size:cover;
-			text-shadow: black 0.2em 0.2em 0.2em;
 			color:black;
-			
+		}
+		.flex-container{ 
+		width: 100%; height: 70vh; display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-align: center; -ms-flex-align: center; align-items: center; -webkit-box-pack: center; -ms-flex-pack: center; justify-content: center;"; 
+		}
+		.line{
+		border-bottom:1px solid gray;
 		}
 	</style>
 	
-	<nav class="navbar navbar-expand-lg navbar-dark"> 
-		<%--	<nav class="navbar navbar-expand-lg bg-dark navbar-dark"> --%>
-		    <img src="/resources/images/logo.png" style="cursor:pointer" onclick="mainPage()" width="100" height="50"  />
-		    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-		    <span class="navbar-toggler-icon"></span>
-		</button>
-	
-		<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-		    <div class="navbar-nav">	
-		    <%--  	<a class="nav-item nav-link active text-light" href="#" >Home <span class="sr-only">(current)</span></a> --%>
-		      	<a class="nav-item nav-link text-light" href="/board/listAll" ></a>
-		      	<a class="nav-item nav-link text-light" href="/svc/fileDownload"></a>
-		   		<a class="nav-item nav-link text-light" href="/svc/mail/mailForm">YKSCorp </a>
-		      	<%--
-		      	<a class="nav-item nav-link text-light" href="/login" >
-		      	<a class="nav-item nav-link text-light" href="/member/memberRegister">
-		      	 --%>
-		      	<a class="nav-item nav-link text-light" href="/svc/logout" ></a>
-		      <%--
-			     <div class="dropdown">
-			        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"  text-align="right">
-			          	
-			        </a>
-			        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-				        <a class="dropdown-item" href="#">
-				        <a class="dropdown-item" href="#">
-		    	    </div>
-	      		</div>
-	      		 --%>
-	    	</div>
-	 	</div>
+	<nav class="navbar navbar-expand-lg "> 
+	<%--	<nav class="navbar navbar-expand-lg bg-dark navbar-dark"> --%>
+	    <img src="/resources/images/Logo.png" width="100" height="50%" style="cursor:pointer" onclick="reload();"/>
+	    <button class="navbar-toggler " type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+	    <span class="navbar-toggler-icon"></span>
+	</button>
+
+	<div class="collapse navbar-collapse">
+     
+   	</div>
+
+	<div id="navbarNavAltMarkup">
+	    <div align="right" class="nav navbar-nav navbar-right" >	
+	    <div class="collapse navbar-collapse">
+	      	<a class="nav-item nav-link text-dark" href="/board/listAll" >board</a>
+	   		<a class="nav-item nav-link text-dark" href="/svc/fileDownload">Read me</a>
+	   		<a class="nav-item nav-link text-dark" href="/svc/mail/mailForm">Recruit </a>
+	   		<a class="nav-item nav-link text-dark" href="/board/myBoardList">My page </a>
+    		<a class="nav-item nav-link text-dark" href="/svc/logout" >Logout</a>
+    	</div>
+ 	</div> 
 	</nav>
-	
+
 	<div class="jumbotron" >
 		<div class="container">
-			<table class = "table table-board text-light" border="2px" width="80%" align="center">
-				<tr>
-					<th style = "width:10%"></th>
-					<th style = "width:30%"></th>
-					<th style = "width:20%"></th>
-					<th style = "width:20%"></th>
-					<th style = "width:20%"></th>
-				</tr>
-				<c:forEach items = "${boardList}" var = "boardVo" varStatus="status">
+		 
+		 	<div class="flex-container" style="background-color:#ffffff"> 
+		 	
+		 		<div width="900"  >
+		 		
+				<table border="0" width="900">
 					<tr>
-						<td>${listCnt-(page.startIndex + status.count)+1 }</td>
-						<td><a href="/board/detail?seq=${boardVo.seq }&id=${boardVo.writer}">${boardVo.title }</a></td>
+						<th style = "width:10%">번호</th>
+						<th style = "width:30%">제목</th>
+						<th style = "width:20%">아이디</th>
+						<th style = "width:20%">날짜</th>
+						<th style = "width:20%">조회수</th>
+					</tr>
+					
+				<%--	<c:forEach items = "${boardList}" var = "boardVo"> --%> 
+					<c:forEach items = "${boardList}" var = "boardVo" varStatus="status">
+					<tr class="line">
+					<%--	<td>${status.count }</td> --%>
+						<td>${listCnt-(page.startIndex + status.count)+1 }</p></td>
+					 	<td><a href="/board/detail?seq=${boardVo.seq }&id=${boardVo.writer}">${boardVo.title }</a></td>
 						<td>${boardVo.writer }</td>
 						<td><fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${boardVo.date }"/></td>
 						<td><span>${boardVo.count }</span></td>
 					</tr>
-				</c:forEach>	
-			</table>
 			
-			<button class="btn btn-light" type = "button" onclick = "back();"></button>
-			
-		</div>
-	</div>
+					</c:forEach>	
+				</table>
+			</div>
+				
+		 </div>
 	
 
 	
