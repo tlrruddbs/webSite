@@ -113,7 +113,7 @@ public class SVCController {
 					str = str.replace("[", "");
 					str = str.replace("]", "");
 					str = str.substring(str.lastIndexOf("},")+1);
-					str = str.substring(1);
+					str = str.substring(0);
 					System.out.println("json parsing: "+str);
 					
 					JSONParser parsere = new JSONParser();
