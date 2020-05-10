@@ -102,6 +102,7 @@ public class MemberDAOImp implements MemberDAO {
 	@Override
 	public MemberVo getUserInfo(String userId) {
 		MemberVo memberVo = new MemberVo();
+		/*
 		Map<String,Object>map = new HashMap<>();
 		map = sqlSession.selectOne(namespace+".getUserInfo",userId);
 		if(map==null) {
@@ -113,6 +114,9 @@ public class MemberDAOImp implements MemberDAO {
 		memberVo.setUserEmail((String)map.get("EMAIL"));
 		memberVo.setPower((int)map.get("POWER"));
 		memberVo.setUserName((String)map.get("USERNM"));
+		return memberVo;
+		*/
+		memberVo = sqlSession.selectOne(namespace+".getUserInfo", userId);
 		return memberVo;
 	}
 

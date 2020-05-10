@@ -18,6 +18,7 @@ public class LoginDAOImp implements LoginDAO{
 
 	@Override
 	public MemberVo loginRequest(MemberVo memberVo)throws Exception{
+		/*
 		Map<String,Object>map = new HashMap<>();
 		map = sqlSession.selectOne(namespace+".loginRequest",memberVo);
 		if(map==null) {
@@ -31,6 +32,9 @@ public class LoginDAOImp implements LoginDAO{
 		memberVo.setUserName((String)map.get("USERNM"));
 		
 		return memberVo;
-		
+		*/
+		memberVo = sqlSession.selectOne(namespace+".loginRequest",memberVo);
+		System.out.println("dao: "+memberVo.getUserId()+", "+memberVo.getEmail()+", "+memberVo.getTel());
+		return memberVo;
 	}
 } 

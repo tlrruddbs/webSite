@@ -233,7 +233,7 @@ public class AdminController {
 		MemberVo memberVo = null;
 		memberVo = this.memberService.getUserInfo(userId);
 
-		System.out.println("userEmail: " + memberVo.getUserEmail().toString());
+		System.out.println("userEmail: " + memberVo.email().toString());
 
 		if (session == null) {
 			System.out.println("세션이 만료되었습니다.");
@@ -298,10 +298,10 @@ public class AdminController {
 
 		memberVo.setUserId(userId);
 		memberVo.setPower(power);
-		memberVo.setUserName(userName);
-		memberVo.setUserEmail(userEmail);
-		memberVo.setUserPw(userPw);
-		memberVo.setUserPhoneNum(userPhoneNum);
+		memberVo.setUserNM(userName);
+		memberVo.setEmail(userEmail);
+		memberVo.setPassWD(userPw);
+		memberVo.setTel(userPhoneNum);
 
 		Map map = new HashMap<>();
 		map.put("userId", userId);

@@ -51,7 +51,7 @@
 		update nc_b_user_t set PASSWD = #{userPw} where USERID=#{userId}
 	</update>
 	
-	<select id ="getUserInfo" parameterType = "String" resultType="map" >
+	<select id ="getUserInfo" parameterType = "String" resultType="org.hello.vo.MemberVo" >
 		select * from nc_b_user_t where USERID=#{userId}
 	</select>
 	

@@ -59,13 +59,13 @@ public class LoginController {
 		ModelAndView mav = new ModelAndView();
 		HttpSession session = request.getSession();
 		String userId = memberVo.getUserId();
-		String userPw = memberVo.getUserPw();
+		String userPw = memberVo.getPassWD();
 		MemberVo userVo = null;  
 		userVo = this.loginService.loginRequest(memberVo);
 		System.out.println("userVo: "+userVo.toString());
-		System.out.println("userVo detail: "+userVo.getUserPhoneNum());
-		System.out.println("userVo id"+userVo.getUserId()+", userVoPW: "+userVo.getUserPw()+", memberVo Pw:"+userPw);
-		if (userVo.getUserId().equals("") || !userVo.getUserPw().equals(userPw)) {
+		System.out.println("userVo detail: "+userVo.getTel());
+		System.out.println("userVo id"+userVo.getUserId()+", userVoPW: "+userVo.getPassWD()+", memberVo Pw:"+userPw);
+		if (userVo.getUserId().equals("") || !userVo.getPassWD().equals(userPw)) {
 			userVo = null;
 			//mav.addObject("msg","Failure");
 			session.setAttribute("msg", "Failure");

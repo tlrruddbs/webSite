@@ -3,51 +3,45 @@ package org.hello.vo;
 public class MemberVo {
 
 	String userId;
-	String userName;
-	String userPw;
-	String userPhoneNum;
-	String userEmail;
+	String userNM;
+	String passWD;
+	String tel;
+	String email;
+	
 	int power;
 	int idChk;
 	int modifyChk;
 	int memberModifyChk;
 	int memberRegisterChk;
-	
-	public int getMemberRegisterChk() {
-		return memberRegisterChk;
-	}
-	public void setMemberRegisterChk(int memberRegisterChk) {
-		this.memberRegisterChk = memberRegisterChk;
-	}
 	public String getUserId() {
 		return userId;
 	}
 	public void setUserId(String userId) {
 		this.userId = userId;
 	}
-	public String getUserName() {
-		return userName;
+	public String getUserNM() {
+		return userNM;
 	}
-	public void setUserName(String userName) {
-		this.userName = userName;
+	public void setUserNM(String userNM) {
+		this.userNM = userNM;
 	}
-	public String getUserPw() {
-		return userPw;
+	public String getPassWD() {
+		return passWD;
 	}
-	public void setUserPw(String userPw) {
-		this.userPw = userPw;
+	public void setPassWD(String passWD) {
+		this.passWD = passWD;
 	}
-	public String getUserPhoneNum() {
-		return userPhoneNum;
+	public String getTel() {
+		return tel;
 	}
-	public void setUserPhoneNum(String userPhoneNum) {
-		this.userPhoneNum = userPhoneNum;
+	public void setTel(String tel) {
+		this.tel = tel;
 	}
-	public String getUserEmail() {
-		return userEmail;
+	public String getEmail() {
+		return email;
 	}
-	public void setUserEmail(String userEmail) {
-		this.userEmail = userEmail;
+	public void setEmail(String email) {
+		this.email = email;
 	}
 	public int getPower() {
 		return power;
@@ -72,6 +66,12 @@ public class MemberVo {
 	}
 	public void setMemberModifyChk(int memberModifyChk) {
 		this.memberModifyChk = memberModifyChk;
+	}
+	public int getMemberRegisterChk() {
+		return memberRegisterChk;
+	}
+	public void setMemberRegisterChk(int memberRegisterChk) {
+		this.memberRegisterChk = memberRegisterChk;
 	}
 	
 }
