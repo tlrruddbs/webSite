@@ -82,6 +82,7 @@
 		<div id="navbarNavAltMarkup">
 		    <div align="right" class="nav navbar-nav navbar-right" >	
 		    <div class="collapse navbar-collapse">
+		  		<a class="nav-item nav-link text-dark" href="/svc/member/myPage" >myPage</a>
 		      	<a class="nav-item nav-link text-dark" href="/board/listAll" >board</a>
 		   		<a class="nav-item nav-link text-dark" href="/svc/fileDownload">Read me</a>
 		   		<a class="nav-item nav-link text-dark" href="/svc/mail/mailForm">Recruit </a>

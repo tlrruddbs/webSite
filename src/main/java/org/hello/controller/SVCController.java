@@ -50,6 +50,26 @@ public class SVCController {
 	
 	@Autowired
 	private JavaMailSender mailSender;
+	
+	@RequestMapping(value = { "member/myPage" }, method = { RequestMethod.GET, RequestMethod.GET })
+	public ModelAndView myPage(MemberVo memberVo, Model model, HttpServletRequest request,
+			@RequestParam(value = "loginResult", defaultValue = "") String loginResult) throws Exception {
+
+		ModelAndView mav = new ModelAndView();
+		HttpSession session = request.getSession(false);
+		if (session == null) {
+			System.out.println("세션이 없습니다.");
+			mav.setViewName("redirect:/login");
+		} else {
+			System.out.println("/svc/member/mypage");
+			memberVo = (MemberVo) session.getAttribute("user");
+			int boardCnt = boardService.myBoardCountList(memberVo.getUserId());
+			memberVo.setMyBoardCountList(boardCnt);
+			mav.addObject("memberVo", memberVo);
+			mav.setViewName("/svc/member/myPage");
+		}
+		return mav;
+	}
 
 	@RequestMapping(value = { "member/main" }, method = { RequestMethod.GET, RequestMethod.GET })
 	public ModelAndView main(MemberVo memberVo, Model model, HttpServletRequest request,
