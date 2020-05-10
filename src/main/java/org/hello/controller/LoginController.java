@@ -60,6 +60,9 @@ public class LoginController {
 		HttpSession session = request.getSession();
 		String userId = memberVo.getUserId();
 		String userPw = memberVo.getPassWD();
+		
+		System.out.println("loginController: "+memberVo.getUserId()+", "+memberVo.getPassWD());
+		
 		MemberVo userVo = null;  
 		userVo = this.loginService.loginRequest(memberVo);
 		System.out.println("userVo: "+userVo.toString());

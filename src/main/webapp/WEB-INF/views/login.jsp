@@ -78,7 +78,7 @@
 					        <input type="text" name="userId" placeholder="id" id="userId" autofocus>
 					    </div>
 					    <div class="form-group">
-					        <input type="password" id = "userPw" name="userPw" placeholder="Password" oninput="checkPwd()">
+					        <input type="password" id = "passWD" name="passWD" placeholder="Password" oninput="checkPwd()">
 					    </div>
 					    <div>
 					        <button type="submit" class="btn btn-outline-light">로그인</button>

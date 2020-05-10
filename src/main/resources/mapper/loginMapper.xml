@@ -5,6 +5,6 @@
  
 <mapper namespace="org.hello.mapper.LoginMapper">
 	<select id="loginRequest" parameterType = "org.hello.vo.MemberVo" resultType = "org.hello.vo.MemberVo">
-		select * from nc_b_user_t where USERID=#{userId} and PASSWD=#{userPw}
+		select * from nc_b_user_t where USERID=#{userId} and PASSWD=#{passWD}
 	</select>
 </mapper> 
