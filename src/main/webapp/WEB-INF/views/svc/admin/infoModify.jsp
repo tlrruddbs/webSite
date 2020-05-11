@@ -229,18 +229,18 @@ function memberCheck(){
 	        </div>
 	        
 	        <div>
-	                          사용자 이름<input type="text" name="userNM" id="userNM" placeholder="${memberVo.userNM }" oninput="checkNick()">
+	                          사용자 이름<input type="text" name="userNM" id="userNM" placeholder="${memberVo.userNM }" >
 	        </div>
 	        
 	        <div>
-            	패스워드<input type="password" id = "passWD" name="passWD" placeholder="password" oninput="checkPwd()">
+            	패스워드<input type="password" id = "passWD" name="passWD" placeholder="password">
 	        </div>
 	        <div>
-            	패스워드 확인<input type="password" name="passWDConfirm" placeholder="Confirm Password" id="userRePw" oninput="checkPwd()">
+            	패스워드 확인<input type="password" name="passWDConfirm" placeholder="Confirm Password" id="userRePw">
 	        </div>
 	        
 	        <div>
-	                          핸드폰 <input type="text" name="tel" id="tel" placeholder="${memberVo.tel }" oninput="checkNick()">
+	                          핸드폰 <input type="text" name="tel" id="tel" placeholder="${memberVo.tel }">
 	        </div>
 	        
 	        <div>
@@ -250,7 +250,7 @@ function memberCheck(){
 	       
 	        <div>
 	        	
-	        권한<select class="form-control" id = 'authority' name='authority'  style="width:300px;  ">
+	        권한<select class="form-control" id = 'authority' name='authority'  >
 	    		<option value ="0">일반</option>
 	    		<option value ="1">관할 사무소</option>
 	    		<option value ="2">시스템 관리자</option>
