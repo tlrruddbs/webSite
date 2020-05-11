@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.hello.controller.utils.Pagination;
+import org.hello.vo.AddVo;
 import org.hello.vo.MemberVo;
 
 public interface MemberService {
@@ -32,10 +33,10 @@ public interface MemberService {
 	
 	public int deleteAuthorityId(String selectId) throws Exception;
 	
-	public int updateUserPassWord(Map map) throws Exception;
+	public int updateUserPassWord(MemberVo memberVo) throws Exception;
 	
 	public MemberVo getUserInfo(String userId) throws Exception;
 	
-	public int memberModify(Map map)throws Exception;
+	public int memberModify(MemberVo memberVo)throws Exception;
 }
  

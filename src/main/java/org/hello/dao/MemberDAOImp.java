@@ -4,16 +4,17 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.hello.controller.utils.Pagination;
+import org.hello.vo.AddVo;
 import org.hello.vo.MemberVo;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 @Repository 
 public class MemberDAOImp implements MemberDAO {
 
-	@Inject
+	@Autowired
     private SqlSession sqlSession;
 	
     private static String namespace = "org.hello.mapper.MemberMapper";
@@ -95,34 +96,21 @@ public class MemberDAOImp implements MemberDAO {
 	}
 
 	@Override
-	public int updateUserPassWord(Map map) {
-		return sqlSession.update(namespace+".updateUserPassWord", map);
+	public int updateUserPassWord(MemberVo memberVo) {
+		return sqlSession.update(namespace+".updateUserPassWord", memberVo);
 	}
 
 	@Override
 	public MemberVo getUserInfo(String userId) {
 		MemberVo memberVo = new MemberVo();
-		/*
-		Map<String,Object>map = new HashMap<>();
-		map = sqlSession.selectOne(namespace+".getUserInfo",userId);
-		if(map==null) {
-			return memberVo;
-		}
-		memberVo.setUserId((String)map.get("USERID"));
-		memberVo.setUserPhoneNum((String)map.get("TEL"));
-		memberVo.setUserPw((String)map.get("PASSWD"));
-		memberVo.setUserEmail((String)map.get("EMAIL"));
-		memberVo.setPower((int)map.get("POWER"));
-		memberVo.setUserName((String)map.get("USERNM"));
-		return memberVo;
-		*/
+		
 		memberVo = sqlSession.selectOne(namespace+".getUserInfo", userId);
 		return memberVo;
 	}
 
 	@Override
-	public int memberModify(Map map) {
-		return sqlSession.update(namespace+".memberModify", map);
+	public int memberModify(MemberVo memberVo) {
+		return sqlSession.update(namespace+".memberModify", memberVo);
 	}
 	 
 }

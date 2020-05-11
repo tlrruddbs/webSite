@@ -17,24 +17,21 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 <script> 
 	function check(){
-		var userPw = $("#userPw").val();
+		var passWD = $("#passWD").val();
    		var userRePw = $("#userRePw").val();
    		var userId = $("#userId").val();
    		
-   		alert(userId+", "+userPw+", "+userRePw);
-   		
-   		
-   		if(userPw == ""){
+   		if(passWD == ""){
    		 alert("비밀번호를 입력해주세요");
    		 return false;
-	   	} else if (userPw != userRePw){
+	   	} else if (passWD != userRePw){
 	   		alert("비밀번호를 확인해주세요");
    			return false;
 	   	}
    		
    		var jobj = new Object();
    		jobj.userId = userId;
-   		jobj.userPw = userPw;
+   		jobj.passWD = passWD;
    		
    		$.ajax({
     		url:"/svc/admin/memberList/modify",
@@ -140,7 +137,7 @@
 
 	<nav class="navbar navbar-expand-lg navbar-dark"> 
 	<%--	<nav class="navbar navbar-expand-lg bg-dark navbar-dark"> --%>
-	    <img src="/resources/images/logo.png" style="cursor:pointer" width="100" height="50" onclick="reload();"  />
+	    <img src="/resources/images/logoKS.png" style="cursor:pointer" width="100" height="50" onclick="reload();"  />
 	    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
 	    <span class="navbar-toggler-icon"></span>
 		</button>
@@ -155,10 +152,10 @@
 	            	사용자 id ${userId }
 	        </div>
 	        <div>
-	            새 비밀번호<input type="password" id = "userPw" name="userPw" placeholder="userPw">
+	            새 비밀번호<input type="password" id = "passWD" name="passWD" placeholder="passWD">
 	        </div>
 	        <div>
-	            새 비밀번호 확인<input type="password" name="userPwConfirm" placeholder="Confirm Password" id="userRePw">
+	            새 비밀번호 확인<input type="password" name="passWDConfirm" placeholder="Confirm Password" id="userRePw">
 	        </div>
 	        
 	        <!-- hidden -->

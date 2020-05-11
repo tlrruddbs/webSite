@@ -1,10 +1,10 @@
 package org.hello.controller;
 
-import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 
 import org.hello.service.MemberService;
 import org.hello.vo.MemberVo;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -18,7 +18,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 @RequestMapping("/member")
 public class MemberController {
 	
-	@Inject 
+	@Autowired
 	MemberService memberService;
 	
 	@RequestMapping(value="/memberRegister", method= {RequestMethod.POST, RequestMethod.GET})
@@ -38,16 +38,14 @@ public class MemberController {
 	@RequestMapping(value="/idChk", method= {RequestMethod.POST, RequestMethod.GET}, produces="application/json; charset=utf-8")
 	@ResponseBody 
 	public MemberVo idChk(@RequestBody MemberVo memberVo, HttpServletRequest request) throws Exception{
-		System.out.println("PARAM: "+request.getParameter("userId"));
 		
-		System.out.println("userId: "+ memberVo.getUserId());
 		int result = memberService.idChk(memberVo);
 		
 		System.out.println("result:"+result);
 		if(result>0) {
-			System.out.println("Áßº¹µÈ ¾ÆÀÌµğÀÔ´Ï´Ù.");
+			System.out.println("ì¤‘ë³µ.");
 		} else {
-			System.out.println("»ç¿ë°¡´ÉÇÑ ¾ÆÀÌµğÀÔ´Ï´Ù.");
+			System.out.println("ì¤‘ë³µ ì•„ë‹˜.");
 		}   
 		   
 		return memberVo;

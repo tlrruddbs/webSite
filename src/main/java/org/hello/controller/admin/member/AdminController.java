@@ -1,10 +1,8 @@
 package org.hello.controller.admin.member;
 
-import java.io.BufferedReader;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import org.hello.controller.utils.Pagination;
@@ -12,8 +10,6 @@ import org.hello.service.MemberService;
 import org.hello.service.StationService;
 import org.hello.vo.AddVo;
 import org.hello.vo.MemberVo;
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -23,7 +19,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 @RequestMapping({ "/svc/admin" })
@@ -33,21 +28,23 @@ public class AdminController {
 
 	@Autowired
 	StationService stationService;
-
+	
+	//메인화면
 	@RequestMapping(value = { "/adminMain" }, method = { RequestMethod.GET, RequestMethod.GET })
 	public ModelAndView memberList(MemberVo memberVo, Model model, HttpServletRequest request,
 			@RequestParam(defaultValue = "1") int curPage) throws Exception {
 		ModelAndView mav = new ModelAndView();
 		HttpSession session = request.getSession(false);
-		int listCnt = this.memberService.memberList().size();
-		Map<String, Object> map = new HashMap<>();
-		Pagination page = new Pagination(listCnt, curPage);
-		map.put("page", page);
 		if (session == null) {
 			System.out.println("세션이 만료되었습니다.");
 			mav.setViewName("redirect:/login");
 			return mav;
 		}
+		int listCnt = this.memberService.memberList().size();
+		Map<String, Object> map = new HashMap<>();
+		Pagination page = new Pagination(listCnt, curPage);
+		map.put("page", page);
+		
 		List<Map> memberList = this.memberService.getMemberList(page);
 
 		mav.addObject("memberList", memberList);
@@ -56,6 +53,7 @@ public class AdminController {
 		return mav;
 	}
 
+	//회원 등록 화면
 	@RequestMapping({ "/memberList/register" })
 	public ModelAndView register(HttpServletRequest request) throws Exception {
 		System.out.println("/memberList/register");
@@ -68,7 +66,8 @@ public class AdminController {
 		mav.setViewName("/svc/admin/register");
 		return mav;
 	}
-
+	
+	//관할 관리소 등록 화면
 	@RequestMapping({ "/memberList/authority" })
 	@ResponseBody
 	public ModelAndView authority(HttpServletRequest request) throws Exception {
@@ -88,6 +87,8 @@ public class AdminController {
 		return mav;
 	}
 
+	
+	//power 추가
 	@RequestMapping({ "/memberList/authority/add" })
 	@ResponseBody
 	public AddVo authorityAdd(HttpServletRequest request, @RequestBody AddVo addVo) throws Exception {
@@ -99,10 +100,6 @@ public class AdminController {
 			System.out.println("세션이 만료되었습니다.");
 			mav.setViewName("redirect:/login");
 		}
-		// System.out.println(obj.get("memberSelect"));
-		// System.out.println(obj.get("stationSelect"));
-		// String userId = (String)obj.get("memberSelect");
-		// String strSeq = (String) obj.get("stationSelect");
 
 		String selectId = addVo.getMemberSelect();
 		String strSeq = addVo.getStationSelect();
@@ -141,15 +138,12 @@ public class AdminController {
 
 		addVo.setStationList(this.stationService.stationList());
 		addVo.setMemberAuthorityList(this.memberService.getMemberListAuthority());
-		// List<Map> stationList = this.stationService.stationList();
-		// List<Map> memberAuthorityList = this.memberService.getMemberListAuthority();
-		// mav.addObject("stationList", stationList);
-		// mav.addObject("memberAuthorityList", memberAuthorityList);
 
 		return addVo;
 
 	}
 
+	//power 삭제
 	@RequestMapping({ "/memberList/authority/delete" })
 	@ResponseBody
 	public AddVo delete(HttpServletRequest request, @RequestBody AddVo addVo) throws Exception {
@@ -194,6 +188,7 @@ public class AdminController {
 		return addVo;
 	}
 
+	//관리자 비밀번호 수정
 	@RequestMapping({ "/memberList/passwordModify" })
 	@ResponseBody
 	public ModelAndView passwordModify(MemberVo memberVo, HttpServletRequest request) throws Exception {
@@ -219,6 +214,7 @@ public class AdminController {
 		return mav;
 	}
 
+	//회원 아이디 클릭시 창
 	@RequestMapping({ "/memberList/infoModify" })
 	@ResponseBody
 	public ModelAndView infoModify(HttpServletRequest request, @RequestParam(defaultValue = "") String userId)
@@ -238,10 +234,12 @@ public class AdminController {
 		if (session == null) {
 			System.out.println("세션이 만료되었습니다.");
 			mav.setViewName("redirect:/login");
+			return mav;
 		} else if (null == userVo) {
 			System.out.println("userVo is null");
 			System.out.println("세션이 만료되었습니다.");
 			mav.setViewName("redirect:/login");
+			return mav;
 		}
 		mav.addObject("memberVo", memberVo);
 		mav.addObject("userId", userId);
@@ -249,6 +247,7 @@ public class AdminController {
 		return mav;
 	}
 
+	//회원 정보 또는 시스템 관리자 비밀번호 수정 시
 	@RequestMapping({ "/memberList/modify" })
 	@ResponseBody
 	MemberVo modify(@RequestBody Map<String, Object> params, HttpServletRequest request) throws Exception {
@@ -257,14 +256,13 @@ public class AdminController {
 		MemberVo memberVo = new MemberVo();
 		memberVo.setModifyChk(0);
 		String userId = (String) params.get("userId");
-		String userPw = (String) params.get("userPw");
-		System.out.println(userId + ", " + userPw);
+		String passWD = (String) params.get("passWD");
+		System.out.println(userId + ", " + passWD);
 
-		Map map = new HashMap<>();
-		map.put("userId", userId);
-		map.put("userPw", userPw);
-
-		int modifyChk = memberService.updateUserPassWord(map);
+		memberVo.setUserId(userId);
+		memberVo.setPassWD(passWD);
+		
+		int modifyChk = memberService.updateUserPassWord(memberVo);
 		System.out.println("modify Chk: " + modifyChk);
 
 		if (modifyChk > 0) {
@@ -277,41 +275,18 @@ public class AdminController {
 
 		return memberVo;
 	}
-
+	
+	//회원 정보 수정
 	@RequestMapping({ "/memberList/memberModify" })
 	@ResponseBody
-	MemberVo memberModify(@RequestBody Map<String, Object> params, HttpServletRequest request) throws Exception {
+	MemberVo memberModify(@RequestBody MemberVo memberVo, HttpServletRequest request) throws Exception {
 		System.out.println("/memberList/memberModify");
 
-		MemberVo memberVo = new MemberVo();
-		memberVo.setModifyChk(0);
-		String userId = (String) params.get("userId");
-		String userPw = (String) params.get("userPw");
-		String userEmail = (String) params.get("userEmail");
-		String userName = (String) params.get("userName");
-		String userPhoneNum = (String) params.get("userPhoneNum");
-		String strPower = (String) params.get("power");
-		int power = Integer.parseInt(strPower);
+		System.out.println("id: " + memberVo.getUserId() + ", power: " + memberVo.getPower() + ", name: " + memberVo.getUserNM() + ", userEmail: " + memberVo.getEmail()
+				+ ", passWD: " + memberVo.getPassWD() + ", userPhoneNum: " + memberVo.getTel());
 
-		System.out.println("id: " + userId + ", power: " + power + ", name: " + userName + ", userEmail: " + userEmail
-				+ ", userPw: " + userPw + ", userPhoneNum: " + userPhoneNum);
-
-		memberVo.setUserId(userId);
-		memberVo.setPower(power);
-		memberVo.setUserNM(userName);
-		memberVo.setEmail(userEmail);
-		memberVo.setPassWD(userPw);
-		memberVo.setTel(userPhoneNum);
-
-		Map map = new HashMap<>();
-		map.put("userId", userId);
-		map.put("power", power);
-		map.put("userName", userName);
-		map.put("userEmail", userEmail);
-		map.put("userPw", userPw);
-		map.put("userPhoneNum", userPhoneNum);
-
-		int memberModifyChk = memberService.memberModify(map);
+	
+		int memberModifyChk = memberService.memberModify(memberVo);
 
 		if (memberModifyChk > 0) {
 			System.out.println("사용자 정보수정 완료");
@@ -324,42 +299,25 @@ public class AdminController {
 		return memberVo;
 	}
 
+	//회원추가
 	@RequestMapping({ "/memberList/memberRegister" })
-	@ResponseBody
-	MemberVo memberRegister(@RequestBody Map<String, Object> params, HttpServletRequest request) throws Exception {
+	@ResponseBody MemberVo memberRegister(@RequestBody MemberVo memberVo, HttpServletRequest request) throws Exception {
 
 		System.out.println("/memberList/memberRegister");
 
-		MemberVo memberVo = new MemberVo();
-		memberVo.setMemberRegisterChk(0);
-		String userId = (String) params.get("userId");
-		String userPw = (String) params.get("userPw");
-		String userEmail = (String) params.get("userEmail");
-		String userName = (String) params.get("userName");
-		String userPhoneNum = (String) params.get("userPhoneNum");
-		String strPower = (String) params.get("power");
-		int power = Integer.parseInt(strPower);
+		System.out.println("id: " + memberVo.getUserId() + ", power: " + memberVo.getPower() + ", name: " + memberVo.getUserNM() + ", userEmail: " + memberVo.getEmail()
+				+ ", passWD: " + memberVo.getPassWD() + ", userPhoneNum: " + memberVo.getTel());
 
-		System.out.println("id: " + userId + ", power: " + power + ", name: " + userName + ", userEmail: " + userEmail
-				+ ", userPw: " + userPw + ", userPhoneNum: " + userPhoneNum);
-
-		memberVo.setUserId(userId);
-		memberVo.setPower(power);
-		memberVo.setUserNM(userName);
-		memberVo.setEmail(userEmail);
-		memberVo.setPassWD(userPw);
-		memberVo.setTel(userPhoneNum);
 
 		memberService.insertMember(memberVo);
 		memberVo.setMemberRegisterChk(1);
 		System.out.println("추가 성공");
 		return memberVo;
 	}
-
-	@RequestMapping(value = { "memberList/logout" }, method = { RequestMethod.POST, RequestMethod.GET }, produces = {
+	//로그아웃
+	@RequestMapping(value = { "/logout" }, method = { RequestMethod.POST, RequestMethod.GET }, produces = {
 			"application/json; charset=utf-8" })
-	@ResponseBody
-	public ModelAndView logout(HttpServletRequest request) {
+	@ResponseBody public ModelAndView logout(HttpServletRequest request) {
 		System.out.println("logout!!");
 		ModelAndView mav = new ModelAndView();
 		request.getSession().removeAttribute("user");
@@ -367,20 +325,4 @@ public class AdminController {
 		return mav;
 	}
 
-	/*
-	 * @RequestMapping({ "/memberList/singleMemberView/modifyInfo" })
-	 * 
-	 * @ResponseBody public MemberVo modify(HttpServletRequest request, @RequestBody
-	 * MemberVo memberInfo) throws Exception { ModelAndView mav = new
-	 * ModelAndView(); HttpSession session = request.getSession(false);
-	 * System.out.println("memberStatus :" + memberInfo.getMemberStatus());
-	 * memberInfo.setMemberStatus(this.commonCodeService.commonCode(memberInfo.
-	 * getMemberStatus())); if (session == null) {
-	 * System.out.println("세션이 만료되었습니다."); mav.setViewName("redirect:/login"); }
-	 * MemberVo memberVo = this.memberService.getMember(memberInfo.getUserId()); if
-	 * (memberVo.getMemberStatus() != null)
-	 * memberVo.setMemberStatus(memberInfo.getMemberStatus());
-	 * System.out.println("memberStatus:" + memberVo.getMemberStatus()); int result
-	 * = this.memberService.saveMemberInfo(memberVo); return memberVo; }
-	 */
 }

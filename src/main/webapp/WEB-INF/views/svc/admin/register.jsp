@@ -9,33 +9,24 @@
 <script type="text/javascript" src="/resources/js"></script>
 <link rel="stylesheet" href="/resources/css/bootstrap.css">
 <link rel="stylesheet" href="/resources/css/custom.css">
-<link rel="stylesheet"
-	href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
-	integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
-	crossorigin="anonymous">
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-	integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-	crossorigin="anonymous"></script>
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"
-	integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
-	crossorigin="anonymous"></script>
-<script
-	src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
-	integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
-	crossorigin="anonymous"></script>
+<link rel="stylesheet"	href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"	integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"	crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"	crossorigin="anonymous"></script>
+<script	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"	integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"	crossorigin="anonymous"></script>
+<script	src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
 <title></title>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 <script> 
-
+var idCheck;
 function checkId() {
+	idCheck=0;
     var form_data={};
     form_data["userId"] = $("#userId").val();
-		var deny_char = /^[a-z|A-Z|0-9|\*]+$/;
+    var deny_char = /^[a-z]+[a-z0-9]{5,19}$/g;
+		
 
 			if (!deny_char.test($("#userId").val())) {
-				alert("영문자와 숫자만을 입력하세요");
+				alert("아이디는 영문자로 시작하는 6~20자 영문자 또는 숫자이어야 합니다.");
 				objtext1.value = "";
 				objtext1.focus();
 				return false;
@@ -68,39 +59,39 @@ function checkId() {
 
 function check(){
 	 var userId = $("#userId").val();
-	 var userPw = $("#userPw").val();
+	 var passWD = $("#passWD").val();
 	 var userRePw = $("#userRePw").val();
-	 var userEmail = $("#userEmail").val();
-	 var userName = $("#userName").val();
-	 var userPhoneNum = $("#userPhoneNum").val();
+	 var email = $("#email").val();
+	 var userNM = $("#userNM").val();
+	 var tel = $("#tel").val();
 	 var power = $("#authority").val();
 	 
 	 if(userId == ""){
 		 alert("아이디를 정확히 입력해주세요");
 		 return false;
-	 } else if(userPw == ""){
+	 } else if(passWD == ""){
 		 alert("비밀번호를 입력해주세요");
 		 return false;
-	 } else if (userPw != userRePw){
+	 } else if (passWD != userRePw){
 		 alert("비밀번호를 확인해주세요");
 		 return false;
-	 } else if (userEmail == ""){
+	 } else if (email == ""){
 		 alert("이메일을 입력해주세요");
 		 return false;
-	 } else if (userName == ""){
+	 } else if (userNM == ""){
 		 alert("이름을 입력해주세요");
 		 return false;
-	 } else if (idCheck != 1){
-		 alert("아이디 중복확인을 눌러주세요")
+	 } else if (idCheck == 0){
+		 alert("아이디 중복확인을 눌러주세요");
 		 return false;
 	 }
 	 
 	 var jobj = new Object();
 	jobj.userId = userId;
-	jobj.userPw = userPw;
-	jobj.userEmail = userEmail;
-	jobj.userPhoneNum = userPhoneNum;
-	jobj.userName = userName;
+	jobj.passWD = passWD;
+	jobj.email = email;
+	jobj.tel = tel;
+	jobj.userNM = userNM;
 	jobj.power = power;
 	
 	$.ajax({
@@ -109,9 +100,9 @@ function check(){
 	    dataType:"json",
 	    type: "POST",                                
 	    data: JSON.stringify(jobj),	
-		success:function(data){
-			alert("/memberList/memberRegister")
-			if(data.memberRegisterChk>0){
+		success:function(data){k
+			
+			if(data.memberRegisterChk==1){
 				alert("추가 성공");
 				window.close();
 			} else {
@@ -141,7 +132,7 @@ function check(){
 </style>
 
 	<nav class="navbar navbar-expand-lg navbar-dark"> <%--	<nav class="navbar navbar-expand-lg bg-dark navbar-dark"> --%>
-	<img src="/resources/images/logo.png" style="cursor: pointer"
+	<img src="/resources/images/logoKS.png" style="cursor: pointer"
 		width="100" height="50" onclick="reload();" />
 	<button class="navbar-toggler" type="button" data-toggle="collapse"
 		data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup"
@@ -156,7 +147,7 @@ function check(){
 		<form onsubmit="return check()">
 			<div>
 				사용자 ID <input type="text" name="userId" placeholder="userId"
-					id="userId" autofocus>
+					id="userId" >
 
 			</div>
 			<div>
@@ -165,27 +156,27 @@ function check(){
 			</div>
 
 			<div>
-				사용자 이름<input type="text" name="userName" id="userName"
-					placeholder="Your name" oninput="checkNick()" autofocus>
+				사용자 이름<input type="text" name="userNM" id="userNM"
+					placeholder="Your name" oninput="checkNick()" >
 			</div>
 
 			<div>
-				패스워드<input type="password" id="userPw" name="userPw"
-					placeholder="userPw" oninput="checkPwd()">
+				패스워드<input type="password" id="passWD" name="passWD"
+					placeholder="passWD" oninput="checkPwd()">
 			</div>
 			<div>
-				패스워드 확인<input type="password" name="userPwConfirm"
+				패스워드 확인<input type="password" name="passWDConfirm"
 					placeholder="Confirm Password" id="userRePw" oninput="checkPwd()">
 			</div>
 
 			<div>
-				핸드폰 <input type="text" name="userPhoneNum" id="userPhoneNum"
-					placeholder="Your name" oninput="checkNick()" autofocus>
+				핸드폰 <input type="text" name="tel" id="tel"
+					placeholder="Your phoneNum" oninput="checkNick()" >
 			</div>
 
 			<div>
-				이메일<input type="email" name="userEmail" id="userEmail"
-					placeholder="Email" autofocus>
+				이메일<input type="email" name="email" id="email"
+					placeholder="Email" >
 			</div>
 			<div>
 

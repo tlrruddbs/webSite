@@ -7,7 +7,7 @@
       
     <insert id="insertMember" parameterType = "org.hello.vo.MemberVo" >
       insert into nc_b_user_t(USERID, USERNM, PASSWD, TEL, EMAIL, POWER) values
-                        (#{userId},#{userName},#{userPw},#{userPhoneNum}, #{userEmail}, #{power})
+                        (#{userId},#{userNM},#{passWD},#{tel}, #{email}, #{power})
     </insert>
     
 	<select id="memberList" resultType = "org.hello.vo.MemberVo">
@@ -47,8 +47,8 @@
     	DELETE FROM nc_b_user_power_t where USERID=#{selectId}
     </delete>
     
-    <update id ="updateUserPassWord" parameterType = "String">
-		update nc_b_user_t set PASSWD = #{userPw} where USERID=#{userId}
+    <update id ="updateUserPassWord" parameterType = "org.hello.vo.MemberVo">
+		update nc_b_user_t set PASSWD = #{passWD} where USERID=#{userId}
 	</update>
 	
 	<select id ="getUserInfo" parameterType = "String" resultType="org.hello.vo.MemberVo" >
@@ -56,6 +56,6 @@
 	</select>
 	
 	<update id ="memberModify" parameterType = "org.hello.vo.MemberVo">
-		update nc_b_user_t set USERNM=#{userName}, EMAIL=#{userEmail}, TEL=#{userPhoneNum}, PASSWD=#{userPw}, POWER=#{power} where USERID=#{userId}
+		update nc_b_user_t set USERNM=#{userNM}, EMAIL=#{email}, TEL=#{tel}, PASSWD=#{passWD}, POWER=#{power} where USERID=#{userId}
 	</update>
 </mapper>

@@ -130,13 +130,6 @@
 			<scope>runtime</scope>
 		</dependency>
 
-		<!-- @Inject -->
-		<dependency>
-			<groupId>javax.inject</groupId>
-			<artifactId>javax.inject</artifactId>
-			<version>1</version>
-		</dependency>
-				
 		<!-- Servlet -->
 		<!-- https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api -->
 		<dependency>

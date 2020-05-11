@@ -3,17 +3,17 @@ package org.hello.service;
 import java.util.List;
 import java.util.Map;
 
-import javax.inject.Inject;
-
 import org.hello.controller.utils.Pagination;
 import org.hello.dao.MemberDAO;
+import org.hello.vo.AddVo;
 import org.hello.vo.MemberVo;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class MemberServiceImp implements MemberService{
 
-	@Inject
+	@Autowired
     private MemberDAO dao;
 	
 	@Override
@@ -81,8 +81,8 @@ public class MemberServiceImp implements MemberService{
 	}
 
 	@Override
-	public int updateUserPassWord(Map map) throws Exception {
-		return dao.updateUserPassWord(map);
+	public int updateUserPassWord(MemberVo memberVo) throws Exception {
+		return dao.updateUserPassWord(memberVo);
 	}
 
 	@Override
@@ -91,7 +91,7 @@ public class MemberServiceImp implements MemberService{
 	}
 
 	@Override
-	public int memberModify(Map map) throws Exception {
-		return dao.memberModify(map);
+	public int memberModify(MemberVo memberVo) throws Exception {
+		return dao.memberModify(memberVo);
 	}
 }

@@ -66,14 +66,11 @@
             type: "POST",                                
             data: JSON.stringify(jobj),	
     		success:function(data){
-    			if(data.idChk>0){
-    				alert("중복된 아이디입니다.");
-    			} else {
-    				if(data.authorityChk>0){
-    					alert("추가 완료");
-    				} else {
-    					alert("추가 실패");
-    				}
+    			if(data.deleteChk>0){
+    				alert("삭제 완료"); 
+    			} 
+    			else{
+    				alert("삭제 실패");
     			}
     			
     		},
@@ -99,7 +96,7 @@
 
 	<nav class="navbar navbar-expand-lg navbar-dark"> 
 	<%--	<nav class="navbar navbar-expand-lg bg-dark navbar-dark"> --%>
-	    <img src="/resources/images/logo.png" style="cursor:pointer" width="100" height="50" onclick="reload();"  />
+	    <img src="/resources/images/logoKS.png" style="cursor:pointer" width="100" height="50" onclick="reload();"  />
 	    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
 	    <span class="navbar-toggler-icon"></span>
 		</button>

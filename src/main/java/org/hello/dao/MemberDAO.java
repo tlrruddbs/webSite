@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.hello.controller.utils.Pagination;
+import org.hello.vo.AddVo;
 import org.hello.vo.MemberVo;
 
 public interface MemberDAO {
@@ -32,9 +33,9 @@ public interface MemberDAO {
     
     public int deleteAuthorityId(String selectId);
     
-    public int updateUserPassWord(Map map);
+    public int updateUserPassWord(MemberVo memberVo);
     
     public MemberVo getUserInfo(String userId);
     
-    public int memberModify(Map map);
+    public int memberModify(MemberVo memberVo);
 } 

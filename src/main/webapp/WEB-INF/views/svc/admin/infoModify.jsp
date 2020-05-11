@@ -18,40 +18,37 @@
 <script> 
 
 function memberCheck(){
-		var userPw = $("#userPw").val();
+		var passWD = $("#passWD").val();
 		var userId = $("#userId").val();
-		var userName =$("#userName").val();
-		var userPhoneNum=$("#userPhoneNum").val();
-		var userEmail=$("#userEmail").val();
+		var userNM =$("#userNM").val();
+		var tel=$("#tel").val();
+		var email=$("#email").val();
 		var power=$("#authority").val();
 		var userRePw = $("#userRePw").val();
-		
-		alert("userId: "+userId+"userPw: "+userPw+"userName: "+userName+", userPhoneNum: "+userPhoneNum+"userEmail: "+userEmail+"power: "+power);
-				
 		
 		if(userId == ""){
 			 alert("아이디를 정확히 입력해주세요");
 			 return false;
-		 } else if(userPw == ""){
+		 } else if(passWD == ""){
 			 alert("비밀번호를 입력해주세요");
 			 return false;
-		 } else if (userPw != userRePw){
+		 } else if (passWD != userRePw){
 			 alert("비밀번호를 확인해주세요");
 			 return false;
-		 } else if (userEmail == ""){
+		 } else if (email == ""){
 			 alert("이메일을 입력해주세요");
 			 return false;
-		 } else if (userName == ""){
+		 } else if (userNM == ""){
 			 alert("이름을 입력해주세요");
 			 return false;
 		 } 
 		
 		var jobj = new Object();
 		jobj.userId = userId;
-		jobj.userPw = userPw;
-		jobj.userEmail = userEmail;
-		jobj.userPhoneNum = userPhoneNum;
-		jobj.userName = userName;
+		jobj.passWD = passWD;
+		jobj.email = email;
+		jobj.tel = tel;
+		jobj.userNM = userNM;
 		jobj.power = power;
 		
 		$.ajax({
@@ -61,7 +58,6 @@ function memberCheck(){
         type: "POST",                                
         data: JSON.stringify(jobj),	
 		success:function(data){
-			alert("/memberList/memberModify")
 			if(data.memberModifyChk>0){
 				alert("수정완료");
 				window.close();
@@ -78,24 +74,24 @@ function memberCheck(){
 }
 
 	function check(){
-		var userPw = $("#userPw").val();
+		var passWD = $("#passWD").val();
    		var userRePw = $("#userRePw").val();
    		var userId = $("#userId").val();
    		
-   		alert(userId+", "+userPw+", "+userRePw);
+   		alert(userId+", "+passWD+", "+userRePw);
    		
    		
-   		if(userPw == ""){
+   		if(passWD == ""){
    		 alert("비밀번호를 입력해주세요");
    		 return false;
-	   	} else if (userPw != userRePw){
+	   	} else if (passWD != userRePw){
 	   		alert("비밀번호를 확인해주세요");
    			return false;
 	   	}
    		
    		var jobj = new Object();
    		jobj.userId = userId;
-   		jobj.userPw = userPw;
+   		jobj.passWD = passWD;
    		
    		$.ajax({
     		url:"/svc/admin/memberList/modify",
@@ -201,7 +197,7 @@ function memberCheck(){
 
 	<nav class="navbar navbar-expand-lg navbar-dark"> 
 	<%--	<nav class="navbar navbar-expand-lg bg-dark navbar-dark"> --%>
-	    <img src="/resources/images/logo.png" style="cursor:pointer" width="100" height="50" onclick="reload();"  />
+	    <img src="/resources/images/logoKS.png" style="cursor:pointer" width="100" height="50" onclick="reload();"  />
 	    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
 	    <span class="navbar-toggler-icon"></span>
 		</button>
@@ -211,34 +207,34 @@ function memberCheck(){
 		    
 	 	</div>
 	</nav>
-		<form onsubmit="return memberCheck()">
+		<form onsubmit="return memberCheck();">
 	   	 <div> 사용자 ID  ${userId }    
 	            
 	        </div>
 	        <div>
-	             <input type="hidden" name="userId" id="userId" value="${memberVo.userId }" autofocus>
+	             <input type="hidden" name="userId" id="userId" value="${memberVo.userId }" >
 	        </div>
 	        <div>
 	        	중복 확인 
 	        </div>
 	        
 	        <div>
-	                          사용자 이름<input type="text" name="userName" id="userName" placeholder="${memberVo.userName }" oninput="checkNick()" autofocus>
+	                          사용자 이름<input type="text" name="userNM" id="userNM" placeholder="${memberVo.userNM }" oninput="checkNick()">
 	        </div>
 	        
 	        <div>
-            	패스워드<input type="password" id = "userPw" name="userPw" placeholder="password" oninput="checkPwd()">
+            	패스워드<input type="password" id = "passWD" name="passWD" placeholder="password" oninput="checkPwd()">
 	        </div>
 	        <div>
-            	패스워드 확인<input type="password" name="userPwConfirm" placeholder="Confirm Password" id="userRePw" oninput="checkPwd()">
-	        </div>
-	        
-	        <div>
-	                          핸드폰 <input type="text" name="userPhoneNum" id="userPhoneNum" placeholder="${memberVo.userPhoneNum }" oninput="checkNick()" autofocus>
+            	패스워드 확인<input type="password" name="passWDConfirm" placeholder="Confirm Password" id="userRePw" oninput="checkPwd()">
 	        </div>
 	        
 	        <div>
-            	이메일<input type="email" name="userEmail" id="userEmail" placeholder="${memberVo.userEmail }" autofocus>
+	                          핸드폰 <input type="text" name="tel" id="tel" placeholder="${memberVo.tel }" oninput="checkNick()">
+	        </div>
+	        
+	        <div>
+            	이메일<input type="email" name="email" id="email" placeholder="${memberVo.email }">
 	        </div>
 	        
 	       
@@ -258,7 +254,7 @@ function memberCheck(){
 	    </form>
     
                      
-	</div>
+	
 	
 	
 	
