@@ -33,7 +33,7 @@
 		var popupY= (window.screen.height /2) - (height / 2);
 		// 1/2 
 		
-		window.open('/svc/admin/memberList/register', 'Guardian-CCS User Info', 'resizable=yes, menubar=no, status=no, toolbar=no, location=no, width='+width+', height='+height+', left='+ popupX + ', top='+ popupY + ', screenX='+ popupX + ', screenY= '+ popupY);
+		window.open('/svc/admin/memberList/register', 'Info', 'resizable=yes, menubar=no, status=no, toolbar=no, location=no, width='+width+', height='+height+', left='+ popupX + ', top='+ popupY + ', screenX='+ popupX + ', screenY= '+ popupY);
 	}
 	
 
@@ -47,7 +47,7 @@
 		var popupY= (window.screen.height /2) - (height / 2);
 		// 1/2 
 		
-		window.open('/svc/admin/memberList/authority', 'Guardian-CCS User Info', 'resizable=yes, menubar=no, status=no, toolbar=no, location=no, width='+width+', height='+height+', left='+ popupX + ', top='+ popupY + ', screenX='+ popupX + ', screenY= '+ popupY);
+		window.open('/svc/admin/memberList/authority', 'Info', 'resizable=yes, menubar=no, status=no, toolbar=no, location=no, width='+width+', height='+height+', left='+ popupX + ', top='+ popupY + ', screenX='+ popupX + ', screenY= '+ popupY);
 	}
 	
 			
@@ -61,7 +61,7 @@
 		var popupY= (window.screen.height /2) - (height / 2);
 		// 1/2 
 		
-		window.open('/svc/admin/memberList/passwordModify', 'Guardian-CCS User Info', 'resizable=yes, menubar=no, status=no, toolbar=no, location=no, width='+width+', height='+height+', left='+ popupX + ', top='+ popupY + ', screenX='+ popupX + ', screenY= '+ popupY);
+		window.open('/svc/admin/memberList/passwordModify', 'Info', 'resizable=yes, menubar=no, status=no, toolbar=no, location=no, width='+width+', height='+height+', left='+ popupX + ', top='+ popupY + ', screenX='+ popupX + ', screenY= '+ popupY);
 	}
 	
 	function details(userId){
@@ -74,7 +74,7 @@
 		var popupY= (window.screen.height /2) - (height / 2);
 		// 1/2 
 		
-		window.open('/svc/admin/memberList/singleMemberView?userId='+userId, 'Guardian-CCS User Info', 'resizable=yes, menubar=no, status=no, toolbar=no, location=no, width='+width+', height='+height+', left='+ popupX + ', top='+ popupY + ', screenX='+ popupX + ', screenY= '+ popupY);
+		window.open('/svc/admin/memberList/singleMemberView?userId='+userId, 'Info', 'resizable=yes, menubar=no, status=no, toolbar=no, location=no, width='+width+', height='+height+', left='+ popupX + ', top='+ popupY + ', screenX='+ popupX + ', screenY= '+ popupY);
 	}
 	
 	function infoModify(userId){
@@ -87,7 +87,7 @@
 		var popupY= (window.screen.height /2) - (height / 2);
 		// 1/2 
 		
-		window.open('/svc/admin/memberList/infoModify?userId='+userId, 'Guardian-CCS User Info', 'resizable=yes, menubar=no, status=no, toolbar=no, location=no, width='+width+', height='+height+', left='+ popupX + ', top='+ popupY + ', screenX='+ popupX + ', screenY= '+ popupY);
+		window.open('/svc/admin/memberList/infoModify?userId='+userId, 'Info', 'resizable=yes, menubar=no, status=no, toolbar=no, location=no, width='+width+', height='+height+', left='+ popupX + ', top='+ popupY + ', screenX='+ popupX + ', screenY= '+ popupY);
 	}
 	
 	function fn_paging(curPage) {
