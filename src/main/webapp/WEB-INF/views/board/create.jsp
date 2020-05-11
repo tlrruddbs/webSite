@@ -25,9 +25,8 @@
 <body>
 	<style type = "text/css">
 			.jumbotron{
-				background-image:url('/resources/images/main.png');
+				background-image:url('/resources/images/background.jpg');
 				background-size:cover;
-				text-shadow: black 0.2em 0.2em 0.2em;
 				color:black;
 				
 			}
@@ -35,28 +34,21 @@
 
 		<nav class="navbar navbar-expand-lg navbar-dark"> 
 		<%--	<nav class="navbar navbar-expand-lg bg-dark navbar-dark"> --%>
-		    <img src="/resources/images/logo.png" style="cursor:pointer"  width="100" height="50" onclick="mainPage();"/>
+		    <img src="/resources/images/Logo.png" style="cursor:pointer"  width="100" height="50%" onclick="mainPage();"/>
 		    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
 		    <span class="navbar-toggler-icon"></span>
 		</button>
 	
-		<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-		    <div class="navbar-nav">	
-		  <%--    	<a class="nav-item nav-link active text-light" href="#" >Home <span class="sr-only">(current)</span></a> --%>
-		      	<a class="nav-item nav-link text-light" href="/board/listAll" ></a>
-		      	<a class="nav-item nav-link text-light" href="#" ></a>
-		      	<a class="nav-item nav-link text-light" href="/member/memberRegister"></a>
-		      <%--
-			     <div class="dropdown">
-			        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"  text-align="right">
-			          	
-			        </a>
-			        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-				        <a class="dropdown-item" href="#">
-				        <a class="dropdown-item" href="#">
-		    	    </div>
-	      		</div>
-	      		 --%>
+		<div class="collapse navbar-collapse">
+      
+    	</div>
+		<div align="right" class="nav navbar-nav navbar-right" >	
+		    <div class="collapse navbar-collapse">
+		    	<a class="nav-item nav-link text-dark" href="/svc/member/myPage" >My Page</a>
+		      	<a class="nav-item nav-link text-dark" href="/board/listAll" >Board</a>
+		   		<a class="nav-item nav-link text-dark" href="/svc/fileDownload">Read me</a>
+		   		<a class="nav-item nav-link text-dark" href="/svc/mail/mailForm">Recruit </a>
+	    		<a class="nav-item nav-link text-dark" href="/svc/logout" >Logout</a>
 	    	</div>
 	 	</div>
 		</nav>
@@ -66,21 +58,21 @@
 				<div class="column_left">
 				</div>
 				
-				<div class="column_center">
+				<div class="column_center" align="center">
 					
-					<h1 class="text-light"></h1>
+					<h1 class="text-dark"></h1>
 	
 					<form action="/board/create" method="POST">
 				        <div class="createForm">
-				            <label class="text-light"></label>
-				            <input type="text" name="title" class="createForm" placeholder = "">
+				            <label class="text-dark"></label>
+				          	  제목<input type="text" name="title" class="createForm" placeholder = "" cols="30">
 				        </div>
 				        <div class="createForm">
-				            <label class="text-light"></label>
-				            <textarea rows="4" cols="15" name="content" class="createForm" placeholder = ""></textarea>
+				            <label class="text-dark"></label>
+				            내용<textarea rows="4" cols="15" name="content" class="createForm" placeholder = ""></textarea>
 				        </div>
 				        <div class="createForm">
-				            <label class="text-light">: ${member.userId }</label>
+				            <label class="text-dark">작성자 : ${member.userId }</label>
 				            
 				            <input type="hidden" name="writer" class="createForm" placeholder = "" value=${member.userId }>
 				        </div>
@@ -90,11 +82,11 @@
 				        </div>
 				         -->
 				        <div class="Formfooter">
-				                <button type="submit" class="btn btn-outline-light"></button>
+				                <button type="submit" class="btn btn-outline-dark">작성</button>
 				        </div>            
 				        
 					</form>
-					<button type = "button" class="btn btn-outline-light" onclick = "back();"></button>
+					<button type = "button" class="btn btn-outline-dark" onclick = "back();">뒤로가기</button>
 					
 					
 	  			</div>

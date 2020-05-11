@@ -34,32 +34,20 @@
 
 	<nav class="navbar navbar-expand-lg navbar-dark"> 
 	<%--	<nav class="navbar navbar-expand-lg bg-dark navbar-dark"> --%>
-	    <img src="/resources/images/Logo.png" style="cursor:pointer" width="100" height="50" onclick="reload();"  />
+	    <img src="/resources/images/Logo.png" style="cursor:pointer" width="100" height="50%" onclick="reload();"  />
 	    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
 	    <span class="navbar-toggler-icon"></span>
 		</button>
-		
-		<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-		    <div class="navbar-nav">	
-		    <%--  	<a class="nav-item nav-link active text-light" href="#" >Home <span class="sr-only">(current)</span></a> --%>
-		    <%--  	<a class="nav-item nav-link text-light" href="/board/ListAll" >자유게시판</a> --%>
-		    <%--	<a class="nav-item nav-link text-light" onclick="location.href= '/board/listAll'" >자유게시판</a> --%> 
-		      	<a class="nav-item nav-link text-light" onclick="location.href='/svc/admin/memberList' ">회원관리</a>
-		      	<a class="nav-item nav-link text-light" onclick="location.href='/svc/logout' ">로그아웃</a>
-		      	
-		      <%--
-			     <div class="dropdown">
-			        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"  text-align="right">
-			          	
-			        </a>
-			        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-				        <a class="dropdown-item" href="#">
-				        <a class="dropdown-item" href="#">
-		    	    </div>
-	      		</div>
-	      		 --%>
+		<div class="collapse navbar-collapse">
+      
+    	</div>
+		<div align="right" class="nav navbar-nav navbar-right" >	
+		    <div class="collapse navbar-collapse">
+		    	<a class="nav-item nav-link text-dark" onclick="location.href='/svc/admin/memberList' ">Manager</a>
+		      	<a class="nav-item nav-link text-dark" onclick="location.href='/svc/logout' ">Logout</a>
 	    	</div>
 	 	</div>
+		
 	</nav>
 	
 	<div class="jumbotron" >

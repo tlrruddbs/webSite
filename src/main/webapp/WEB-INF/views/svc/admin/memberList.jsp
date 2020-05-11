@@ -61,8 +61,8 @@
     	</div>
 		<div align="right" class="nav navbar-nav navbar-right" >	
 		    <div class="collapse navbar-collapse">
-		    	<a class="nav-item nav-link text-light" onclick="location.href='/svc/admin/memberList' ">Member List</a>
-		      	<a class="nav-item nav-link text-light" onclick="location.href='/svc/logout' ">Logout</a>
+		    	<a class="nav-item nav-link text-dark" onclick="location.href='/svc/admin/memberList' ">Member List</a>
+		      	<a class="nav-item nav-link text-dark" onclick="location.href='/svc/logout' ">Logout</a>
 	    	</div>
 	 	</div>
 		
