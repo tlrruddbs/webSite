@@ -120,12 +120,14 @@ public class AdminController {
 
 		String stationName = stationService.stationName(seq);
 		System.out.println("station Name: " + stationName);
-		Map map = new HashMap<>();
+		Map map = new HashMap<>(); 
 		map.put("userId", selectId);
 		map.put("seq", seq);
 		map.put("stationName", stationName);
 
+		//power 테이블 insert
 		memberService.insertUserPower(map);
+		//member 테이블 power 1 update
 		int authorityChk = memberService.upAuthority(selectId);
 		if (authorityChk == 1) {
 			System.out.println("memberTable 수정 완료");
