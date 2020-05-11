@@ -207,7 +207,7 @@ public class BoardController {
 		int num = service.update(boardVo);
 		if(num>0) {
 			boardVo.setResultMsg("수정이 완료되었습니다.");
-			session.setAttribute("msg", "ModifySuccess");
+			mav.addObject("msg","ModifySuccess");
 		} else {
 			boardVo.setResultMsg("수정이 실패하였습니다.");
 		}

@@ -36,9 +36,8 @@
 <body>
 	<style type = "text/css">
 				.jumbotron{
-					background-image:url('/resources/images/boardBlack.png');
+					background-image:url('/resources/images/background.jpg');
 					background-size:cover;
-					text-shadow: black 0.2em 0.2em 0.2em;
 					color:black;
 					
 				}
@@ -46,15 +45,25 @@
 
 	<nav class="navbar navbar-expand-lg navbar-dark"> 
 	<%--	<nav class="navbar navbar-expand-lg bg-dark navbar-dark"> --%>
-	    <img src="/resources/images/logo.png" style="cursor:pointer" onclick="mainPage()" width="100" height="50"  />
+	    <img src="/resources/images/Logo.png" style="cursor:pointer" onclick="mainPage()" width="100" height="50%"  />
 	    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
 	    <span class="navbar-toggler-icon"></span>
 		</button>
 		
-		<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-		    <div class="navbar-nav">
+		<div class="collapse navbar-collapse">
+      
+    	</div>
+	
+		<div id="navbarNavAltMarkup">
+		    <div align="right" class="nav navbar-nav navbar-right" >	
+		    <div class="collapse navbar-collapse">
+		  		<a class="nav-item nav-link text-dark" href="/svc/member/myPage" >myPage</a>
+		      	<a class="nav-item nav-link text-dark" href="/board/listAll" >board</a>
+		   		<a class="nav-item nav-link text-dark" href="/svc/fileDownload">Read me</a>
+		   		<a class="nav-item nav-link text-dark" href="/svc/mail/mailForm">Recruit </a>
+	    		<a class="nav-item nav-link text-dark" href="/svc/logout" >Logout</a>
 	    	</div>
-	 	</div>
+	 	</div> 
 	</nav>
 	
 	<div class="jumbotron" >
@@ -65,14 +74,14 @@
 	<table  class = "table table-board text-light" border="2px" width="80%" align="center">
 	<form action="/board/update" method="POST">
 		<tr class="inlineBox">
-			<h4 class="text-light inlineBox" style="width:30%" >:</h5> <input class="form-control" style="width: 70%" type="text" id="title" name="title" value="${board.title }"/></h4> 
+			<h4 class="text-dark inlineBox" style="width:30%" >제목:</h5> <input class="form-control" style="width: 70%" type="text" id="title" name="title" value="${board.title }"/></h4> 
 			
 		
 		</tr>
 		
 		<tr>
 			<td>
-				${board.writer }
+				<h4 class="text-dark">아이디 ${board.writer }</h4>
 				<span style="float: right;"><fmt:formatDate value="${board.date }" pattern="yyyy.MM.dd"/></span>
 			</td>
 		</tr>
@@ -85,8 +94,8 @@
 		</tr>
 		<input type="hidden" name="seq" value=${board.seq }>
 	</table>
-	<input class="btn btn-light" type="submit" value="ert" style="float: right;">
-	<input class="btn btn-light" type="button" value="qwe" style="float: right;" onclick="location.href='listAll';"> 
+	<input class="btn btn-light" type="submit" value="수정" style="float: right;">
+	<input class="btn btn-light" type="button" value="목록" style="float: right;" onclick="location.href='listAll';"> 
 	</form> 
 </div>
 			 

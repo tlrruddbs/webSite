@@ -16,6 +16,11 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
 <title></title>
 	
+	<head>
+	
+		
+	
+	</head>
 <script>
 	function reload(){
 		location.href = "/login";
@@ -35,6 +40,9 @@
 		}
 		frm.submit();
 	}
+	
+	
+	
 	
 	var msg = "${msg}";
 	if(msg == "listEmpty"){
@@ -81,11 +89,10 @@
     	</div>
 		<div align="right" class="nav navbar-nav navbar-right" >	
 		    <div class="collapse navbar-collapse">
-		    	<a class="nav-item nav-link text-dark" href="/svc/member/myPage" >myPage</a>
-		      	<a class="nav-item nav-link text-dark" href="/board/listAll" >board</a>
+		    	<a class="nav-item nav-link text-dark" href="/svc/member/myPage" >My Page</a>
+		      	<a class="nav-item nav-link text-dark" href="/board/listAll" >Board</a>
 		   		<a class="nav-item nav-link text-dark" href="/svc/fileDownload">Read me</a>
 		   		<a class="nav-item nav-link text-dark" href="/svc/mail/mailForm">Recruit </a>
-		   		<a class="nav-item nav-link text-dark" href="/svc/member/myPage">My page </a>
 	    		<a class="nav-item nav-link text-dark" href="/svc/logout" >Logout</a>
 	    	</div>
 	 	</div>

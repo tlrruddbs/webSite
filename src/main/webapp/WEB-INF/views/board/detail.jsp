@@ -52,7 +52,7 @@
 	<div class="jumbotron" >
 		<div class="container">
 			<div class="text-light" id="outter">
-			<table class = "table table-board text-light" border="2px" width="80%" align="center">
+			<table class = "table table-board text-dark" border="2px" width="80%" align="center">
 				<tr>
 					<td>${board.title }</td>
 				</tr>
@@ -68,11 +68,11 @@
 			</table>
 			<c:set var ="idChk" value = "${idChk }"/>
 			<c:if test = "${ idChk eq true}">
-				<input class="btn btn-light" type="button" value=" style="float: right;" onclick="location.href='updateRequest?seq=${board.seq}';">
+				<input class="btn btn-gray" type="button" value="수정" style="float: right;" onclick="location.href='updateRequest?seq=${board.seq}';">
 				
 			</c:if>
 			
-			<input class="btn btn-light" type="button" value=" style="float: right;" onclick="location.href='listAll';">
+			<input class="btn btn-gray" type="button" value="목록" style="float: right;" onclick="location.href='listAll';">
 				
 			 
 		</div>
