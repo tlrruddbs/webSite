@@ -83,7 +83,7 @@
 					    <div>
 					        <button type="submit" class="btn btn-outline-light">로그인</button>
 					        <!-- signupbtn" disabled="disabled" -->
-					        <button type="button" class="btn btn-outline-light" onclick="location.href='/member/memberRegister' ">회원가입</button>
+					        
 					    </div>
 				         
 				    </form>
