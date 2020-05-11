@@ -14,6 +14,10 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
 <script> 
+	function reload(){
+		location.href = "/login";
+	}
+
 	function check(){
 		var job = $('#job').val();
 		var title = $('#title').val();
@@ -76,9 +80,8 @@
 <body>
 	<style type = "text/css">
 			.jumbotron{
-				background-image:url('/resources/images/main.png');
+				background-image:url('/resources/images/background.jpg');
 				background-size:cover;
-				text-shadow: black 0.2em 0.2em 0.2em;
 				color:black;
 				
 			}
@@ -86,20 +89,23 @@
 
 		<nav class="navbar navbar-expand-lg navbar-dark"> 
 		<%--	<nav class="navbar navbar-expand-lg bg-dark navbar-dark"> --%>
-		    <img src="/resources/images/logo.png" width="100" height="50" style="cursor:pointer" onclick="reload();"/>
+		    <img src="/resources/images/Logo.png" width="100" height="50%" style="cursor:pointer" onclick="reload();"/>
 		    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
 		    <span class="navbar-toggler-icon"></span>
 		</button>
-	
-		<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-		    <div class="navbar-nav">	
-		     <%-- 	<a class="nav-item nav-link active text-light" href="#" >Home <span class="sr-only">(current)</span></a> --%>
-		      	<a class="nav-item nav-link text-light" href="/board/listAll" >자유게시판</a>
-		      	<a class="nav-item nav-link text-light" href="/svc/logout" >로그아웃</a>
-		      	<a class="nav-item nav-link text-light" href="#">회원가입</a>
-		   		<a class="nav-item nav-link text-light" href="/svc/fileDownload">사이트 이용하기 전에</a>
-		   		<a class="nav-item nav-link text-light" href="/svc/mail/mailForm">YKSCorp 지원하기</a>
+		<div class="collapse navbar-collapse">
+      
+    	</div>
+		<div align="right" class="nav navbar-nav navbar-right" >	
+		    <div class="collapse navbar-collapse">
+		    	<a class="nav-item nav-link text-dark" href="/svc/member/myPage" >myPage</a>
+		      	<a class="nav-item nav-link text-dark" href="/board/listAll" >board</a>
+		   		<a class="nav-item nav-link text-dark" href="/svc/fileDownload">Read me</a>
+		   		<a class="nav-item nav-link text-dark" href="/svc/mail/mailForm">Recruit </a>
+		   		<a class="nav-item nav-link text-dark" href="/svc/member/myPage">My page </a>
+	    		<a class="nav-item nav-link text-dark" href="/svc/logout" >Logout</a>
 	    	</div>
+	 	</div>
 	 	</div>
 		</nav>
 		
@@ -136,7 +142,7 @@
 				    </div>
 				    <p>
 			        <div>
-			            <input type="submit" value="메일 보내기" class="btn btn-warning">
+			            <input type="submit" value="메일 보내기" class="btn btn-outline-dark">
 			        </div>
 			    </form>
 			

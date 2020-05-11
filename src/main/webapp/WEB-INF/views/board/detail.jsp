@@ -29,9 +29,8 @@
 
 	<style type = "text/css">
 			.jumbotron{
-				background-image:url('/resources/images/boardBlack.png');
+				background-image:url('/resources/images/background.jpg');
 				background-size:cover;
-				text-shadow: black 0.2em 0.2em 0.2em;
 				color:black;
 				
 			}
@@ -39,7 +38,7 @@
 
 	<nav class="navbar navbar-expand-lg navbar-dark"> 
 	<%--	<nav class="navbar navbar-expand-lg bg-dark navbar-dark"> --%>
-	    <img src="/resources/images/logo.png" style="cursor:pointer" onclick="mainPage()" width="100" height="50"  />
+	    <img src="/resources/images/Logo.png" style="cursor:pointer" onclick="mainPage()" width="100" height="50%"  />
 	    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
 	    <span class="navbar-toggler-icon"></span>
 		</button>

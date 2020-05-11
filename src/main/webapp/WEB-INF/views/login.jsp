@@ -47,12 +47,12 @@
 			width: 100%; height: 80vh; display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-align: center; -ms-flex-align: center; align-items: center; -webkit-box-pack: center; -ms-flex-pack: center; justify-content: center; 
 			} 
 			.logoBox { 
-			width: 25%; height: 60vh;
+			width: 26%; height: 60vh;
 			background-image: url(/resources/images/log-inWG.png); 
 			text-align: center; padding: 2em; 
 			}
 			.settingForm{
-				width: 25%; height: 50vh;
+				width: 26%; height: 50vh;
 				text-align: center; padding: 2em; 
 			}
 
@@ -72,7 +72,7 @@
 			<div class="container" role="main">
 				<div class="flex-container"> 
 				<div class="logoBox">
-					<div class="settingForm" style="padding-top:120px;">
+					<div class="settingForm" style="padding-top:100px;">
 					<form action="/login/loginRequest" id="login-form" method="post"  >
 					 	<div>
 					        <input type="text" name="userId" placeholder="ID" id="userId" autofocus>

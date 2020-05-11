@@ -19,6 +19,9 @@
  
 </head>
 <script>
+	function reload(){
+		location.href = "/login";
+	}
 	function back(){
 		history.back();
 	}

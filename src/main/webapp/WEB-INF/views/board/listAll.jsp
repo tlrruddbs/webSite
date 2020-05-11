@@ -17,6 +17,9 @@
 <title></title>
 	
 <script>
+	function reload(){
+		location.href = "/login";
+	}
 	function mainPage(){
 		location.href="/svc/member/main?loginResult=no";
 	}
@@ -26,7 +29,7 @@
 
 	function searchCheck(frm){
 		if(frm.keyWord.value == ""){
-			alert(");
+			alert("정보가 없습니다.");
 			frm.keyWord.focus();
 			return;
 		}
@@ -35,11 +38,11 @@
 	
 	var msg = "${msg}";
 	if(msg == "listEmpty"){
-		alert(");
+		alert("정보가 없습니다.");
 		location.href="/board/listAll";
 
 	} else if(msg=="ModifySuccess"){
-		alert(")
+		alert("수정 완료")
 	}
 	
 	function fn_paging(curPage) {
@@ -78,10 +81,11 @@
     	</div>
 		<div align="right" class="nav navbar-nav navbar-right" >	
 		    <div class="collapse navbar-collapse">
+		    	<a class="nav-item nav-link text-dark" href="/svc/member/myPage" >myPage</a>
 		      	<a class="nav-item nav-link text-dark" href="/board/listAll" >board</a>
 		   		<a class="nav-item nav-link text-dark" href="/svc/fileDownload">Read me</a>
 		   		<a class="nav-item nav-link text-dark" href="/svc/mail/mailForm">Recruit </a>
-		   		<a class="nav-item nav-link text-dark" href="/board/myBoardList">My page </a>
+		   		<a class="nav-item nav-link text-dark" href="/svc/member/myPage">My page </a>
 	    		<a class="nav-item nav-link text-dark" href="/svc/logout" >Logout</a>
 	    	</div>
 	 	</div>
