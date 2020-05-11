@@ -247,7 +247,7 @@ function memberCheck(){
 	    	</select>
        		</div>
 	        <div>
-                <button type="submit" class="btn btn-outline-dark">등록</button>
+                <button type="submit" class="btn btn-outline-dark">수정</button>
                
             </div>
 	        

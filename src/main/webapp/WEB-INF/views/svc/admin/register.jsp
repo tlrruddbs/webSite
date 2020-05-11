@@ -9,13 +9,12 @@
 <script type="text/javascript" src="/resources/js"></script>
 <link rel="stylesheet" href="/resources/css/bootstrap.css">
 <link rel="stylesheet" href="/resources/css/custom.css">
-<link rel="stylesheet"	href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"	integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"	crossorigin="anonymous">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"	crossorigin="anonymous">
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"	crossorigin="anonymous"></script>
 <script	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"	integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"	crossorigin="anonymous"></script>
 <script	src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
 <title></title>
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+<script	src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 <script> 
 var idCheck;
 function checkId() {
@@ -27,8 +26,6 @@ function checkId() {
 
 			if (!deny_char.test($("#userId").val())) {
 				alert("아이디는 영문자로 시작하는 6~20자 영문자 또는 숫자이어야 합니다.");
-				objtext1.value = "";
-				objtext1.focus();
 				return false;
 			}
 			$.ajax({
@@ -100,7 +97,7 @@ function check(){
 	    dataType:"json",
 	    type: "POST",                                
 	    data: JSON.stringify(jobj),	
-		success:function(data){k
+		success:function(data){
 			
 			if(data.memberRegisterChk==1){
 				alert("추가 성공");
@@ -157,31 +154,28 @@ function check(){
 
 			<div>
 				사용자 이름<input type="text" name="userNM" id="userNM"
-					placeholder="Your name" oninput="checkNick()" >
+					placeholder="Your name" >
 			</div>
 
 			<div>
 				패스워드<input type="password" id="passWD" name="passWD"
-					placeholder="passWD" oninput="checkPwd()">
+					placeholder="passWD" ">
 			</div>
 			<div>
 				패스워드 확인<input type="password" name="passWDConfirm"
-					placeholder="Confirm Password" id="userRePw" oninput="checkPwd()">
+					placeholder="Confirm Password" id="userRePw" >
 			</div>
 
 			<div>
-				핸드폰 <input type="text" name="tel" id="tel"
-					placeholder="Your phoneNum" oninput="checkNick()" >
+				핸드폰 <input type="text" name="tel" id="tel"	placeholder="Your phoneNum" >
 			</div>
 
 			<div>
-				이메일<input type="email" name="email" id="email"
-					placeholder="Email" >
+				이메일<input type="email" name="email" id="email"	placeholder="Email" >
 			</div>
 			<div>
 
-				권한<select class="form-control" id='authority' name='authority'
-					style="width: 300px;">
+				권한<select class="form-control" id='authority' name='authority' style="width: 300px;">
 					<option value="0">일반</option>
 					<option value="1">관할 사무소</option>
 					<option value="2">시스템 관리자</option>
