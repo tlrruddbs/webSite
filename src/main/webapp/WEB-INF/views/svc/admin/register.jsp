@@ -170,7 +170,7 @@ function check(){
 
 			<div>
 				패스워드<input type="password" id="passWD" name="passWD"
-					placeholder="passWD" ">
+					placeholder="passWD" >
 			</div>
 			<div>
 				패스워드 확인<input type="password" name="passWDConfirm"
