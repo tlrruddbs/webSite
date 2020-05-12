@@ -43,16 +43,20 @@
 
 <body>
 	<style type = "text/css">
+			.jumbotron{
+				padding-top: 10%;
+			}
 			.flex-container{ 
-			width: 100%; height: 80vh; display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-align: center; -ms-flex-align: center; align-items: center; -webkit-box-pack: center; -ms-flex-pack: center; justify-content: center; 
+			padding:"50px";
+			width: 100%; height: 100%; display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-align: center; -ms-flex-align: center; align-items: center; -webkit-box-pack: center; -ms-flex-pack: center; justify-content: center; 
 			} 
 			.logoBox { 
-			width: 26%; height: 60vh;
+			width: 26%; height: 60%;
 			background-image: url(/resources/images/log-inWG.png); 
 			text-align: center; padding: 2em; 
 			}
 			.settingForm{
-				width: 26%; height: 50vh;
+				width: 26%; height: 50%;
 				text-align: center; padding: 2em; 
 			}
 
@@ -68,8 +72,8 @@
 			<script>alert("There is no member information"); </script>
 		</c:if>
 		
-		<div class="jumbotron" >
-			<div class="container" role="main">
+		<div class="jumbotron" padding-top="10px" padding-bottom="10px";>
+			<div class="container" role="main"  >
 				<div class="flex-container"> 
 				<div class="logoBox">
 					<div class="settingForm" style="padding-top:100px;">
