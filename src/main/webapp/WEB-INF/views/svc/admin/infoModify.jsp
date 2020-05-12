@@ -27,8 +27,6 @@ function memberCheck(){
 		var userRePw = $("#userRePw").val();
 		
 		var regPw = /^(?=.*\d)(?=.*[a-zA-Z])[0-9a-zA-Z]{8,10}$/; //  8 ~ 10자 영문, 숫자 조합
-		  //이메일 정규식
-		 var regEmail = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
 		
 		if(userId == ""){
 			 alert("아이디를 정확히 입력해주세요");
@@ -44,9 +42,6 @@ function memberCheck(){
 			 return false;
 		 } else if (email == ""){
 			 alert("이메일을 입력해주세요");
-			 return false;
-		 } else if(!regEmail.test(email)){
-			 alert("이메일 형식에 맞지 않습니다");
 			 return false;
 		 } else if (userNM == ""){
 			 alert("이름을 입력해주세요");
