@@ -131,9 +131,12 @@
 </script>
 <body>
 	<style type="text/css">
+	.jumbotron{
+				padding-top: 10%;
+			}
 .flex-container {
 	width: 100%;
-	height: 80vh;
+	height: 80%;
 	display: -webkit-box;
 	display: -ms-flexbox;
 	display: flex;
@@ -145,20 +148,15 @@
 	justify-content: center;
 }
 
-.logoBox {
-	width: 26%;
-	height: 60vh;
-	background-image: url('/resources/images/Sign-in WG.png');
-	text-align: center;
-	padding: 2em;
-}
-
-.settingForm {
-	width: 26%;
-	height: 50vh;
-	text-align: center;
-	padding: 2em;
-}
+.logoBox { 
+			width: 26%; height: 60%;
+			background-image: url("/resources/images/Sign-in WG.png"); 
+			text-align: center; padding: 2em; 
+			}
+			.settingForm{
+				width: 26%; height: 50%;
+				text-align: center; padding: 2em; 
+			}
 
 .jumbotron {
 	background-image: url('/resources/images/background.jpg');
