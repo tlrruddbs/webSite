@@ -36,40 +36,25 @@
 
 <body>
 	<style type="text/css">
-.flex-container {
-	width: 100%;
-	height: 80vh;
-	display: -webkit-box;
-	display: -ms-flexbox;
-	display: flex;
-	-webkit-box-align: center;
-	-ms-flex-align: center;
-	align-items: center;
-	-webkit-box-pack: center;
-	-ms-flex-pack: center;
-	justify-content: center;
-}
+			.flex-container{ 
+			padding:"50px";
+			width: 100%; height: 100%; display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-align: center; -ms-flex-align: center; align-items: center; -webkit-box-pack: center; -ms-flex-pack: center; justify-content: center; 
+			} 
+			.logoBox { 
+			width: 26%; height: 60%;
+			background-image: url("/resources/images/mypage WG.png"); 
+			text-align: center; padding: 2em; 
+			}
+			.settingForm{
+				width: 26%; height: 50%;
+				text-align: center; padding: 2em; 
+			}
 
-.logoBox {
-	width: 25%;
-	height: 60vh;
-	background-image: url('/resources/images/Sign-in WG.png');
-	text-align: center;
-	padding: 2em;
-}
-
-.settingForm {
-	width: 25%;
-	height: 20vh;
-	text-align: center;
-	padding: 2em;
-}
-
-.jumbotron {
-	background-image: url('/resources/images/background.jpg');
-	background-size: cover;
-	color: black;
-}
+			.jumbotron{
+				background-image:url('/resources/images/background.jpg');
+				background-size:cover;
+				color:black;
+			}
 </style>
 	<c:set var="loginMsg" value="${loginMsg }" />
 	<c:if test="${ loginMsg eq 'There is no member information'}">
@@ -101,27 +86,22 @@
 		</div>
 	</nav>
 
-
 	<div class="jumbotron">
 		<div class="container" role="main">
 			<div class="flex-container">
-				<div class="logoBox">
-					<div class="settingForm" style="padding-top: 10px;"></div>
-
-					<div>
-						<h6 class = "nav-item nav-link text-light">안녕하세요 ${memberVo.userName }님!</h6>
-						<h6 class = "nav-item nav-link text-light">${memberVo.memberCodeString }</h6>
-						<h6 class = "nav-item nav-link text-light">${memberVo.userEmail }</h6>
-						<h6 class = "nav-item nav-link text-light">내 게시물 <a href="/board/myBoardList">${memberVo.myBoardCountList }</a>개</h6>
+				<div class="logoBox" style="padding-top:300px;" align="center;">
+						<h6 class = "nav-item nav-link text-light">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 안녕하세요 ${memberVo.userName }님!</h6>
+						<h6 class = "nav-item nav-link text-light">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ${memberVo.memberCodeString }</h6>
+						<h6 class = "nav-item nav-link text-light">&nbsp; &nbsp; &nbsp;  ${memberVo.userEmail }</h6>
+						<h6 class = "nav-item nav-link text-light">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 내 게시물 <a href="/board/myBoardList">${memberVo.myBoardCountList }</a>개</h6>
 					<!-- 	<h6 class = "nav-item nav-link text-light">From${memberVo.regDate }</h6> -->
-					</div>
+				
 
 				</div>
+
 			</div>
 		</div>
 	</div>
-
-
 
 
 

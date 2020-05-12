@@ -167,15 +167,6 @@
 }
 </style>
 
-	<nav class="navbar navbar-expand-lg navbar-dark"> <%--	<nav class="navbar navbar-expand-lg bg-dark navbar-dark"> --%>
-	<button class="navbar-toggler" type="button" data-toggle="collapse"
-		data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup"
-		aria-expanded="false" aria-label="Toggle navigation">
-		<span class="navbar-toggler-icon"></span>
-	</button>
-
-
-	</nav>
 	<div class="jumbotron">
 		<div class="container" role="main">
 			<div class="flex-container">
@@ -206,20 +197,9 @@
 									placeholder="Your name" oninput="checkNick()" autofocus>
 							</div style="padding-top: 15px;">
 							
-							<div>
-                             <button type="submit" class="btn btn-outline-light">가입</button>
-                             
-	                             <!-- signupbtn" disabled="disabled" -->
+							<div style="padding-top: 15px;">
+                             <button type="submit" class="btn btn-outline-light">Register</button>
 	                         </div>
-<!-- 
-							<div style="align: center; padding-top: 15px;">
-								<a href="#"
-									onclick="document.getElementById('login-form').submit();"><img
-									src="/resources/images/log-in botton_signin.png"
-									style="width: 170px; height: 35px;" /></a>
-							</div>
- -->
-
 						</form>
 
 					</div>

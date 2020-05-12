@@ -76,7 +76,7 @@
 			<div class="container" role="main"  >
 				<div class="flex-container"> 
 				<div class="logoBox">
-					<div class="settingForm" style="padding-top:100px;">
+					<div class="settingForm" style="padding-top:130px;">
 					<form action="/login/loginRequest" id="login-form" method="post"  >
 					 	<div>
 					        <input type="text" name="userId" placeholder="ID" id="userId" autofocus>
