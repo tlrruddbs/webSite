@@ -31,6 +31,12 @@ public class BoardDAOImp implements BoardDAO {
     return this.sqlSession.selectList(String.valueOf(namespace) + ".getBoardList", pagination);
   }
   
+  @Override
+  public List<BoardVo> getMyBoardList(Map map) throws Exception {
+	  
+	  return this.sqlSession.selectList(String.valueOf(namespace) + ".getMyBoardList", map);
+  }
+  
   public int getBoardListCnt(Map map) throws Exception {
     return ((Integer)this.sqlSession.selectOne(String.valueOf(namespace) + ".getBoardListCnt", map)).intValue();
   }
@@ -66,4 +72,6 @@ public class BoardDAOImp implements BoardDAO {
     this.sqlSession.selectList(String.valueOf(namespace) + ".searchList", map);
     return this.sqlSession.selectList(String.valueOf(namespace) + ".searchList", map);
   }
+
+
 }

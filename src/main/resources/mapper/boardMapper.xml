@@ -20,6 +20,10 @@
         select * from board	limit #{startIndex},#{pageSize}
 	</select>
 	
+	<select id="getMyBoardList" parameterType = "hashmap" resultType = "org.hello.vo.BoardVo">
+        select * from board	where writer = #{userId} limit #{startIndex},#{pageSize} 
+	</select>
+	
 	<select id="getBoardListCnt" resultType="int">
 	<!--	SELECT count(*) as listCnt FROM board -->
 		CALL proc_count_BoardList(#{searchType}, #{searchKeyWord});

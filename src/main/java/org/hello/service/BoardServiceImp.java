@@ -59,4 +59,9 @@ public class BoardServiceImp implements BoardService {
     this.dao.searchList(map);
     return this.dao.searchList(map);
   }
+
+@Override
+public List<BoardVo> getMyBoardList(Map map) throws Exception {
+	return dao.getMyBoardList(map);
+}
 }

@@ -62,7 +62,10 @@ public class BoardController {
 	}
 	
 	@RequestMapping(value="/myBoardList", method= {RequestMethod.POST, RequestMethod.GET})
-	public ModelAndView myList(BoardVo boardVo, ModelAndView mav, HttpServletRequest request)throws Exception{
+	public ModelAndView myList(BoardVo boardVo, ModelAndView mav, HttpServletRequest request, 
+			@RequestParam(defaultValue = "1") int curPage) throws Exception{
+		System.out.println("curpage: "+curPage);
+		
 		HttpSession session = request.getSession();
 		
 		if(null == session.getAttribute("user")) {
@@ -73,11 +76,23 @@ public class BoardController {
 			MemberVo memberVo = (MemberVo) session.getAttribute("user");
 			
 			List<BoardVo> boardList = new ArrayList<BoardVo>();
-			boardList = service.myBoardList(memberVo.getUserId());
+			//	boardList = service.myBoardList(memberVo.getUserId());
+			Map<String, Object> map = new HashMap<String, Object>();
+			
+			Pagination page = new Pagination(boardList.size(), curPage);
+			
+			map.put("page", page);
+			mav.addObject("page",page);
+			map.put("memberVo", memberVo);
+			
+			boardList = service.getMyBoardList(map);
+			
 			mav.addObject("boardList",boardList);
 			mav.addObject("listCnt",boardList.size());
 			System.out.println("listCnt:"+boardList.size());
 			mav.setViewName("board/myBoardList");
+			
+			
 			
 			for(int i=0;i<boardList.size();i++) {
 				System.out.println(boardList.get(i).toString());
@@ -86,6 +101,40 @@ public class BoardController {
 		
 		return mav;
 	}
+	
+	@RequestMapping(value = "/listAll", method= {RequestMethod.GET, RequestMethod.POST}, produces = "text/html; charset=UTF-8")
+	public ModelAndView listAll(Model model, HttpServletRequest request, 
+			@RequestParam(defaultValue = "") String type, 
+			@RequestParam(defaultValue = "") String keyWord,
+			@RequestParam(defaultValue = "1") int curPage) throws Exception{
+		
+		ModelAndView mav = new ModelAndView();
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("searchType", type);
+		map.put("searchKeyWord", keyWord);
+		
+		HttpSession session = request.getSession();
+		
+		
+		List<BoardVo> boardList = new ArrayList<BoardVo>();
+		int listSize = service.getBoardListCnt(map);
+		Pagination page = new Pagination(listSize, curPage);
+		map.put("page", page);
+		boardList = service.searchList(map);
+		mav.addObject("boardList", boardList);
+		if(service.searchList(map).isEmpty()) {
+			System.out.println("검색된 자료가 없습니다.");
+			service.listAll();
+			boardList = service.getBoardList(page);
+			mav.addObject("boardList", boardList);
+			mav.addObject("msg", "listEmpty");
+		}
+		mav.addObject("listCnt",boardList.size());
+		mav.addObject("page",page);
+		return mav;
+	}
+	
 	@RequestMapping(value = "/adminListAll", method= {RequestMethod.GET, RequestMethod.POST}, produces = "text/html; charset=UTF-8")
 	public ModelAndView adminListAll(Model model, HttpServletRequest request, 
 			@RequestParam(defaultValue = "") String type, 
@@ -123,42 +172,7 @@ public class BoardController {
 		return mav;
 	}
 	
-	@RequestMapping(value = "/listAll", method= {RequestMethod.GET, RequestMethod.POST}, produces = "text/html; charset=UTF-8")
-	public ModelAndView listAll(Model model, HttpServletRequest request, 
-			@RequestParam(defaultValue = "") String type, 
-			@RequestParam(defaultValue = "") String keyWord,
-			@RequestParam(defaultValue = "1") int curPage) throws Exception{
-		
-		ModelAndView mav = new ModelAndView();
-		
-		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("searchType", type);
-		map.put("searchKeyWord", keyWord);
-		
-		HttpSession session = request.getSession();
-		
-		
-		List<BoardVo> boardList = new ArrayList<BoardVo>();
-		int listSize = service.getBoardListCnt(map);
-		Pagination page = new Pagination(listSize, curPage);
-		map.put("page", page);
-		//	map.put("startIndex", Integer.toString(page.getStartIndex()));
-	//	map.put("listSize", Integer.toString(listSize));
-	//	model.addAttribute("boardList", service.searchList(map));
-		boardList = service.searchList(map);
-	//	boardList = service.getBoardList(page);
-		mav.addObject("boardList", boardList);
-		if(service.searchList(map).isEmpty()) {
-			System.out.println("검색된 자료가 없습니다.");
-			service.listAll();
-			boardList = service.getBoardList(page);
-			mav.addObject("boardList", boardList);
-			mav.addObject("msg", "listEmpty");
-		}
-		mav.addObject("listCnt",boardList.size());
-		mav.addObject("page",page);
-		return mav;
-	}
+	
 	
 	@RequestMapping(value = "/detail", method = RequestMethod.GET)
 	public void detail(@RequestParam("seq")int seq, @RequestParam("id")String id, Model model, HttpServletRequest request) throws Exception{

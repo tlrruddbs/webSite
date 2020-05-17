@@ -13,6 +13,8 @@ public interface BoardDAO {
 	   
 	  List<BoardVo> getBoardList(Pagination paramPagination) throws Exception;
 	  
+	  List<BoardVo> getMyBoardList(Map map) throws Exception;
+	  
 	  int getBoardListCnt(Map map) throws Exception;
 	  
 	  BoardVo read(int paramInt) throws Exception;

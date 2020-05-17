@@ -25,20 +25,42 @@
 	function back(){
 		history.back();
 	}
+	function fn_paging(curPage) {
+		location.href = "/board/myBoardList?curPage=" + curPage;
+	}
 </script>
 <body>
 	<style type = "text/css">
 		.jumbotron{
-			background-image:url('/resources/images/background.jpg');
-			background-size:cover;
-			color:black;
-		}
-		.flex-container{ 
-		width: 100%; height: 70vh; display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-align: center; -ms-flex-align: center; align-items: center; -webkit-box-pack: center; -ms-flex-pack: center; justify-content: center;"; 
-		}
-		.line{
-		border-bottom:1px solid gray;
-		}
+				background-image:url('/resources/images/background.jpg');
+				background-size:cover;
+				color:black;
+				
+			}
+			.container {
+				background-image:url('/resources/images/board BG.png');
+				background-size: 100% 100%;
+				padding-top:200px;
+			}
+			.background {
+				width : 100 %;
+				height : 0;
+				padding-top : calc (300 / 1000 * 100 %); 
+				background-image:url('/resources/images/board BG.png');
+			}
+			.flex-container{ 
+			width: 100%; height: 100%; display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-align: center; -ms-flex-align: center; align-items: center; -webkit-box-pack: center; -ms-flex-pack: center; justify-content: center; "; 
+			}
+			.line{
+			border-bottom:1px solid gray;
+			}
+			.form-inline {
+		      vertical-align: right;
+		    }
+		    .float-sm-right{
+		    	padding-right:250px;
+		    	padding-top:100px;
+		    }
 	</style>
 	
 	<nav class="navbar navbar-expand-lg "> 
@@ -65,37 +87,85 @@
 	</nav>
 
 	<div class="jumbotron" >
-		<div class="container">
+	<div>
+		<form class="form-inline my-2 my-lg-0 float-sm-right" name = "type" action="/board/listAll" method="post" >
+						
+			<select class="form-control " name = "type"  >
+				<option value = "title">제목</option>
+				<option value = "id">아이디</option>
+			</select>
+			
+			<input class="form-control mr-sm-2" type = "search" name = "keyWord" placeholder="Search" aria-label="Search">
+			<button class="btn btn-outline-dark" type = "submit" value =" onclick="searchCheck(form)">검색</button>
+			
+		</form>
+	</div>
+		<div class="container" >
+			
 		 
-		 	<div class="flex-container" style="background-color:#ffffff"> 
+		 	<div class=".background" > 
 		 	
 		 		<div width="900"  >
 		 		
-				<table border="0" width="900">
-					<tr>
-						<th style = "width:10%">번호</th>
-						<th style = "width:30%">제목</th>
-						<th style = "width:20%">아이디</th>
-						<th style = "width:20%">날짜</th>
-						<th style = "width:20%">조회수</th>
-					</tr>
+		 			<div align="right">
+		 			
 					
-				<%--	<c:forEach items = "${boardList}" var = "boardVo"> --%> 
-					<c:forEach items = "${boardList}" var = "boardVo" varStatus="status">
-					<tr class="line">
-					<%--	<td>${status.count }</td> --%>
-						<td>${listCnt-(page.startIndex + status.count)+1 }</p></td>
-					 	<td><a href="/board/detail?seq=${boardVo.seq }&id=${boardVo.writer}">${boardVo.title }</a></td>
-						<td>${boardVo.writer }</td>
-						<td><fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${boardVo.date }"/></td>
-						<td><span>${boardVo.count }</span></td>
-					</tr>
+					</div>	
+					<div >
+						
+					</div>
+					<div>
+						<table border="0" width="900" >
+							<tr>
+								<th style = "width:10%">번호</th>
+								<th style = "width:30%">제목</th>
+								<th style = "width:20%">아이디</th>
+								<th style = "width:20%">날짜</th>
+								<th style = "width:20%">조회수</th>
+							</tr>
+							<c:forEach items = "${boardList}" var = "boardVo" varStatus="status">
+								<tr class="line">
+									<%--<td>${listCnt-(page.startIndex + status.count)+1 }</p></td> --%>
+									<td><p>${page.listCnt-(page.startIndex + status.count)+1 }</p></td>
+								 	<td><a href="/board/detail?seq=${boardVo.seq }&id=${boardVo.writer}">${boardVo.title }</a></td>
+									<td>${boardVo.writer }</td>
+									<td><fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${boardVo.date }"/></td>
+									<td><span>${boardVo.count }</span></td>
+								</tr>
 			
-					</c:forEach>	
-				</table>
+							</c:forEach>	
+						</table>
+					</div>
 			</div>
 				
 		 </div>
+		 
+			<div align="center">
+		        <c:if test="${page.curRange ne 1 }">
+		            <a href="#" onClick="fn_paging(1)">[</a> 
+		        </c:if>
+		        <c:if test="${page.curPage ne 1}">
+		            <a href="#" onClick="fn_paging('${page.prevPage }')">[</a> 
+		        </c:if> 
+		        <c:forEach var="pageNum" begin="${page.startPage }" end="${page.endPage }">
+		            <c:choose>
+		                <c:when test="${pageNum eq  page.curPage}">
+		                    <span style="font-weight: bold;"><a href="#" onClick="fn_paging('${pageNum }')">${pageNum }</a></span> 
+		                </c:when>
+		                <c:otherwise>
+		                    <a href="#" onClick="fn_paging('${pageNum }')">${pageNum }</a> 
+		                </c:otherwise>
+		            </c:choose>
+		        </c:forEach>
+		        <c:if test="${page.curPage ne page.pageCnt && page.pageCnt > 0}">
+		            <a href="#" onClick="fn_paging('${page.nextPage }')">다음</a> 
+		        </c:if>
+		        <c:if test="${page.curRange ne page.rangeCnt && page.rangeCnt > 0}">
+		            <a href="#" onClick="fn_paging('${page.pageCnt }')">[</a> 
+		        </c:if>
+		    </div>
+		</div>
+	</div>
 	
 
 	

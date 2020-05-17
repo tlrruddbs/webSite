@@ -12,6 +12,8 @@ public interface BoardService {
   
   List<BoardVo> getBoardList(Pagination paramPagination) throws Exception;
   
+  List<BoardVo> getMyBoardList(Map map)throws Exception;
+  
   int getBoardListCnt(Map paramMap) throws Exception;
   
   BoardVo read(int paramInt) throws Exception;
@@ -27,4 +29,6 @@ public interface BoardService {
   int myBoardCountList(String paramString) throws Exception;
   
   List<BoardVo> searchList(Map paramMap) throws Exception;
+  
+  
 }

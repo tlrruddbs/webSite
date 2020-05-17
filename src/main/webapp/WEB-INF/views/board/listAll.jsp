@@ -67,14 +67,29 @@
 				color:black;
 				
 			}
+			.container {
+				background-image:url('/resources/images/board BG.png');
+				background-size: 100% 100%;
+				padding-top:200px;
+			}
+			.background {
+				width : 100 %;
+				height : 0;
+				padding-top : calc (300 / 1000 * 100 %); 
+				background-image:url('/resources/images/board BG.png');
+			}
 			.flex-container{ 
-			width: 100%; height: 70vh; display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-align: center; -ms-flex-align: center; align-items: center; -webkit-box-pack: center; -ms-flex-pack: center; justify-content: center;"; 
+			width: 100%; height: 100%; display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-align: center; -ms-flex-align: center; align-items: center; -webkit-box-pack: center; -ms-flex-pack: center; justify-content: center; "; 
 			}
 			.line{
 			border-bottom:1px solid gray;
 			}
 			.form-inline {
 		      vertical-align: right;
+		    }
+		    .float-sm-right{
+		    	padding-right:250px;
+		    	padding-top:100px;
 		    }
 	</style>
 
@@ -99,48 +114,56 @@
 	</nav>
 
 	<div class="jumbotron" >
-		<div class="container">
+	<div>
+		<form class="form-inline my-2 my-lg-0 float-sm-right" name = "type" action="/board/listAll" method="post" >
+						
+			<select class="form-control " name = "type"  >
+				<option value = "title">제목</option>
+				<option value = "id">아이디</option>
+			</select>
+			
+			<input class="form-control mr-sm-2" type = "search" name = "keyWord" placeholder="Search" aria-label="Search">
+			<button class="btn btn-outline-dark" type = "submit" value =" onclick="searchCheck(form)">검색</button>
+			
+		</form>
+	</div>
+		<div class="container" >
+			
 		 
-		 	<div class="flex-container" style="background-color:#ffffff"> 
+		 	<div class=".background" > 
 		 	
 		 		<div width="900"  >
 		 		
 		 			<div align="right">
 		 			
-					<form class="form-inline my-2 my-lg-0 float-sm-right"" name = "type" action="/board/listAll" method="post" padding-left="300px">
 					
-						<select class="form-control " name = "type"  >
-							<option value = "title">제목</option>
-							<option value = "id">아이디</option>
-						</select>
-						
-						<input class="form-control mr-sm-2" type = "search" name = "keyWord" placeholder="Search" aria-label="Search">
-						<button class="btn btn-outline-dark" type = "submit" value =" onclick="searchCheck(form)">검색</button>
-						
-					</form>
 					</div>	
-				<table border="0" width="900">
-					<tr>
-						<th style = "width:10%">번호</th>
-						<th style = "width:30%">제목</th>
-						<th style = "width:20%">아이디</th>
-						<th style = "width:20%">날짜</th>
-						<th style = "width:20%">조회수</th>
-					</tr>
+					<div >
+						
+					</div>
+					<div>
+						<table border="0" width="900" >
+							<tr>
+								<th style = "width:10%">번호</th>
+								<th style = "width:30%">제목</th>
+								<th style = "width:20%">아이디</th>
+								<th style = "width:20%">날짜</th>
+								<th style = "width:20%">조회수</th>
+							</tr>
+							
+							
+							<c:forEach items = "${boardList}" var = "boardVo" varStatus="status">
+								<tr class="line">
+									<td><p>${page.listCnt-(page.startIndex + status.count)+1 }</p></td>
+								 	<td><a href="/board/detail?seq=${boardVo.seq }&id=${boardVo.writer}">${boardVo.title }</a></td>
+									<td>${boardVo.writer }</td>
+									<td><fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${boardVo.date }"/></td>
+									<td><span>${boardVo.count }</span></td>
+								</tr>
 					
-				<%--	<c:forEach items = "${boardList}" var = "boardVo"> --%> 
-					<c:forEach items = "${boardList}" var = "boardVo" varStatus="status">
-					<tr class="line">
-					<%--	<td>${status.count }</td> --%>
-						<td><p>${page.listCnt-(page.startIndex + status.count)+1 }</p></td>
-					 	<td><a href="/board/detail?seq=${boardVo.seq }&id=${boardVo.writer}">${boardVo.title }</a></td>
-						<td>${boardVo.writer }</td>
-						<td><fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${boardVo.date }"/></td>
-						<td><span>${boardVo.count }</span></td>
-					</tr>
-			
-					</c:forEach>	
-				</table>
+							</c:forEach>	
+						</table>
+					</div>
 			</div>
 				
 		 </div>
@@ -173,11 +196,6 @@
 		            <a href="#" onClick="fn_paging('${page.pageCnt }')">[</a> 
 		        </c:if>
 		    </div>
-		    <%--
-		    <div>
-		        : ${page.listCnt } /    : ${page.pageCnt } / : ${page.curPage } / : ${page.curRange } / : ${page.rangeCnt }
-		    </div>
-		     --%>
 		</div>
 	</div>
 	
